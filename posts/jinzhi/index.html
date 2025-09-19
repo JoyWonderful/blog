@@ -63,7 +63,7 @@
             <span class="post-meta-item">
                 <i class="far fa-calendar-check post-meta-item-icon"></i>
                 <span class="post-meta-item-text">更新于 </span>
-                <time datetime="2024-05-19T08:28:16+08:00">2024-05-19</time>
+                <time datetime="2025-09-19T23:11:32+08:00">2025-09-19</time>
             </span>
             <span class="post-meta-item">
                 <i class="far fa-folder post-meta-item-icon"></i>
@@ -73,7 +73,7 @@
         </div>
     </header>
     <div class="post-body">
-        <p>x 进制，代表着在这个计数方法中逢 x 进一，例如十进制就代表着<strong>逢十进一</strong>。<br>我们平常在生活中用的都是十进制。进制一类的东西在 OI 中也比较重要<del>CCF 喜欢考</del>，计算机中的数据都是以二进制储存的，二进制也完美地利用了每一个比特。当然，只要有足够的表示方法，人们可以弄出三十二进制、六十四进制，甚至一千进制。<del>闲的没事情干，</del>进制有关的以及进制之间的转换就是我想记下来的话题。</p>
+        <p>x 进制，代表着在这个计数方法中逢 x 进一，例如十进制就代表着<strong>逢十进一</strong>。<br>我们平常在生活中用的都是十进制。进制一类的东西在 OI 中也比较重要<del>CCF 喜欢考</del>，计算机中的数据都是以二进制储存的，二进制也完美地利用了每一个比特。当然，只要有足够的表示方法，人们可以弄出三十二进制、六十四进制，甚至一千进制。进制有关的以及进制之间的转换就是我想记下来的话题。</p>
 <span id="more"></span>
 
 <h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><h3 id="二进制和十进制的转换"><a href="#二进制和十进制的转换" class="headerlink" title="二进制和十进制的转换"></a>二进制和十进制的转换</h3><p>这是 <del>€€£</del> CCF 出的题中一定会多少考到一点的知识，比较重要。一般来说，x 进制的数记作 $(\text {number})_x$，例如二进制数 <span style="font-family:monospace;">1011</span> 记作 $(1011)_2$，十进制数 <span style="font-family:monospace;">114514</span> 记作 $(114514)_{10}$。</p>
@@ -86,7 +86,7 @@
 &#x3D; \ &amp;(89)_&#123;10&#125;
 \end&#123;aligned&#125;</code></pre>
 
-<p>可见，二进制 <span style="font-family:monospace;">1011001</span> 转换为十进制是 <span style="font-family:monospace;">89</span>。<br><del>话说 hexo next 的 mathjax 渲染越来越奇怪了。。。</del></p>
+<p>可见，二进制 <span style="font-family:monospace;">1011001</span> 转换为十进制是 <span style="font-family:monospace;">89</span>。  </p>
 <h4 id="十进制-二进制"><a href="#十进制-二进制" class="headerlink" title="十进制 -&gt; 二进制"></a>十进制 -&gt; 二进制</h4><p>可以使用短除法，将十进制除以二取余，直至商为零。最后将取余的结果倒序输出。<br>比如说，还是那个数字 $(89)_{10}$：</p>
 <pre class="language-mathKatex" data-language="mathKatex"><code class="language-mathKatex">\begin&#123;aligned&#125;
 2 \ | \underline&#123; \ \ \ \ \ \ \ \ &#125; &amp;\underline&#123;89 \ &#125; \\
@@ -99,7 +99,7 @@
 2 \ | &amp;\underline&#123;\ \ 0 \ &#125; \ \ \ \ \ \ \textbf&#123;1&#125;
 \end&#123;aligned&#125;</code></pre>
 
-<p>最后，倒着输出即可得知 $(89)_{10} &#x3D; (1011001)_2$ 。<br><del>ps: mathjax 没有特定的短除公式，只好用这种奇特的方法模拟短除。</del></p>
+<p>最后，倒着输出即可得知 $(89)_{10} &#x3D; (1011001)_2$ 。  </p>
 <div class="note info"><p>P.S. 另一种更方便的双向转换方法</p>
 <p>可以发现，其实二进制十进制的互相转换都离不开 二的 i 次方，也可以将这张表记下来（也就是从右往左不断地乘二嘛），之后的转换会方便很多。<br>其实这张表也就是二的 i 次方：</p>
 <pre class="language-mathKatex" data-language="mathKatex"><code class="language-mathKatex">... 256 \ \ 128 \ \ 64 \ \ 32 \ \ 16 \ \ 8 \ \ 4 \ \ 2 \ \ 1</code></pre>
@@ -308,8 +308,17 @@ string <span class="token function">tentoy</span><span class="token punctuation"
 <pre class="language-mathKatex" data-language="mathKatex"><code class="language-mathKatex">(0.3)_&#123;10&#125; &#x3D; (0.0\dot&#123;1&#125;00\dot&#123;1&#125;)_2</code></pre>
 
 <p>注：无限循环小数</p>
-<h4 id="x-进制小数转十进制"><a href="#x-进制小数转十进制" class="headerlink" title="x 进制小数转十进制"></a>x 进制小数转十进制</h4><p>其实和整数位很像，不过从左往右第 i 位的权值是 -i。不写了吧。。。</p>
-<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>位运算是一个比较<del>毒瘤</del>有趣的运算，是二进制的运算。当然也可以通过位运算做一些与平常的（逻辑）运算符等价的运算，但速度更快。</p>
+<h4 id="x-进制小数转十进制"><a href="#x-进制小数转十进制" class="headerlink" title="x 进制小数转十进制"></a>x 进制小数转十进制</h4><p>其实和整数位很像，不过从左往右第 i 位的权值是 $x^{-i}$ 即 $\frac{1}{x^i}$。<br>例如：</p>
+<pre class="language-mathKatex" data-language="mathKatex"><code class="language-mathKatex">\begin&#123;aligned&#125;
+&amp;(0.1011)_2 \\
+&#x3D; \ &amp;1 \times 2^&#123;-1&#125; + 0 \times 2^&#123;-2&#125; + 1 \times 2^&#123;-3&#125; + 1 \times 2^&#123;-4&#125; \\
+&#x3D; \ &amp;\frac&#123;1&#125;&#123;2^1&#125; + \frac&#123;1&#125;&#123;2^3&#125; + \frac&#123;1&#125;&#123;2^4&#125; \\
+&#x3D; \ &amp;\frac&#123;1&#125;&#123;2&#125; + \frac&#123;1&#125;&#123;8&#125; + \frac&#123;1&#125;&#123;16&#125; \\
+&#x3D; \ &amp;0.5 + 0.125 + 0.0625 \\
+&#x3D; \ &amp;0.6875
+\end&#123;aligned&#125;</code></pre>
+
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>位运算是一个比较有趣的运算，是二进制的运算。当然也可以通过位运算做一些与平常的（逻辑）运算符等价的运算，但速度更快。</p>
 <h3 id="按位与运算"><a href="#按位与运算" class="headerlink" title="按位与运算 &amp;"></a>按位与运算 <code>&amp;</code></h3><p>将两个二进制的每一位逐个比较，若这一位都为 1 则得出 1，否则得出 0。若这两个二进制数字位数不同可以在前面补零。</p>
 <pre class="language-none"><code class="language-none">1 &amp; 1 &#x3D; 1;
 0 &amp; 0 &#x3D; 0;
