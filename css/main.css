@@ -42,6 +42,7 @@ table {
   margin-bottom: 20px;
   border-collapse: collapse;
   border-spacing: 0;
+  word-break: break-all;
   width: 100%;
 }
 table thead {
