@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>Live Share 使用小记 | Some Notes</title>
+        <link rel="icon" href="https://src-jywon.netlify.app/favicon.svg">
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="https://src-jywon.netlify.app/fonts/lxgw/font.css">
+
+
+<link rel="stylesheet" href="https://src-jywon.netlify.app/fonts/ftawsm/fontaw.css">
+
+
+<link rel="stylesheet" href="https://src-jywon.netlify.app/fonts/ktx/katex.min.css">
+
+    </head>
+    <body>
+        <main class="main">
+            <div class="column">
+                <header>
+                    <div class="site-brand">
+                        <div class="site-meta">
+                            <p class="site-title">Some Notes</p><p class="site-subtitle">Be HardWorking Every Day.</p>
+                        </div>
+                    </div>
+                    <nav class="site-nav">
+                        <ul class="main-menu">
+                            <li class="menu-item"><a href="/"><i class="fa fa-home fa-fw"></i>首页&emsp;&emsp; || /</a></li>
+                            <li class="menu-item"><a href="/tags/"><i class="fa fa-tags fa-fw"></i>标签&emsp;&emsp; || tags</a></li>
+                            <li class="menu-item"><a href="/categories/"><i class="fa fa-rectangle-list fa-fw"></i>分类&emsp;&emsp; || categories</a></li>
+                            <li class="menu-item"><a href="/archives/"><i class="fa fa-archive fa-fw"></i>存档&emsp;&emsp; || archives</a></li>
+                            <li class="menu-item menu-more">
+                                <a class="menu-more-btn"><i class="fa fa-ellipsis-vertical fa-fw"></i>更多</a>
+                                <a href="/friends/" class="morebtn-item"><i class="far fa-address-card fa-fw"></i>友情链接 || friends</a>
+                                <a href="/guestbook/" class="morebtn-item"><i class="fa fa-pen-to-square fa-fw"></i>留言板&emsp; || guestbook</a>
+                                <a href="/about/" class="morebtn-item"><i class="fa fa-circle-info fa-fw fa-fw"></i>关于&emsp;&emsp; || about</a>
+                            </li>
+                            <li class="menu-item"><a class="menu-search"><i class="fa fa-search fa-fw"></i>搜索</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <div class="site-sidebar">
+                    
+<script type="application/json" class="cfgKtx">false</script>
+<div class="post-toc">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Live-Share-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Live Share 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%89%88%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">列表版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-%E7%89%88%E6%9C%AC"><span class="toc-number">3.2.</span> <span class="toc-text">JSON 版本</span></a></li></ol></li></ol>
+</div>
+                </div>
+            </div>
+            <div class="main-inner">
+                
+<div class="post-block">
+    <header class="post-header">
+        <h2 class="post-title">Live Share 使用小记</h2>
+        <div class="post-meta">
+            <span class="post-meta-item">
+                <i class="far fa-calendar post-meta-item-icon"></i>
+                <span class="post-meta-item-text">发表于 </span>
+                <time datetime="2025-10-26T19:56:25+08:00">2025-10-26</time>
+            </span>
+            <span class="post-meta-item">
+                <i class="far fa-calendar-check post-meta-item-icon"></i>
+                <span class="post-meta-item-text">更新于 </span>
+                <time datetime="2025-11-02T12:55:01+08:00">2025-11-02</time>
+            </span>
+            <span class="post-meta-item">
+                <i class="far fa-folder post-meta-item-icon"></i>
+                <span class="post-meta-item-text">分类于 </span>
+                <a href="/categories/Programming/">Programming</a>
+            </span>
+        </div>
+    </header>
+    <div class="post-body">
+        <p>为了教某人 <a target="_blank" rel="noopener" href="http://nbu.zha-ji.cn/problem">NBU-OJ</a> 上的题目，提前尝试了一下协作写代码，还挺有趣的（但是教别人还是太花时间了）。<br>正因为如此突然发现 Visual Studio (Code) 的 <a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/services/live-share/"><em>Live Share</em></a>，非常好用，开箱即用。假如想要协作写代码的话强烈推荐。<br>我只是在这里详细记录一下<strong>如何使用</strong>以及<strong>每个功能有怎样的效果</strong>。</p>
+<span id="more"></span>
+
+<div class="note warning"><p>废话但还是要说，并且不会在日后删掉</p>
+<p>“删掉”的经历指 <a target="_blank" rel="noopener" href="https://github.com/JoyWonderful/blog-data-recovery/commit/232d56be9127eef809535ae0db1d94d84774d285"><code>232d56b</code></a>。<br><del>真的有好长时间没写过博客了，太懒了，除了上学就是摆烂和睡觉。</del></p>
+</div>
+
+
+<h2 id="Live-Share-简介"><a href="#Live-Share-简介" class="headerlink" title="Live Share 简介"></a>Live Share 简介</h2><blockquote>
+<p>Real-time collaborative development from the comfort of your favorite tools.<br>在您最喜欢的工具中舒适地进行实时协作开发。</p>
+</blockquote>
+<p>扩展页面就是这样介绍的。微软大概有底气认为 Visual Studio (Code) 就是<strong>您最喜欢的工具</strong>。事实上我就是它的忠诚用户。<br>这个简介的重点显然是<strong>您最喜欢的工具</strong>。之所以这么说，是因为当进行协作时你的 VS(Code) 主题、设置等还是你自己的设定，不会跟着主持者一样。<br><strong>您喜欢的工具</strong>是方便的，因为 Live Share 可以只用网页进行协作，主持者允许时协作者可以不用登录（但主持者还是要登 Github 或 Microsoft 账户的，而很多使用 VS(Code) 的人都至少有其中一个账号）。</p>
+<p>接下来详细介绍用法及各个功能。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>多个平台都可以安装使用 Live Share。网页端甚至可以不用安装。</p>
+<div class="tabs" id="platforms"><ul class="nav-tabs"><li class="tab active"><a href="#platforms-1">网页(Web)</a></li><li class="tab"><a href="#platforms-2">Visual Studio</a></li><li class="tab"><a href="#platforms-3">Visual Studio Code</a></li></ul><div class="tab-content"><div class="tab-pane active" id="platforms-1"><p>可以访问 <a target="_blank" rel="noopener" href="https://vscode.dev/">vscode.dev</a> 后打开扩展搜索“Live Share”(@id:<code>MS-vsliveshare.vsliveshare</code>)点击安装。</p>
+<img src="https://src-jywon.netlify.app/img/blog-liveshare-market.png" loading="lazy">
+
+<p>或者主持人可以直接访问 <a target="_blank" rel="noopener" href="https://vscode.dev/editor/liveshare/">vscode.dev&#x2F;editor&#x2F;liveshare</a>，点击安装这一步都省了。（P.S.: 这样子 Live Share 会变成“内置(@builtin)”扩展）<br>协作者可以不用在 Web 端手动安装，直接访问主持人的邀请链接就可以了（也会自动安装 Live Share 为“内置”扩展，并自动加入协作）。</p></div><div class="tab-pane" id="platforms-2"><p>Visual Studio 内置 Live Share，不必手动安装。</p></div><div class="tab-pane" id="platforms-3"><p>打开扩展搜索“<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">Live Share</a>”(@id:<code>MS-vsliveshare.vsliveshare</code>)点击安装。</p>
+<img src="https://src-jywon.netlify.app/img/blog-liveshare-market.png" loading="lazy"></div></div></div>
+
+
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>Live Share 有很多项设置，在这里全部翻译（说明好像只有英文）解释一遍。</p>
+<p>打开设置，展开 <code>Extensions</code> -&gt; <code>Visual Studio Live Share</code> 子项，用图形化界面编辑设置。<br>要是会用 VSC 的 <code>settings.json</code>，用 <code>&quot;liveshare.</code> 找设置就可以了。</p>
+<p>这里分别用列表和 <code>settings.json</code> 形式解释，更方便。</p>
+<h3 id="列表版本"><a href="#列表版本" class="headerlink" title="列表版本"></a>列表版本</h3><table>
+<thead>
+<tr>
+<th align="left">ID</th>
+<th align="left">描述</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>liveshare.allowGuestDebugControl</code></td>
+<td align="left">允许协作者启动和停止调试会话。当项为 <code>true</code> 时，即 GUI 设置里打上勾时协作者也可以在主持者的终端上运行和调试程序。详见[TODO]。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.allowGuestTaskControl</code></td>
+<td align="left">允许协作者运行和终止工作区的<em>任务</em>(Tasks)。也请见上[TODO]。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.alwaysFollowHost</code></td>
+<td align="left">确保主持者总是被跟随。详见[TODO]。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.anonymousGuestApproval</code></td>
+<td align="left">控制如何处理来自<em>匿名</em>（指未登录的）协作者的加入请求。当项为 <code>&quot;prompt&quot;</code> 时，显示一个消息询问；当项为 <code>&quot;reject&quot;</code> 时会自动拒绝；当项为<code>&quot;accept&quot;</code> 时自动允许。图片见[TODO]。</td>
+<td align="left"><code>&quot;prompt&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.autoShareServers</code></td>
+<td align="left">控制是否自动共享当从<em>集成终端</em>(Integrated terminal)或<em>已知的扩展</em>(well-known extensions)服务器。详见[TODO]。</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.autoShareTerminals</code></td>
+<td align="left">控制是否自动与协作者共享终端（自动共享时为“只读”）。详见[TODO]。</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.codeLens</code></td>
+<td align="left">控制是否展示用于启动协作的 CodeLens。（我不知道怎么用，恕不介绍）</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.comments</code></td>
+<td align="left">控制是否允许在协作绘画中的<em>评论</em>(Comments)。</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.connectionMode</code></td>
+<td align="left">指定为协作使用的连接类型。当项为 <code>&quot;auto&quot;</code> 时优先选择直接连接，但是直接连接失败会回退到通过服务器（云）连接；当项为 <code>&quot;direct&quot;</code> 时使用直接连接；当项为 <code>&quot;relay&quot;</code> 时通过服务器连接。</td>
+<td align="left"><code>&quot;auto&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.diagnosticLogging</code></td>
+<td align="left">启用 Live Share 的<em>输出</em>(Output)频道。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.diagnosticLoggingLevel</code></td>
+<td align="left">指定 Live Share 的<em>日志</em>(Log)输出级别。可选值 <code>&quot;Trace&quot;</code>,<code>&quot;Debug&quot;</code>,<code>&quot;Info&quot;</code>,<code>&quot;Warning&quot;</code>,<code>&quot;Error&quot;</code>,<code>&quot;Critical&quot;</code>,<code>&quot;Off&quot;</code>。</td>
+<td align="left"><code>&quot;Warning&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.diagnosticMode</code></td>
+<td align="left">启用诊断<em>通知</em>(Notification)和日志。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.featureSet</code></td>
+<td align="left">控制是否启用预览功能。当项为 <code>&quot;stable&quot;</code> 时不启用；当项为 <code>&quot;insiders&quot;</code> 时启用预览功能，选择它即表示你同意 <a target="_blank" rel="noopener" href="https://aka.ms/vsls-license-preview/"><em>Pre-Release Software License Terms</em></a>（这个链接目前好像无效）和 <a target="_blank" rel="noopener" href="https://aka.ms/vsls-privacy"><em>Privacy Statement</em></a></td>
+<td align="left"><code>&quot;stable&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.focusBehavior</code></td>
+<td align="left">指定如何响应来自其他协作者的关注请求(Focus requests)。当为 <code>&quot;accept&quot;</code> 时自动允许；当为 <code>&quot;prompt&quot;</code> 时弹出对话框请求。详见[TODO]</td>
+<td align="left"><code>&quot;accept&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.guestApprovalRequired</code></td>
+<td align="left">控制主持者是否需要明确批准来宾请求加入协作会话。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.increasedGuestLimit</code></td>
+<td align="left">将协作者个数限制从 5 增加到 30 个。</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.joinDebugSessionOption</code></td>
+<td align="left">控制协作者如何加入正在进行的共享调试会话。详见[TODO]</td>
+<td align="left"><code>&quot;Automatic&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.keepAliveInterval</code></td>
+<td align="left">设置在空闲会话中发送保持连接消息前的等待秒数，用于检测异常的网络断开。设置为 -1 可禁用发送保持连接消息。</td>
+<td align="left"><code>20</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.languages.allowGuestCommandControl</code></td>
+<td align="left">允许访客通过代码操作（“快速修复”）和 CodeLens 运行任意命令。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.launcherClient</code></td>
+<td align="left">指定当单击 Live Share 共享链接时启动的客户端。可选值 <code>&quot;web&quot;</code>,<code>&quot;visualStudio&quot;</code>,<code>&quot;visualStudioCode&quot;</code>。</td>
+<td align="left"><code>&quot;web&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.nameTagVisibility</code></td>
+<td align="left">控制何时显示协作者的名字标签而不是仅仅显示它们的光标。当为 <code>&quot;Activity&quot;</code> 时在协作者编辑时显示；当为 <code>&quot;Always&quot;</code> 时总是显示；当为 <code>&quot;Never&quot;</code> 时从不显示。图片见[TODO]。</td>
+<td align="left"><code>&quot;Activity&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.notebooks.allowGuestExecuteCells</code></td>
+<td align="left">允许协作者运行 Notebook Cells。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.openSharedServers</code></td>
+<td align="left">控制是否用默认浏览器自动打开已共享的服务器。</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.populateGitCoAuthors</code></td>
+<td align="left">指定何时自动在你的 Git 提交信息中加上协作者署名（使用 Git-co-author trailer）。可选值 <code>&quot;always&quot;</code>,<code>&quot;never&quot;</code></td>
+<td align="left"><code>&quot;always&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.publishWorkspaceInfo</code></td>
+<td align="left">控制是否将您当前的工作区文件夹发布给其他用户。</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.sharedTerminalHeight</code></td>
+<td align="left">共享终端的高，单位为字符。</td>
+<td align="left"><code>50</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.sharedTerminalWidth</code></td>
+<td align="left">共享终端的宽，单位为字符。</td>
+<td align="left"><code>120</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.shareExternalFiles</code></td>
+<td align="left">在协作会话期间自动共享协作者打开的外部文件。</td>
+<td align="left"><code>true</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.showInStatusBar</code></td>
+<td align="left">显示或隐藏 Live Share 的状态栏项。可选值 <code>&quot;always&quot;</code>,<code>&quot;whileCollaborating&quot;</code>,<code>&quot;never&quot;</code></td>
+<td align="left"><code>&quot;always&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.showReadOnlyUsersInEditor</code></td>
+<td align="left">控制只读协作者的光标和高亮的可见性。可选值 <code>&quot;whileFollowing&quot;</code>,<code>&quot;always&quot;</code>。</td>
+<td align="left"><code>&quot;whileFollowing&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><code>liveshare.showVerboseNotifications</code></td>
+<td align="left">控制是否显示详细通知，例如当访客加入或离开会话时。</td>
+<td align="left"><code>true</code></td>
+</tr>
+</tbody></table>
+<h3 id="JSON-版本"><a href="#JSON-版本" class="headerlink" title="JSON 版本"></a>JSON 版本</h3><p>默认设置是第一个。<code>|</code> 分割可选的选项。</p>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+    <span class="token comment">// Allow guests to start and stop debugging sessions.</span>
+    <span class="token property">"liveshare.allowGuestDebugControl"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Allow guests to run and terminate workspace tasks.</span>
+    <span class="token property">"liveshare.allowGuestTaskControl"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Ensures that the session's host is always followed.</span>
+    <span class="token property">"liveshare.alwaysFollowHost"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls how to handle join requests from anonymous guests.</span>
+    <span class="token property">"liveshare.anonymousGuestApproval"</span><span class="token operator">:</span> <span class="token string">"prompt"</span> | <span class="token string">"accept"</span> | <span class="token string">"reject"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether web servers are automatically shared, when started from the integrated terminal or well-known extensions.</span>
+    <span class="token property">"liveshare.autoShareServers"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether terminals are automatically shared with guests (read-only).</span>
+    <span class="token property">"liveshare.autoShareTerminals"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether to show the CodeLens for starting a collaboration session.</span>
+    <span class="token property">"liveshare.codeLens"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether to allow comments in collaboration sessions</span>
+    <span class="token property">"liveshare.comments"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Type of connection used for collaboration; the default (auto) mode prefers a direct connection, but may fallback to a cloud relay if the direct connection failed.</span>
+    <span class="token property">"liveshare.connectionMode"</span><span class="token operator">:</span> <span class="token string">"auto"</span> | <span class="token string">"direct"</span> | <span class="token string">"relay"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Enables the Visual Studio Live Share output channel.</span>
+    <span class="token property">"liveshare.diagnosticLogging"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Specifies the level of logging output from Visual Studio Live Share Extension</span>
+    <span class="token property">"liveshare.diagnosticLoggingLevel"</span><span class="token operator">:</span> <span class="token string">"Warning"</span> | <span class="token string">"Critical"</span> | <span class="token string">"Debug"</span> | <span class="token string">"Error"</span> | <span class="token string">"Info"</span> | <span class="token string">"Off"</span> | <span class="token string">"Trace"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Enables diagnostic notifications and logs.</span>
+    <span class="token property">"liveshare.diagnosticMode"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls set of active features. By selecting `insiders`, you agree to the [Pre-Release Software License Terms](https://aka.ms/vsls-license-preview) and [Privacy Statement](https://aka.ms/vsls-privacy).</span>
+    <span class="token property">"liveshare.featureSet"</span><span class="token operator">:</span> <span class="token string">"stable"</span> | <span class="token string">"insiders"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Specifies how to respond to focus requests from other participants.</span>
+    <span class="token property">"liveshare.focusBehavior"</span><span class="token operator">:</span> <span class="token string">"accept"</span> | <span class="token string">"prompt"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether the host needs to explicitly approve guest requests to join collaboration sessions.</span>
+    <span class="token property">"liveshare.guestApprovalRequired"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Increases the guest limit from 5 to 30.</span>
+    <span class="token property">"liveshare.increasedGuestLimit"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls how the participant will join incoming shared debug sessions.</span>
+    <span class="token property">"liveshare.joinDebugSessionOption"</span><span class="token operator">:</span> <span class="token string">"Automatic"</span> | <span class="token string">"Manual"</span> | <span class="token string">"Prompt"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Sets the number of seconds to wait before sending keep-alive messages in an idle session, used to detect abnormal network disconnection. Set to -1 to disable sending keep-alive messages.</span>
+    <span class="token property">"liveshare.keepAliveInterval"</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token comment">// Allow guests to run arbitrary commands via Code Actions (“Quick Fixes”) and CodeLens</span>
+    <span class="token property">"liveshare.languages.allowGuestCommandControl"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Specifies the client to launch when clicking on a Live Share URL.</span>
+    <span class="token property">"liveshare.launcherClient"</span><span class="token operator">:</span> <span class="token string">"web"</span>  | <span class="token string">"visualStudio"</span> | <span class="token string">"visualStudioCode"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls when to display a participant's name tag instead of just their cursor.</span>
+    <span class="token property">"liveshare.nameTagVisibility"</span><span class="token operator">:</span> <span class="token string">"Activity"</span> | <span class="token string">"Always"</span> | <span class="token string">"Never"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Allow guests to run notebook cells</span>
+    <span class="token property">"liveshare.notebooks.allowGuestExecuteCells"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether to automatically open shared servers in your default browser.</span>
+    <span class="token property">"liveshare.openSharedServers"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Specifies when to automatically populate your Git commit message with guest attribution (using the Git-co-author trailer).</span>
+    <span class="token property">"liveshare.populateGitCoAuthors"</span><span class="token operator">:</span> <span class="token string">"always"</span>| <span class="token string">"never"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether to publish your current workspace folder to other users</span>
+    <span class="token property">"liveshare.publishWorkspaceInfo"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// Height of shared terminal window, characters.</span>
+    <span class="token property">"liveshare.sharedTerminalHeight"</span><span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
+    <span class="token comment">// Width of shared terminal window, characters.</span>
+    <span class="token property">"liveshare.sharedTerminalWidth"</span><span class="token operator">:</span> <span class="token number">120</span><span class="token punctuation">,</span>
+    <span class="token comment">// Automatically share external files opened by the host during a collaboration session.</span>
+    <span class="token property">"liveshare.shareExternalFiles"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Show or hide the Live Share status bar items.</span>
+    <span class="token property">"liveshare.showInStatusBar"</span><span class="token operator">:</span> <span class="token string">"always"</span> | <span class="token string">"whileCollaborating"</span> | <span class="token string">"never"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls visibility of the cursor and highlights for read-only users.</span>
+    <span class="token property">"liveshare.showReadOnlyUsersInEditor"</span><span class="token operator">:</span> <span class="token string">"whileFollowing"</span> | <span class="token string">"always"</span><span class="token punctuation">,</span>
+    <span class="token comment">// Controls whether to show verbose notifications, such as when a guest joins and leaves a session.</span>
+    <span class="token property">"liveshare.showVerboseNotifications"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span></code></pre>
+
+    </div>
+    <div class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Other-Tag/"><i class="fa fa-tag"></i> Other-Tag</a>
+        </div>
+        <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/glitch-sync-withgh/">Github 仓库与 Glitch同步 <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </main>
+        <div class="back-to-top"><i class="fa fa-angles-up fa-fw"></i><span class="progress"></span></div>
+        <aside class="pjax-prog"></aside><div class="search-overlay">
+    <div class="search-container">
+        <div class="input-header">
+            <span class="search-icon"><i></i></span>
+            <input type="search" placeholder="请稍候..." autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="80" class="search-input">
+            <span><i class="fa fa-circle-xmark search-close"></i></span>
+        </div>
+        <div class="result-container"></div>
+    </div>
+</div>
+        <footer class="footer">
+            &copy; 2025 &nbsp;<i class="fa fa-paper-plane"></i>&nbsp; JoyWonderful
+        </footer>
+<script src="/js/loader.js"></script>
+
+
+<script defer src="https://src-jywon.netlify.app/js/pjax.min.js"></script>
+
+
+<script src="https://src-jywon.netlify.app/js/anime.min.js"></script>
+
+
+<script src="https://src-jywon.netlify.app/js/katex.min.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+    </body>
+</html>
