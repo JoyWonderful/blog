@@ -45,7 +45,7 @@
                     
 <script type="application/json" class="cfgKtx">false</script>
 <div class="post-toc">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Live-Share-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Live Share 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%89%88%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">列表版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-%E7%89%88%E6%9C%AC"><span class="toc-number">3.2.</span> <span class="toc-text">JSON 版本</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Live-Share-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Live Share 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E7%89%88%E6%9C%AC"><span class="toc-number">3.1.</span> <span class="toc-text">列表版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-%E7%89%88%E6%9C%AC"><span class="toc-number">3.2.</span> <span class="toc-text">JSON 版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%8D%8F%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">普通协作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E7%84%A6%E5%92%8C%E8%B7%9F%E8%B8%AA"><span class="toc-number">4.1.</span> <span class="toc-text">聚焦和跟踪</span></a></li></ol></li></ol>
 </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
             <span class="post-meta-item">
                 <i class="far fa-calendar-check post-meta-item-icon"></i>
                 <span class="post-meta-item-text">更新于 </span>
-                <time datetime="2025-11-02T12:55:01+08:00">2025-11-02</time>
+                <time datetime="2025-11-08T22:16:36+08:00">2025-11-08</time>
             </span>
             <span class="post-meta-item">
                 <i class="far fa-folder post-meta-item-icon"></i>
@@ -88,10 +88,10 @@
 <p>接下来详细介绍用法及各个功能。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>多个平台都可以安装使用 Live Share。网页端甚至可以不用安装。</p>
 <div class="tabs" id="platforms"><ul class="nav-tabs"><li class="tab active"><a href="#platforms-1">网页(Web)</a></li><li class="tab"><a href="#platforms-2">Visual Studio</a></li><li class="tab"><a href="#platforms-3">Visual Studio Code</a></li></ul><div class="tab-content"><div class="tab-pane active" id="platforms-1"><p>可以访问 <a target="_blank" rel="noopener" href="https://vscode.dev/">vscode.dev</a> 后打开扩展搜索“Live Share”(@id:<code>MS-vsliveshare.vsliveshare</code>)点击安装。</p>
-<img src="https://src-jywon.netlify.app/img/blog-liveshare-market.png" loading="lazy">
+<img src="https://src-jywon.netlify.app/img/blog-liveshare-market.png" alt="market" loading="lazy">
 
 <p>或者主持人可以直接访问 <a target="_blank" rel="noopener" href="https://vscode.dev/editor/liveshare/">vscode.dev&#x2F;editor&#x2F;liveshare</a>，点击安装这一步都省了。（P.S.: 这样子 Live Share 会变成“内置(@builtin)”扩展）<br>协作者可以不用在 Web 端手动安装，直接访问主持人的邀请链接就可以了（也会自动安装 Live Share 为“内置”扩展，并自动加入协作）。</p></div><div class="tab-pane" id="platforms-2"><p>Visual Studio 内置 Live Share，不必手动安装。</p></div><div class="tab-pane" id="platforms-3"><p>打开扩展搜索“<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare">Live Share</a>”(@id:<code>MS-vsliveshare.vsliveshare</code>)点击安装。</p>
-<img src="https://src-jywon.netlify.app/img/blog-liveshare-market.png" loading="lazy"></div></div></div>
+<img src="https://src-jywon.netlify.app/img/blog-liveshare-market.png" alt="market2" loading="lazy"></div></div></div>
 
 
 <h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>Live Share 有很多项设置，在这里全部翻译（说明好像只有英文）解释一遍。</p>
@@ -117,7 +117,7 @@
 </tr>
 <tr>
 <td align="left"><code>liveshare.alwaysFollowHost</code></td>
-<td align="left">确保主持者总是被跟随。详见[TODO]。</td>
+<td align="left">确保主持者总是被跟随。详见<a href="#%E8%81%9A%E7%84%A6%E5%92%8C%E8%B7%9F%E8%B8%AA">聚焦和跟踪</a>。</td>
 <td align="left"><code>false</code></td>
 </tr>
 <tr>
@@ -327,6 +327,8 @@
     <span class="token property">"liveshare.showVerboseNotifications"</span><span class="token operator">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
+
+<h2 id="普通协作"><a href="#普通协作" class="headerlink" title="普通协作"></a>普通协作</h2><h3 id="聚焦和跟踪"><a href="#聚焦和跟踪" class="headerlink" title="聚焦和跟踪"></a>聚焦和跟踪</h3>
     </div>
     <div class="post-footer">
         <div class="post-tags">
