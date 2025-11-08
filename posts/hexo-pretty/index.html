@@ -63,7 +63,7 @@
             <span class="post-meta-item">
                 <i class="far fa-calendar-check post-meta-item-icon"></i>
                 <span class="post-meta-item-text">更新于 </span>
-                <time datetime="2025-11-08T22:44:48+08:00">2025-11-08</time>
+                <time datetime="2025-11-09T07:44:04+08:00">2025-11-09</time>
             </span>
             <span class="post-meta-item">
                 <i class="far fa-folder post-meta-item-icon"></i>
@@ -352,11 +352,14 @@ $ <span class="token function">git</span> clone https://github.com/next-theme/he
 
 <p>主题效果（图片和演示链接）：</p>
 <div class="tabs" id="themeshow"><ul class="nav-tabs"><li class="tab"><a href="#themeshow-1">Muse</a></li><li class="tab"><a href="#themeshow-2">Mist</a></li><li class="tab"><a href="#themeshow-3">Pisces</a></li><li class="tab active"><a href="#themeshow-4">Gemini</a></li></ul><div class="tab-content"><div class="tab-pane" id="themeshow-1"><img src="https://src-jywon.netlify.app/img/blog-hexopretty-muse.png" alt="muse" >
-**文档演示**：[https://theme-next.js.org/muse/](https://theme-next.js.org/muse/)</div><div class="tab-pane" id="themeshow-2"><img src="https://src-jywon.netlify.app/img/blog-hexopretty-mist.png" alt="mist" >
-**文档演示**：[https://theme-next.js.org/mist/](https://theme-next.js.org/mist/)</div><div class="tab-pane" id="themeshow-3"><img src="https://src-jywon.netlify.app/img/blog-hexopretty-pisces.png" alt="pisces" >
-**文档演示**：[https://theme-next.js.org/pisces/](https://theme-next.js.org/pisces/)</div><div class="tab-pane active" id="themeshow-4"><img src="https://src-jywon.netlify.app/img/blog-hexopretty-gemini.png" alt="gemini" >
-**文档演示**：[https://theme-next.js.org/](https://theme-next.js.org/)
-***自己用了这个 NexT 主题***，敲好看的。</div></div></div>
+
+<p><strong>文档演示</strong>：<a target="_blank" rel="noopener" href="https://theme-next.js.org/muse/">https://theme-next.js.org/muse/</a></p></div><div class="tab-pane" id="themeshow-2"><img src="https://src-jywon.netlify.app/img/blog-hexopretty-mist.png" alt="mist" >
+
+<p><strong>文档演示</strong>：<a target="_blank" rel="noopener" href="https://theme-next.js.org/mist/">https://theme-next.js.org/mist/</a></p></div><div class="tab-pane" id="themeshow-3"><img src="https://src-jywon.netlify.app/img/blog-hexopretty-pisces.png" alt="pisces" >
+
+<p><strong>文档演示</strong>：<a target="_blank" rel="noopener" href="https://theme-next.js.org/pisces/">https://theme-next.js.org/pisces/</a></p></div><div class="tab-pane active" id="themeshow-4"><img src="https://src-jywon.netlify.app/img/blog-hexopretty-gemini.png" alt="gemini" >
+
+<p><strong>文档演示</strong>：<a target="_blank" rel="noopener" href="https://theme-next.js.org/">https://theme-next.js.org/</a><br><em><strong>自己用了这个 NexT 主题</strong></em>，敲好看的。</p></div></div></div>
 
 <h3 id="基础修改"><a href="#基础修改" class="headerlink" title="基础修改"></a>基础修改</h3><h4 id="主页面"><a href="#主页面" class="headerlink" title="主页面"></a>主页面</h4><p>原本的文章链接为 <code>YYYY/MM/DD/:title</code>(例如 <code>/2023/11/04/hello</code>)，一大串日期很难看。我当时把他改为了 <code>posts/:title</code>，这样有很高的自由度（标题自定义）的同时保证了链接简短。<br>打开整体设置 _config.yml，找到 <code>permalink</code>，更改为：</p>
 <pre class="language-diff" data-language="diff"><code class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> # URL
