@@ -963,10 +963,7 @@ footer.footer {
   color: #d9534f;
   margin-bottom: 10px;
 }
-.post-body .note :last-child:not(.tab-pane *) {
-  margin-bottom: 0;
-}
-.post-body .note .code-container:last-child > pre[class*="language-"] {
+.post-body .note > :last-child {
   margin-bottom: 0;
 }
 .post-body .tabs {
