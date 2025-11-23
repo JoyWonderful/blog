@@ -486,7 +486,7 @@ nav.pagination .space {
   font-size: 0.875em;
 }
 .post-body h1 .headerlink::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\23';
   font-weight: 600;
   opacity: 0;
@@ -510,7 +510,7 @@ nav.pagination .space {
   font-size: 0.875em;
 }
 .post-body h2 .headerlink::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\23';
   font-weight: 600;
   opacity: 0;
@@ -534,7 +534,7 @@ nav.pagination .space {
   font-size: 0.875em;
 }
 .post-body h3 .headerlink::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\23';
   font-weight: 600;
   opacity: 0;
@@ -558,7 +558,7 @@ nav.pagination .space {
   font-size: 0.875em;
 }
 .post-body h4 .headerlink::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\23';
   font-weight: 600;
   opacity: 0;
@@ -582,7 +582,7 @@ nav.pagination .space {
   font-size: 0.875em;
 }
 .post-body h5 .headerlink::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\23';
   font-weight: 600;
   opacity: 0;
@@ -606,7 +606,7 @@ nav.pagination .space {
   font-size: 0.875em;
 }
 .post-body h6 .headerlink::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\23';
   font-weight: 600;
   opacity: 0;
@@ -722,7 +722,7 @@ nav.pagination .space {
   position: relative;
 }
 .timeline .time-line-start::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\f106';
   font-weight: 600;
   color: #ddd;
@@ -896,7 +896,7 @@ footer.footer {
   background: #eef7fa;
 }
 .post-body .note.info::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\f05a';
   font-weight: 600;
   color: #428bca;
@@ -914,7 +914,7 @@ footer.footer {
   background: #eff8f0;
 }
 .post-body .note.success::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\f058';
   font-weight: 600;
   color: #5cb85c;
@@ -932,7 +932,7 @@ footer.footer {
   background: #fdf8ea;
 }
 .post-body .note.warning::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\f071';
   font-weight: 600;
   color: #f0ad4e;
@@ -950,7 +950,7 @@ footer.footer {
   background: #fcf1f2;
 }
 .post-body .note.danger::before {
-  font-family: 'Font Awesome 6 Free';
+  font-family: 'Font Awesome 7 Free';
   content: '\f1e2';
   font-weight: 600;
   color: #d9534f;
