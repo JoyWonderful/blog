@@ -696,7 +696,8 @@ footer.footer {
         }
     }
     > :last-child {margin-bottom:0}
-    .code-container:last-child > pre[class*="language-"] {margin-bottom:0}
+    // .note 的直接子代的最后一个元素（不管是什么）什么都要 margin-bottom 为 0。
+    //#jywon: oh, what am i doing years ago? the selector is wrong. This is a bug i've never sensed
 }
 
 
