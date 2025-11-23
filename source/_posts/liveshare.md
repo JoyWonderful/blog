@@ -85,7 +85,7 @@ Live Share 有很多项设置，在这里全部翻译（说明好像只有英文
 | `liveshare.diagnosticLoggingLevel` | 指定 Live Share 的*日志*(Log)输出级别。可选值 `"Trace"`,`"Debug"`,`"Info"`,`"Warning"`,`"Error"`,`"Critical"`,`"Off"`。 | `"Warning"` |
 | `liveshare.diagnosticMode` | 启用诊断*通知*(Notification)和日志。 | `false` |
 | `liveshare.featureSet` | 控制是否启用预览功能。当项为 `"stable"` 时不启用；当项为 `"insiders"` 时启用预览功能，选择它即表示你同意 [*Pre-Release Software License Terms*](https://aka.ms/vsls-license-preview/)（这个链接目前好像无效）和 [*Privacy Statement*](https://aka.ms/vsls-privacy) | `"stable"` |
-| `liveshare.focusBehavior` | 指定如何响应来自其他协作者的关注请求(Focus requests)。当为 `"accept"` 时自动允许；当为 `"prompt"` 时弹出对话框请求。详见[TODO] | `"accept"` |
+| `liveshare.focusBehavior` | 指定如何响应来自其他协作者的关注请求(Focus requests)。当为 `"accept"` 时自动允许；当为 `"prompt"` 时弹出对话框请求。详见[聚焦和跟踪](#聚焦和跟踪) | `"accept"` |
 | `liveshare.guestApprovalRequired` | 控制主持者是否需要明确批准来宾请求加入协作会话。详见[创建](#创建) | `false` |
 | `liveshare.increasedGuestLimit` | 将协作者个数限制从 5 增加到 30 个。 | `true` |
 | `liveshare.joinDebugSessionOption` | 控制协作者如何加入正在进行的共享调试会话。详见[TODO] | `"Automatic"` |
@@ -186,7 +186,7 @@ Live Share 有很多项设置，在这里全部翻译（说明好像只有英文
 #### 创建
 
 创建会话前，你要先登录 Microsoft 或 GitHub 账户（只要授权一次，之后不用授权了）。  
-打开的文件夹就是将要共享的文件夹。如果打开了该文件夹外部的文件，也会自动共享。  
+打开的文件夹就是将要共享的文件夹。**如果打开了该文件夹外部的文件，也会自动共享。（请确保不要在工作区中打开敏感文件）**  
 主持者可以创建*只读*(Read-only)会话或*可读写*(Read/Write)会话。只读会话中所有文件都仅供协作者查看。可读写会话在协作者不登录加入时默认无读写权限，需要主持者授予（右键协作者，“Make Read/Write”）。  
 
 主持者可通过 `liveshare.guestApprovalRequired` 设置项为 `true` 启用批准来宾功能（默认为 `false`：来宾自动加入）。当来宾试图加入时，必须要经过主持者的批准。见下图。
@@ -195,12 +195,40 @@ Live Share 有很多项设置，在这里全部翻译（说明好像只有英文
 {% cdnimg wfap, waitingforapp.png, loading="lazy"; title="来宾等待主持者批准" %}
 
 
+#### 加入
+
+{% tabs join-platform %}
+<!-- tab Web -->
+访问链接加入时，会弹出一个对话框询问用 VS, VSCode, vscode.dev 三种方式中的那种进行协作。一般来说选“Continue in Web”。  
+如果不要登录，选“Continue as Anonymous”。
+<!-- endtab -->
+<!-- tab Visual Studio Code -->
+只要打开 Live Share 栏，选择“Join”即可。  
+
+{% note danger %}
+文件夹退出
+
+无论加入是否成功，文件夹都会退出。也就是说，窗口重开。  
+如果加入失败，重开的是一个空白窗口。也不知道这算不算 Live Share 一个奇葩的逻辑。
+{% endnote %}
+<!-- endtab -->
+{% endtabs %}
+
+
+#### 文件读写权限
+
 
 ### 聚焦和跟踪
 
 先说明一下定义：
 
-- ***聚焦*(Focus)**：即打开文件到另一个协作者的位置，但不会自动跟踪位置；
+- ***聚焦/关注?*(Focus)**：让其他协作者跟踪你（协作者处将会提示：`xxx focused your attention.`）；
 - ***跟踪*(Follow)**：顾名思义，自动跟跟随另一个协作的位置。
 
-[To Be Continued]
+可以通过单击右上角“喇叭”图标来执行 Focus。  
+单击协作者列表中的任何一个人或者右上角“图钉”图标来执行 Follow。
+
+
+### *聊天*(Chat)和*讨论*(Comment/Discussion)
+
+[To Be Continued, 但也也许不更了？]
