@@ -45,7 +45,7 @@ mathjax: true
 ```
 
 ##### 五级标题
-![favicon](https://src-jywon.netlify.app/favicon.svg)
+![favicon](https://src-jywon.pages.dev/favicon.svg)
 [Back to home](/)  
 [404 check](/404A114514)
 

@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://blog-jywon.netlify.app/
+url: https://blog-jywon.pages.dev/
 permalink: /posts/:title/
 permalink_defaults:
 pretty_urls:
@@ -95,9 +95,11 @@ search:
   field: post
   content: true
   format: striptags
+### public source loaded from here
+src_site: https://src-jywon.pages.dev/
 ### my tag "cdnimg"
 cdnimg:
-  cdn: https://src-jywon.netlify.app/img/
+  cdn: https://src-jywon.pages.dev/img/
   prefix: [blog, :title] # the prefix of the image name, a list, :title means the post's file name
   prefix_char: "-" # join between prefixes and the image name
 ## Themes: https://hexo.io/themes/

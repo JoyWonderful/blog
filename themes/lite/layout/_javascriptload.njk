@@ -1,5 +1,5 @@
 {{ js('/js/loader.js') }}
-{{ js({defer: true, src: 'https://src-jywon.netlify.app/js/pjax.min.js'}) }}
-{{ js('https://src-jywon.netlify.app/js/anime.min.js') }}
-{{ js('https://src-jywon.netlify.app/js/katex.min.js') }}
+{{ js({defer: true, src: src('/js/pjax.min.js')}) }}
+{{ js(src('/js/anime.min.js')) }}
+{{ js(src('/js/katex.min.js')) }}
 {{ js('/js/search.js') }}

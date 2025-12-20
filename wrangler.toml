@@ -1,0 +1,8 @@
+name = "blog-jywon"
+
+[assets]
+directory = "./public"
+
+[build]
+command = "npm run build"
+watch_dir = "./public"
