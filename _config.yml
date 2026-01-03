@@ -96,7 +96,7 @@ search:
   content: true
   format: striptags
 ### public source loaded from here
-src_site: https://src-jywon.pages.dev/
+src_site: https://src-jywon.pages.dev
 ### my tag "cdnimg"
 cdnimg:
   cdn: https://src-jywon.pages.dev/img/

@@ -1,13 +1,10 @@
 {% set src_site = "https://src-jywon.pages.dev/" %}
 
 {%- macro src(file) -%}
-{%- if file[0]=="/" and src_site[src_site|length - 1]=="/" -%}
-    {%- set file = file | replace("/", "") -%}
-{%- endif -%}
 {{ src_site + file }}
 {%- endmacro -%}
 
-{% set favicon = src("/favicon.svg") %}
+{% set favicon = src("/favicons/favicon-64-blog.png") %}
 
 {% set menu = [['首页&emsp;&emsp; || /', '/', 'fa fa-home'],
                ['标签&emsp;&emsp; || tags', '/tags/', 'fa fa-tags'],
