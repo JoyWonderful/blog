@@ -33,7 +33,19 @@ date: 2023-06-01 19:58:58
                 placeholder: "请不要发布违反法律的内容。\nEnter键是换行，Ctrl+Enter可以发送。"
             }
         });
-        window.addEventListener("comment:load", () => {
+    }
+    if(typeof Sodesu === "object") {
+        loadSodesu();
+    }
+    else {
+        (function(d, s) {
+            s = d.createElement("script");
+            s.src = "https://src-jywon.pages.dev/js/sodesu.aio.umd.js";
+            s.onload = loadSodesu;
+            d.querySelector(".post-body").appendChild(s);
+        })(document);
+
+        window.addEventListener("comment:load", () => { // 只要注册一次 EventListener 就够了。假如放在 `loadSodesu` 里面，由于 pjax 存在，会重复注册，造成代码块重叠。
             var el = document.querySelector("#comments-readme");
             el.style.display = "none";
             el = document.querySelector("header.post-header");
@@ -67,16 +79,5 @@ date: 2023-06-01 19:58:58
             }
             setTimeout(commentGen, 500);
         });
-    }
-    if(typeof Sodesu === "object") {
-        loadSodesu();
-    }
-    else {
-        (function(d, s) {
-            s = d.createElement("script");
-            s.src = "https://src-jywon.pages.dev/js/sodesu.aio.umd.js";
-            s.onload = loadSodesu;
-            d.querySelector(".post-body").appendChild(s);
-        })(document);
     }
 </script>
