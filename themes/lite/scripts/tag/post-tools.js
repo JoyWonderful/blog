@@ -16,6 +16,31 @@ hexo.extend.tag.register('note', function(args, content) {
 }, {ends: true});
 
 // from theme next
+/**
+ * @description Usage:
+ * ```jinja
+ * {% tabs Unique name, [index] %}
+ * <!-- tab [Tab caption] [@icon] -->
+ * Any content (support inline tags too).
+ * <!-- endtab -->
+ * {% endtabs %}
+ * ```
+ * - `Unique name`   : Unique name of tabs block tag without comma.
+ *   Will be used in #id's as prefix for each tab with their index numbers.
+ *   If there are whitespaces in name, for generate #id all whitespaces will replaced by dashes.
+ *   Only for current url of post/page must be unique!
+ * - `[index]`       : Index number of active tab.
+ *   If not specified, first tab (1) will be selected.
+ *   If index is -1, no tab will be selected. It's will be something like spoiler.
+ *   Optional parameter.
+ * - `[Tab caption]` : Caption of current tab.
+ *   If not caption specified, unique name with tab index suffix will be used as caption of tab.
+ *   If not caption specified, but specified icon, caption will empty.
+ *   Optional parameter.
+ * - `[@icon]`       : Font Awesome icon name.
+ *   Can be specified with or without space; e.g. 'Tab caption @icon' is the same as 'Tab caption@icon'.
+ *   Optional parameter.
+ */
 hexo.extend.tag.register('tabs', function(args, content) {
     const tabBlock = /<!--\s*tab (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*endtab\s*-->/g;
 
