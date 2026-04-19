@@ -3,6 +3,8 @@
  * Inspired by Visual Studio syntax coloring
  */
 
+@use '_variables.scss' as *;
+
 code[class*="language-"],
 pre[class*="language-"] {
     color: #393A34;

@@ -1,11 +1,11 @@
-mobile() {
+@mixin mobile() {
     @media (max-width: 991px) {
-        {block};
+        @content;
     }
 }
 
-fontawsm(unic) {
+@mixin fontawsm($unic) {
     font-family: 'Font Awesome 7 Free';
-    content: unic;
+    content: $unic;
     font-weight: 600;
 }

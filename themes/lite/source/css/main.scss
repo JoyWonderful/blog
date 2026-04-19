@@ -1,12 +1,17 @@
-@import '_mixins.styl'
-@import '_variables.styl'
+@use 'sass:map';
+@use '_mixins.scss' as *;
+@use '_variables.scss' as *;
 
 
-// defalut sets
+// prismjs code style: vslight
+@use '_codeprism.scss';
+
+
+// default sets
 body {
     margin: 0;
     line-height: 1.5;
-    font-family: $defalut-fontfamily;
+    font-family: $default-fontfamily;
     font-weight: 400;
     font-size: $font-size-def;
     background-color: #eee;
@@ -35,7 +40,7 @@ a {
 img {
     max-width: 100%;
     border-radius: 3px;
-    box-shadow: 5px 5px 5px rgba(0 0 0 0.06), -2px -2px 5px rgba(0 0 0 0.04);
+    box-shadow: 5px 5px 5px rgba(0 0 0 / 0.06), -2px -2px 5px rgba(0 0 0 / 0.04);
     margin-bottom: $elmarginbtm;
 }
 p img:last-child {
@@ -82,7 +87,7 @@ hr {
     border: none;
     background: #888;
 }
-button {font-family:$defalut-fontfamily}
+button {font-family:$default-fontfamily}
 .post-body ol:not(ol ol):not(ul ol), .post-body ul:not(ul ul):not(ol ul) {
     margin: 0 0 $elmarginbtm 0;
 }
@@ -121,7 +126,7 @@ main.main {
     margin: 0 auto;
     align-items: stretch;
     width: calc(100% - 100px);
-    +mobile() {
+    @include mobile() {
         width: calc(100% - 10px);
         flex-direction: column;
     }
@@ -130,17 +135,17 @@ main.main {
     box-sizing: border-box;
     width: calc(100% - 252px);
     margin-top: 10px;
-    +mobile() {width:100%}
+    @include mobile() {width:100%}
 }
 
 
 // menu styles
 .column {
     width: 240px;
-    +mobile() {width:100%;}
+    @include mobile() {width:100%;}
     header {
         margin-top: 10px;
-        +mobile() {margin-top: 0;}
+        @include mobile() {margin-top: 0;}
         border-radius: $theme-bdrd;
         box-shadow: $theme-boxshad;
     }
@@ -174,7 +179,7 @@ main.main {
         display: block;
         margin: auto;
         padding-left: 5%;
-        +mobile() {
+        @include mobile() {
             display:inline-block;
             padding: 0;
         }
@@ -192,7 +197,7 @@ main.main {
             border-radius: 3px;
             line-height: 2;
             cursor: pointer;
-            +mobile() {display:inline-block}
+            @include mobile() {display:inline-block}
             &::after {
                 background: #555;
                 opacity: 0.1;
@@ -210,7 +215,7 @@ main.main {
         }
         a.menu-item-active {
             &::before {
-                +mobile() {content:none;display:none;}
+                @include mobile() {content:none;display:none;}
                 background: #bfbfbf;
                 border-radius: 6px;
                 content: "";
@@ -236,7 +241,7 @@ main.main {
             padding: 5px 20px!important;
             height: calc(1rem + 10px);
         }
-        +mobile() {
+        @include mobile() {
             .morebtn-item {
                 visibility: visible;
                 opacity: 1;
@@ -264,7 +269,7 @@ main.main {
     background-color: $contentbg;
     max-height: calc(90dvh - 24px);
     overflow-y: auto;
-    +mobile() {display:none}
+    @include mobile() {display:none}
 }
 
 .site-overview {
@@ -388,7 +393,7 @@ nav.pagination {
     border-radius: $theme-bdrd;
     box-shadow: $theme-boxshad;
     padding: 40px;
-    +mobile() {padding:12px}
+    @include mobile() {padding:12px}
     &:not(:first-child) {margin-top:12px}
 }
 .post-header {
@@ -437,9 +442,9 @@ nav.pagination {
     }
 }
 .post-body {
-    for $headline in (1 .. 6) {
-        $headbordercl = 200 + 5 * $headline;
-        h{$headline} {
+    @for $headline from 1 through 6 {
+        $headbordercl: 200 + 5 * $headline;
+        h#{$headline} {
             font-size: $title-fontsz - $title-fontsz-step * $headline;
             font-weight: 700;
             border-bottom: 1px solid rgb($headbordercl $headbordercl $headbordercl);
@@ -450,7 +455,7 @@ nav.pagination {
                 font-size: 0.875em;
             }
             .headerlink::before {
-                fontawsm('\23');
+                @include fontawsm('\23');
                 opacity: 0;
                 transition: opacity .3s;
             }
@@ -548,7 +553,7 @@ nav.pagination {
         margin-top: 20px;
         position: relative;
         &::before {
-            fontawsm('\f106');
+            @include fontawsm('\f106');
             color: #ddd;
             font-size: 24px;
             position: absolute;
@@ -584,7 +589,7 @@ nav.pagination {
             content: '';
             background: #ddd;
             width: 12px;
-            height: 12px
+            height: 12px;
             position: absolute;
             top: 6px;
             left: -6px;
@@ -653,9 +658,9 @@ nav.pagination {
     .tags-item-count {opacity:0.7}
     .tags-item-count::before {content: ' ('}
     .tags-item-count::after {content: ')'}
-    for $taglv in (0 .. 10) {
-        $evetagcolor = 208 - $taglv * 16;
-        .cloud-tags-item-{$taglv} {
+    @for $taglv from 0 through 10 {
+        $evetagcolor: 208 - $taglv * 16;
+        .cloud-tags-item-#{$taglv} {
             color: rgb($evetagcolor $evetagcolor $evetagcolor)
         }
     }
@@ -677,20 +682,20 @@ footer.footer {
     margin-bottom: $elmarginbtm;
     padding: 1em 1em 1em 2em;
     position: relative;
-    for $type in $note-text {
-        &.{$type} {
-            border-left: 3px solid $note-fg[$type];
-            background: $note-bg[$type];
+    @each $type in $note-text {
+        &.#{$type} {
+            border-left: 3px solid map.get($note-fg, $type);
+            background: map.get($note-bg, $type);
             &::before {
-                fontawsm($note-icon[$type]);
-                color: $note-fg[$type];
+                @include fontawsm(map.get($note-icon, $type));
+                color: map.get($note-fg, $type);
                 position: absolute;
                 left: 0.625em;
                 top: 1em;
             }
             > :first-child {
                 font-weight: 600;
-                color: $note-fg[$type];
+                color: map.get($note-fg, $type);
                 margin-bottom: 10px;
             }
         }
@@ -744,7 +749,7 @@ footer.footer {
 
 // search
 .search-overlay {
-    background: rgba(0 0 0 0);
+    background: rgba(0 0 0 / 0);
     display: flex;
     position: fixed;
     top: 0;
@@ -776,7 +781,7 @@ footer.footer {
                 width: 100%;
                 background: transparent;
                 border-radius: 3px;
-                font-family: $defalut-fontfamily;
+                font-family: $default-fontfamily;
                 border: 0;
                 outline: 0;
                 &::-webkit-search-cancel-button {appearance:none;display:none;}
@@ -794,7 +799,7 @@ footer.footer {
             }
             .search-icon {color:#555;margin-right:5px;}
         }
-        +mobile() {
+        @include mobile() {
             width: 100%;
             height: 100%;
         }
@@ -837,14 +842,10 @@ body:has(.search-overlay.active) {
     overflow: hidden;
 }
 .search-overlay.active {
-    background: rgba(0 0 0 0.4);
+    background: rgba(0 0 0 / 0.4);
     visibility: visible;
     .search-container {transform:translateX(0)}
 }
-
-
-// prismjs code style: vslight
-@import '_codeprism.styl'
 
 
 // katex
@@ -881,5 +882,3 @@ body:has(.search-overlay.active) {
     color: #fff;
 }
 
-
-// +mobile() {}
