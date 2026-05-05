@@ -19,7 +19,7 @@ hexo.extend.tag.register("cdnimg", function(args) {
     args = args.join("").split(",");
     var imgAlt = args[0];
     var imgName = args[1];
-    var urlName = config.prefix.join(config.prefix_char).replace(":title", this.slug.replace("-","")/* 这是文章文件名去掉扩展名的 */) + config.prefix_char + imgName;
+    var urlName = config.prefix.join(config.prefix_char).replace(":title", this.slug.replaceAll("-","")/* 这是文章文件名去掉扩展名的 */) + config.prefix_char + imgName;
     var wholeUrl = config.cdn + urlName;
 
     var imgAttr = [];
