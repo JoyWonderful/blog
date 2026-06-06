@@ -72,7 +72,7 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 {% cdnimg format-c, format.png, loading="lazy" %}
 
 然后就可以开始**安装**了。（可以先重启一下）  
-不重启就输入 `C:` 和 `setup`，进入那个蓝色的安装界面。按提示换上对应的软盘（映像）就行。
+不重启就输入 `A:` 和 `setup`，进入那个蓝色的安装界面。按提示换上对应的软盘（映像）就行。
 
 {% cdnimg dos-setup, dossetup.png, loading="lazy" %}
 
