@@ -1,0 +1,24 @@
+---
+import "../styles/components/PostBlock.scss";
+const { frontMatter } = Astro.props;
+---
+<div class="post-block">
+    <header class="post-header">
+        <h2 class="post-title">{frontMatter.title}</h2>
+        <div class="post-meta">
+            <span class="item">
+                <i class="far fa-calendar"></i>
+                <span>发表于</span>
+                <time datetime={frontMatter.date.toISOString()} title={frontMatter.date.toLocaleString()}>{`${frontMatter.date.getFullYear()}-${String(frontMatter.date.getMonth()+1).padStart(2,"0")}-${String(frontMatter.date.getDate()).padStart(2,"0")}`}</time>
+            </span>
+            {frontMatter.updated &&
+            <span class="item">
+                <i class="far fa-calendar-check"></i>
+                <span>更新于</span>
+                <time datetime={frontMatter.updated.toISOString()} title={frontMatter.updated.toLocaleString()}>{`${frontMatter.updated.getFullYear()}-${String(frontMatter.updated.getMonth()+1).padStart(2,"0")}-${String(frontMatter.updated.getDate()).padStart(2,"0")}`}</time>
+            </span>
+            }
+        </div>
+    </header>
+    <slot />
+</div>

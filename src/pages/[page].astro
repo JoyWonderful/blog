@@ -1,0 +1,40 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content"; // https://docs.astro.build/zh-cn/reference/modules/astro-content/#collectionentry
+import { getCollection, getEntry } from "astro:content";
+import PaginationBar from "../components/PaginationBar.astro";
+import PostBlock from "../components/PostBlock.astro";
+import Index from "../layouts/Index.astro"
+import config from "../config.json";
+
+export const getStaticPaths = (async function({ paginate }) {
+    var postLst:any[] = [];
+    const blogPosts = (await getCollection("blogPosts")).sort((a:any, b:any) => {
+        return b.data.date.valueOf() - a.data.date.valueOf(); // 按发布时间排序
+    });
+    blogPosts.forEach((post:CollectionEntry<"blogPosts">) => {
+        postLst.push({id: post.id});
+    });
+    return paginate(postLst, {
+        pageSize: config.post_per_page
+    });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props; // 分页 https://docs.astro.build/zh-cn/guides/routing/#page-%E5%B1%9E%E6%80%A7
+var postLstContent:any[] = await Promise.all(
+    page.data.map(async function(post) {
+        const entry = await getEntry("blogPosts", post.id);
+        return entry;
+    })
+);
+---
+<Index>
+    {
+        postLstContent.map((post) => {
+            // 正则 i: 不区分大小写
+            return <PostBlock frontMatter={post.data} set:html={post.rendered.html.split(/<!--[ ]*more[ ]*-->/i)[0]}></PostBlock>;
+            // https://docs.astro.build/zh-cn/reference/content-loader-reference/#dataentryrendered
+        })
+    }
+    <PaginationBar page={page} />
+</Index>
