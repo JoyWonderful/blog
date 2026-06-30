@@ -1,0 +1,17 @@
+---
+import config from "../config.json";
+import "../styles/main.scss"
+---
+<!DOCTYPE html>
+<html lang={config.lang}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        {config.meta_generator && <meta name="generator" content={Astro.generator} />}
+        <title><slot name="document-title" /></title>
+        <slot name="html-head" />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
