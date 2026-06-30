@@ -1,0 +1,29 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+    "title": "wablog",
+    "description": "Config definitions for wablog.",
+    "type": "object",
+    "properties": {
+        "title": {
+            "description": "The title for your site.",
+            "type": "string"
+        },
+        "subtitle": {
+            "description": "The subtitle for your site. (bio, description, .etc)",
+            "type": "string"
+        },
+        "lang": {
+            "description": "Language for your site. (Used for html.lang)",
+            "type": "string"
+        },
+        "post_per_page": {
+            "description": "Amount of displayed posts on per page.",
+            "type": "integer"
+        },
+        "meta_generator": {
+            "description": "Whether give metadata generator in <head>.",
+            "type": "boolean"
+        }
+    }
+}

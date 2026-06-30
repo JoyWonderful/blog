@@ -1,0 +1,11 @@
+{
+    "$schema": "config.schema.json",
+
+    "title": "Some Notes",
+    "subtitle": "Be hardworking every day.",
+    "lang": "zh-CN",
+
+    "post_per_page": 5,
+
+    "meta_generator": true
+}
