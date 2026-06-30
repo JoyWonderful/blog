@@ -1,0 +1,13 @@
+---
+import "../styles/components/PaginationBar.scss"
+const { page } = Astro.props; // https://docs.astro.build/zh-cn/guides/routing/#page-%E5%B1%9E%E6%80%A7
+---
+<nav class="pagination">
+    {(page.url.first && (page.currentPage-1 != 1)) && <a class="page-number" href={page.url.first}>1</a>}
+    {(page.currentPage-2 > 1) && <span class="more">…</span>}
+    {page.url.prev && <a class="page-number" href={page.url.prev} rel="prev">{page.currentPage-1}</a>}
+    <span class="page-number current">{page.currentPage}</span>
+    {page.url.next && <a class="page-number" href={page.url.next} rel="next">{page.currentPage+1}</a>}
+    {(page.currentPage+2 < page.lastPage) && <span class="more">…</span>}
+    {(page.url.last && (page.currentPage+1 != page.lastPage)) && <a class="page-number" href={page.url.last}>{page.lastPage}</a>}
+</nav>

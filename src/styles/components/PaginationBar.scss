@@ -1,0 +1,31 @@
+@use "../_variables.scss" as *;
+@use "../_mixins.scss" as *;
+
+.pagination {
+    border-radius: $border_radius;
+    box-shadow: $box_shadow;
+    background: #fff;
+    line-height: 2;
+    text-align: center;
+    margin-top: $card_margin_top;
+    padding: 10px 0;
+    .page-number {
+        cursor: pointer;
+        display: inline-block;
+        padding: 0 10px;
+        border-radius: 3px;
+        text-decoration: none;
+        color: $color_text;
+        margin-right: 10px;
+        @include activeShade(3px);
+        &.current {
+            background: $color_4;
+            color: $color_9;
+        }
+    }
+    .more {
+        user-select: none;
+        color: #ccc;
+        margin-right: 10px;
+    }
+}

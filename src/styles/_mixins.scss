@@ -1,0 +1,30 @@
+@use "_variables.scss" as *;
+
+@mixin activeShade($bdradius:$border_radius, $width:100%, $height:100%, $trans_start:scaleY(0), $trans_end:scaleY(1), $trans_origin_start:bottom, $trans_origin_end:bottom) {
+    position: relative;
+    transition: color $transition_time;
+    &::before {
+        content: "";
+        background: $color_theme;
+        opacity: 0.2;
+        position: absolute;
+        width: $width;
+        height: $height;
+        transform: $trans_start;
+        transform-origin: $trans_origin_start;
+        transition: transform $transition_time, opacity $transition_time;
+        left: 0;
+        bottom: 0;
+    }
+    &:hover::before {
+        transform: $trans_end;
+        border-radius: $bdradius;
+        @if($trans_origin_start != $trans_origin_end) {transform-origin: $trans_origin_end}
+    }
+    &:active {
+        color: $color_7;
+    }
+    &:active::before {
+        opacity: 0.4;
+    }
+}
