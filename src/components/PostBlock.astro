@@ -1,10 +1,11 @@
 ---
 import "../styles/components/PostBlock.scss";
-const { frontMatter } = Astro.props;
+import config from "../config.json";
+const { frontMatter, id } = Astro.props;
 ---
 <div class="post-block">
-    <header class="post-header">
-        <h2 class="post-title">{frontMatter.title}</h2>
+    <header>
+        <h2 class="post-title"><a href={config.posts_path+"/"+id}>{frontMatter.title}</a></h2>
         <div class="post-meta">
             <span class="item">
                 <i class="far fa-calendar"></i>
@@ -18,7 +19,15 @@ const { frontMatter } = Astro.props;
                 <time datetime={frontMatter.updated.toISOString()} title={frontMatter.updated.toLocaleString()}>{`${frontMatter.updated.getFullYear()}-${String(frontMatter.updated.getMonth()+1).padStart(2,"0")}-${String(frontMatter.updated.getDate()).padStart(2,"0")}`}</time>
             </span>
             }
+            {frontMatter.categories &&
+            <span class="item">
+                <i class="far fa-folder"></i>
+                <span>分类于</span>
+                <a href={config.gategories_path+"/"+frontMatter.categories}>{frontMatter.categories}</a>
+            </span>}
         </div>
     </header>
-    <slot />
+    <article>
+        <slot />
+    </article>
 </div>

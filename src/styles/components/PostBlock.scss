@@ -1,0 +1,47 @@
+@use "../_variables.scss" as *;
+@use "../_mixins.scss" as *;
+
+.post-block {
+    display: block;
+    margin-top: $card_margin_top;
+    padding: 40px;
+    background: #fff;
+    box-shadow: $box_shadow;
+    border-radius: $border_radius;
+    header {
+        .post-title {
+            margin: 0;
+            margin-left: -18px; // border-left 的 8px + padding-left 的 10px。
+            border-left: 8px solid $color_text;
+            padding-left: 10px;
+            border-radius: 3px;
+            a {
+                color: $color_text;
+                text-decoration: none;
+                border-bottom: none;
+                &:hover {
+                    color: $color_5;
+                }
+                @include activeShade(0, 100%, 2px, scaleX(0), scaleX(1), right, left, $color_theme, $color_7, 0.6, 1);
+            }
+        }
+        .post-meta {
+            color: $color_text_0;
+            font-size: .75em;
+            .item {
+                &:not(:first-child)::before {
+                    content: "|";
+                    margin: 0 5px;
+                }
+                i.fa, i.far, span {
+                    margin-right: 3px;
+                }
+                time {
+                    color: $color_text_1;
+                    border-bottom: 1px dashed $color_text_1;
+                }
+            }
+            
+        }
+    }
+}
