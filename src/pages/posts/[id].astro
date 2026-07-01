@@ -2,9 +2,9 @@
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import PostBlock from "../../components/PostBlock.astro";
-import config from "../../config.json";
+import Layout from "~/layouts/Layout.astro";
+import PostBlock from "~/components/PostBlock.astro";
+import config from "~/config.json";
 
 export const getStaticPaths = (async () => {
     const blogPosts = await getCollection("blogPosts");

@@ -1,10 +1,10 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
-import PaginationBar from "../components/PaginationBar.astro";
-import PostBlock from "../components/PostBlock.astro";
-import Layout from "../layouts/Layout.astro"
-import config from "../config.json";
+import PaginationBar from "~/components/PaginationBar.astro";
+import PostBlock from "~/components/PostBlock.astro";
+import Layout from "~/layouts/Layout.astro"
+import config from "~/config.json";
 
 export const getStaticPaths = (async function({ paginate }) {
     const blogPosts = (await getCollection("blogPosts")).sort((a:any, b:any) => {
