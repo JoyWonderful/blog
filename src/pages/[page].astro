@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content"; // https://docs.astro.buil
 import { getCollection, getEntry } from "astro:content";
 import PaginationBar from "../components/PaginationBar.astro";
 import PostBlock from "../components/PostBlock.astro";
-import Index from "../layouts/Index.astro"
+import Layout from "../layouts/Layout.astro"
 import config from "../config.json";
 
 export const getStaticPaths = (async function({ paginate }) {
@@ -28,11 +28,12 @@ var postLstContent:any[] = await Promise.all(
     })
 );
 ---
-<Index>
+<Layout>
+    <Fragment slot="document-title">{config.title}</Fragment>
     {postLstContent.map((post) => {
         // 正则 i: 不区分大小写
         return <PostBlock frontMatter={post.data} id={post.id} isTitleLink={true} set:html={post.rendered.html.split(/<!--[ ]*more[ ]*-->/i)[0]}></PostBlock>;
         // https://docs.astro.build/zh-cn/reference/content-loader-reference/#dataentryrendered
     })}
     <PaginationBar page={page} />
-</Index>
+</Layout>
