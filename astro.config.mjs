@@ -5,11 +5,16 @@ import rehypeExternalLinks from "rehype-external-links"; // rehype 管 HTML，re
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://blog-jywon.pages.dev",
     redirects: {
         "/": {
             status: 301, // Moved Permanently
             destination: "/1"
         }
+    },
+    output: "static", // 默认值
+    build: {
+        format: "file",
     },
     markdown: {
         processor: unified({
