@@ -1,0 +1,23 @@
+@use "./_variables.scss" as *;
+
+body {
+    font-family: $font_lxgw;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $color_text;
+}
+
+a {
+    color: $color_text;
+    text-decoration: none;
+    border-bottom: 1px solid $color_text;
+    transition: color $transition_time, border-bottom-color $transition_time;
+    &:hover {
+        color: $color_theme;
+        border-bottom-color: $color_theme;
+    }
+    &:active {
+        color: $color_7;
+        border-bottom-color: $color_7;
+    }
+}
