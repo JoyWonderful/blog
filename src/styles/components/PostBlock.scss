@@ -16,6 +16,7 @@
             padding-left: 10px;
             border-radius: 3px;
             a {
+                display: inline-block; // 这样那个下划线在有多行时就不会出现在第一行了
                 color: $color_text;
                 text-decoration: none;
                 border-bottom: none;
