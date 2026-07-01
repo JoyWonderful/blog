@@ -31,7 +31,7 @@ var postLstContent:any[] = await Promise.all(
 <Index>
     {postLstContent.map((post) => {
         // 正则 i: 不区分大小写
-        return <PostBlock frontMatter={post.data} id={post.id} set:html={post.rendered.html.split(/<!--[ ]*more[ ]*-->/i)[0]}></PostBlock>;
+        return <PostBlock frontMatter={post.data} id={post.id} isTitleLink={true} set:html={post.rendered.html.split(/<!--[ ]*more[ ]*-->/i)[0]}></PostBlock>;
         // https://docs.astro.build/zh-cn/reference/content-loader-reference/#dataentryrendered
     })}
     <PaginationBar page={page} />
