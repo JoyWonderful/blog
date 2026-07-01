@@ -1,4 +1,4 @@
-@use "_variables.scss" as *;
+@use "variables" as *;
 
 @mixin activeShade($bdradius:$border_radius, $width:100%, $height:100%, $trans_start:scaleY(0), $trans_end:scaleY(1), $trans_origin_start:bottom, $trans_origin_end:bottom, $color:$color_theme, $color_text_active:$color_7, $opacity:0.2, $opacity_active:0.4) {
     position: relative;

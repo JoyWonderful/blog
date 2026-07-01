@@ -1,5 +1,5 @@
-@use "../_variables.scss" as *;
-@use "../_mixins.scss" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
 
 .post-block {
     display: block;
