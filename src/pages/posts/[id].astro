@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection, getEntry, render } from "astro:content";
+import Index from "../../layouts/Index.astro";
+import PostBlock from "../../components/PostBlock.astro";
+
+export const getStaticPaths = (async () => {
+    const blogPosts = await getCollection("blogPosts");
+    return blogPosts.map((post:CollectionEntry<"blogPosts">) => {
+        return {
+            params: {id: post.id},
+            props: {post: post}
+        };
+    });
+}) satisfies GetStaticPaths;
+
+const { id } = Astro.params; // 这是传递的参数 [id]。
+const { post } = Astro.props; // 这是当时传递的 `props: {post: post}`
+const { Content } = await render(post);
+---
+<Index>
+    <PostBlock frontMatter={post.data} id={id} isTitleLink={false}>
+        <Content />
+    </PostBlock>
+</Index>
