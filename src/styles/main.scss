@@ -1,4 +1,5 @@
-@use "./_variables.scss" as *;
+@use "variables" as *;
+@use "mixins" as *;
 
 body {
     font-family: $font_lxgw;
@@ -7,6 +8,27 @@ body {
     color: $color_text;
 }
 
+@for $headline from 1 through 6 {
+    $headbordercl: 200 + 5 * $headline;
+    h#{$headline} {
+        font-size: $title_font_size - $title_font_size_step * $headline;
+        font-weight: 700;
+        border-bottom: 1px solid rgb($headbordercl $headbordercl $headbordercl);
+        margin: 30px 0 15px;
+        .headerlink {
+            border-bottom: 0;
+            float: right;
+            font-size: 0.875em;
+        }
+        .headerlink::before {
+            @include fontawesome("\23");
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        &:hover .headerlink::before {opacity:0.3}
+        &:target .headerlink::before {opacity:1}
+    }
+}
 a {
     color: $color_text;
     text-decoration: none;

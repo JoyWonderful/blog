@@ -28,3 +28,8 @@
         opacity: $opacity_active;
     }
 }
+
+@mixin fontawesome($code) {
+    content: $code;
+    font-family: $font_fontawesome;
+}
