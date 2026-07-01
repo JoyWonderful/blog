@@ -9,6 +9,8 @@ import "../styles/main.scss"
         <meta name="viewport" content="width=device-width" />
         {config.meta_generator && <meta name="generator" content={Astro.generator} />}
         <title><slot name="document-title" /></title>
+        <link rel="stylesheet" href="https://new.src-jywon.pages.dev/fonts/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="https://new.src-jywon.pages.dev/fonts/lxgw/result.css" />
         <slot name="html-head" />
     </head>
     <body>
