@@ -17,7 +17,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { id } = Astro.params; // 这是传递的参数 [id]。
-const { post } = Astro.props; // 这是当时传递的 `props: {post: post}`
+const { post } = Astro.props as any; // 这是当时传递的 `props: {post: post}`
 const { Content } = await render(post);
 ---
 <Layout>
