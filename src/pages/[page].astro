@@ -1,32 +1,22 @@
 ---
 import type { GetStaticPaths } from "astro";
-import type { CollectionEntry } from "astro:content"; // https://docs.astro.build/zh-cn/reference/modules/astro-content/#collectionentry
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import PaginationBar from "../components/PaginationBar.astro";
 import PostBlock from "../components/PostBlock.astro";
 import Layout from "../layouts/Layout.astro"
 import config from "../config.json";
 
 export const getStaticPaths = (async function({ paginate }) {
-    var postLst:any[] = [];
     const blogPosts = (await getCollection("blogPosts")).sort((a:any, b:any) => {
         return b.data.date.valueOf() - a.data.date.valueOf(); // 按发布时间排序
     });
-    blogPosts.forEach((post:CollectionEntry<"blogPosts">) => {
-        postLst.push({id: post.id});
-    });
-    return paginate(postLst, {
+    return paginate(blogPosts, {
         pageSize: config.post_per_page
     });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props; // 分页 https://docs.astro.build/zh-cn/guides/routing/#page-%E5%B1%9E%E6%80%A7
-var postLstContent:any[] = await Promise.all(
-    page.data.map(async function(post) {
-        const entry = await getEntry("blogPosts", post.id);
-        return entry;
-    })
-);
+var postLstContent:any[] = page.data; // page.data 就是上面传递的 blogPosts，即 [CollectionEntry](https://docs.astro.build/zh-cn/reference/modules/astro-content/#collectionentry) 类型的列表
 ---
 <Layout>
     <Fragment slot="document-title">{config.title}</Fragment>
