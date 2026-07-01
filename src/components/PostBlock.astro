@@ -1,11 +1,15 @@
 ---
 import "../styles/components/PostBlock.scss";
 import config from "../config.json";
-const { frontMatter, id } = Astro.props;
+const { frontMatter, id, isTitleLink } = Astro.props;
 ---
 <div class="post-block">
     <header>
-        <h2 class="post-title"><a href={config.posts_path+"/"+id}>{frontMatter.title}</a></h2>
+        <h2 class="post-title">
+            {isTitleLink ?
+            <a href={config.posts_path+"/"+id}>{frontMatter.title}</a>:
+            frontMatter.title}
+        </h2>
         <div class="post-meta">
             <span class="item">
                 <i class="far fa-calendar"></i>
