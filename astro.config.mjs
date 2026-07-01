@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
+import mdx from "@astrojs/mdx";
 import rehypeExternalLinks from "rehype-external-links"; // rehype 管 HTML，remark 管 Markdown.
 
 // https://astro.build/config
@@ -44,5 +45,8 @@ export default defineConfig({
                 }]
             ]
         })
-    }
+    },
+    integrations: [mdx({
+        extendMarkdownConfig: true
+    })]
 });
