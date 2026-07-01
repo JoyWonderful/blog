@@ -5,6 +5,10 @@
     "subtitle": "Be hardworking every day.",
     "lang": "zh-CN",
 
+    "posts_path": "/posts",
+    "gategories_path": "/categories",
+    "tags_path": "/tags",
+
     "post_per_page": 5,
 
     "meta_generator": true

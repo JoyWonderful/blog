@@ -17,10 +17,25 @@
             "description": "Language for your site. (Used for html.lang)",
             "type": "string"
         },
+
+        "posts_path": {
+            "description": "Your path for posts. (Used for a.href in posts.)",
+            "type": "string"
+        },
+        "gategories_path": {
+            "description": "Your path for gategories. (Used for a.href in posts.)",
+            "type": "string"
+        },
+        "tags_path": {
+            "description": "Your path for tags. (Used for a.href in posts.)",
+            "type": "string"
+        },
+
         "post_per_page": {
             "description": "Amount of displayed posts on per page.",
             "type": "integer"
         },
+
         "meta_generator": {
             "description": "Whether give metadata generator in <head>.",
             "type": "boolean"
