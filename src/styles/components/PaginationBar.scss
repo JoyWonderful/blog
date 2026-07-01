@@ -15,6 +15,7 @@
         padding: 0 10px;
         border-radius: 3px;
         text-decoration: none;
+        border-bottom: none;
         color: $color_text;
         margin-right: 10px;
         @include activeShade(3px);
