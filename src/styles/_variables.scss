@@ -2,6 +2,7 @@ $color_text_0: #b0b0b0;
 $color_text_1: #5f5f5f;
 $color_text: #444;
 $color_text_3: #202020;
+$color_text_4: #101010;
 $color_1: #fff7e6;
 $color_2: #ffe7b8;
 $color_3: #ffd68f;
@@ -13,6 +14,7 @@ $color_8: #a64d00;
 $color_9: #803700;
 $color_10: #592400;
 
+$border_radius_0: 3px;
 $border_radius: 5px;
 $transition_time: .3s;
 $box_shadow:
@@ -26,6 +28,10 @@ $para_margin_bottom: 20px;
 $title_font_size: 1.625em;
 $title_font_size_step: .125em;
 
-$font_lxgw: "LXGW WenKai Mono GB Lite";
-$font_fontawesome: "Font Awesome 7 Free";
+$font_lxgw: "LXGW WenKai Mono GB";
+$font_fontawesome: (
+    "solid": var(--fa-font-solid), // fa, fas, fa-solid
+    "regular": var(--fa-font-regular), // far, fa-regular
+    "brands": var(--fa-font-brands) // fab, fa-brands
+);
 $font_mono: "Cascadia Code", "Cascadia Mono", "Consolas", "Courier New", "Courier", monospace;
