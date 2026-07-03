@@ -1,0 +1,10 @@
+---
+import Layout from "~/layouts/Layout.astro";
+---
+<Layout>
+    <Fragment slot="document-title"><slot name="document-title" /></Fragment>
+    <Fragment slot="html-head"><slot name="html-head" /></Fragment>
+    <main>
+        <slot />
+    </main>
+</Layout>

@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
-import Layout from "~/layouts/Layout.astro";
+import Main from "~/layouts/Main.astro";
 import PostBlock from "~/components/PostBlock.astro";
 import MathConfs from "~/components/MathConfs.astro";
 import config from "~/config.json";
@@ -21,7 +21,7 @@ const { id } = Astro.params; // 这是传递的参数 [id]。
 const { post } = Astro.props as any; // 这是当时传递的 `props: {post: post}`
 const { Content } = await render(post);
 ---
-<Layout>
+<Main>
     <Fragment slot="document-title">{post.data.title} | {config.title}</Fragment>
     <Fragment slot="html-head">
         {post.data.math && <MathConfs />}
@@ -29,4 +29,4 @@ const { Content } = await render(post);
     <PostBlock frontMatter={post.data} id={id} isTitleLink={false}>
         <Content />
     </PostBlock>
-</Layout>
+</Main>

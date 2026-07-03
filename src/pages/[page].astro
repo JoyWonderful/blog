@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
-import Layout from "~/layouts/Layout.astro";
+import Main from "~/layouts/Main.astro";
 import PostBlock from "~/components/PostBlock.astro";
 import PaginationBar from "~/components/PaginationBar.astro";
 import MathConfs from "~/components/MathConfs.astro";
@@ -27,7 +27,7 @@ for(const post of postLstContent) {
     }
 }
 ---
-<Layout>
+<Main>
     <Fragment slot="document-title">{config.title}</Fragment>
     <Fragment slot="html-head">
         {katexEnabled && <MathConfs />}
@@ -38,4 +38,4 @@ for(const post of postLstContent) {
         // https://docs.astro.build/zh-cn/reference/content-loader-reference/#dataentryrendered
     })}
     <PaginationBar page={page} />
-</Layout>
+</Main>
