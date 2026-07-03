@@ -3,7 +3,7 @@ import "~/styles/main.scss";
 import { getSourcePathList } from "~/scripts/helpers/source-path";
 import config from "~/config.json";
 
-var source_path_list = getSourcePathList();
+var source_path_list = getSourcePathList([0]);
 ---
 <!DOCTYPE html>
 <html lang={config.lang}>

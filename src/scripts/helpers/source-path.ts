@@ -2,11 +2,13 @@ import config from "~/config.source.json";
 
 /**
  * @description 根据 config.source.json 获取需要载入的资源列表
+ * @param {Array<number>} index 需要获取的 index（用于 `config[index.item]`）
  * @returns {Array<string>}
  */
-export function getSourcePathList() {
+export function getSourcePathList(index:Array<number>) {
     var lst:Array<string> = [];
-    config.forEach((reg) => {
+    for(const i in index) {
+        var reg = config[i];
         var base_url = (new URL(reg.base_url)).origin; // 确保没有 `/` 结尾
         reg.package_list.forEach((pkg) => {
             pkg.file_path.forEach((file) => {
@@ -20,6 +22,6 @@ export function getSourcePathList() {
                 lst.push(`${base_url}${path_res.replaceAll("//", "/")}`);
             });
         });
-    });
+    }
     return lst;
 }
