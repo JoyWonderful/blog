@@ -1,6 +1,6 @@
 ---
 import "~/styles/components/PostBlock.scss";
-import config from "../config.json";
+import config from "~/config.json";
 const { frontMatter, id, isTitleLink } = Astro.props;
 ---
 <div class="post-block">
@@ -27,7 +27,7 @@ const { frontMatter, id, isTitleLink } = Astro.props;
             <span class="item">
                 <i class="far fa-folder"></i>
                 <span>分类于</span>
-                <a href={config.gategories_path+"/"+frontMatter.categories}>{frontMatter.categories}</a>
+                <a href={config.categories_path+"/"+frontMatter.categories}>{frontMatter.categories}</a>
             </span>}
         </div>
     </header>

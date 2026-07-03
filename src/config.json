@@ -6,7 +6,7 @@
     "lang": "zh-CN",
 
     "posts_path": "/posts",
-    "gategories_path": "/categories",
+    "categories_path": "/categories",
     "tags_path": "/tags",
 
     "post_per_page": 5,

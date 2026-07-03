@@ -5,6 +5,10 @@
     "description": "Config definitions for wablog.",
     "type": "object",
     "properties": {
+        "$schema": {
+            "type": "string"
+        },
+        
         "title": {
             "description": "The title for your site.",
             "type": "string"
@@ -20,25 +24,32 @@
 
         "posts_path": {
             "description": "Your path for posts. (Used for a.href in posts.)",
-            "type": "string"
+            "type": "string",
+            "default": "/posts"
         },
-        "gategories_path": {
-            "description": "Your path for gategories. (Used for a.href in posts.)",
-            "type": "string"
+        "categories_path": {
+            "description": "Your path for categories. (Used for a.href in posts.)",
+            "type": "string",
+            "default": "/categories"
         },
         "tags_path": {
             "description": "Your path for tags. (Used for a.href in posts.)",
-            "type": "string"
+            "type": "string",
+            "default": "/tags"
         },
 
         "post_per_page": {
             "description": "Amount of displayed posts on per page.",
-            "type": "integer"
+            "type": "integer",
+            "default": 10
         },
 
         "meta_generator": {
             "description": "Whether give metadata generator in <head>.",
-            "type": "boolean"
+            "type": "boolean",
+            "default": true
         }
-    }
+    },
+    "required": ["title", "subtitle", "lang", "posts_path", "categories_path", "tags_path", "post_per_page", "meta_generator"],
+    "additionalProperties": false
 }
