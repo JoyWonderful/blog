@@ -1,13 +1,24 @@
-[{
-    "base_url": "https://registry.npmmirror.com",
-    "path_format": "/:package/:version/files/:file_path",
-    "package_list": [{
-        "package": "@fortawesome/fontawesome-free",
-        "version": "7.3.0",
-        "file_path": ["/css/all.min.css"]
-    }, {
-        "package": "lxgw-wenkai-gb-web",
-        "version": "1.522.0",
-        "file_path": ["/lxgwwenkaimonogb-regular/result.min.css"]
-    }]
-}]
+{
+    "base_css_npmmirror": {
+        "base_url": "https://registry.npmmirror.com",
+        "path_format": "/:package/:version/files/:file_path",
+        "package_list": [{
+            "package": "@fortawesome/fontawesome-free",
+            "version": "7.3.0",
+            "file_path": ["/css/all.min.css"]
+        }, {
+            "package": "lxgw-wenkai-gb-web",
+            "version": "1.522.0",
+            "file_path": ["/lxgwwenkaimonogb-regular/result.min.css"]
+        }]
+    },
+    "katex_css": {
+        "base_url": "https://registry.npmmirror.com",
+        "path_format": "/:package/:version/files/:file_path",
+        "package_list": [{
+            "package": "katex",
+            "version": "0.17.0",
+            "file_path": ["/dist/katex.min.css"]
+        }]
+    }
+}

@@ -3,10 +3,10 @@
     "$comment": "Link this schema with config.source.json in your IDE. (I have already set this in .vscode/settings.json)",
 
     "title": "source-path",
-    "description": "Configuration file for source-path.",
-    "type": "array",
-    "items": {
-        "type": "object",
+    "description": "Configuration file for source-path. Any object is an registry, and the name of the object is the identifier.",
+    "type": "object",
+    "patternProperties": {".*": {
+        "type":"object",
         "properties": {
             "base_url": {
                 "description": "The url from which source loaded.(with protocol, without `/` suffix)",
@@ -52,5 +52,5 @@
         },
         "required": ["base_url", "path_format", "package_list"],
         "additionalProperties": false
-    }
+    }}
 }
