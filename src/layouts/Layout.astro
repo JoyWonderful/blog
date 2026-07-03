@@ -1,6 +1,9 @@
 ---
 import "~/styles/main.scss";
+import { getSourcePathList } from "~/scripts/helpers/source-path";
 import config from "~/config.json";
+
+var source_path_list = getSourcePathList();
 ---
 <!DOCTYPE html>
 <html lang={config.lang}>
@@ -9,8 +12,14 @@ import config from "~/config.json";
         <meta name="viewport" content="width=device-width" />
         {config.meta_generator && <meta name="generator" content={Astro.generator} />}
         <title><slot name="document-title" /></title>
-        <link rel="stylesheet" href="https://registry.npmmirror.com/@fortawesome/fontawesome-free/7.3.0/files/css/all.min.css" />
-        <link rel="stylesheet" href="https://registry.npmmirror.com/lxgw-wenkai-gb-web/1.522.0/files/lxgwwenkaimonogb-regular/result.min.css" />
+        {source_path_list.map((source) => {
+            if(source.endsWith(".css")) {
+                return <link rel="stylesheet" href={source} />;
+            }
+            else if(source.endsWith(".js")) {
+                return <script src={source}></script>;
+            }
+        })}
         <slot name="html-head" />
     </head>
     <body>

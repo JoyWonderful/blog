@@ -1,0 +1,3 @@
+npmmirror: 完成 [1.86, 2.28, 2.22, 1.88, 2.43, 2.57, 1.76, 4.52, 1.45, 2.03] => Average 2.3s
+zstatic 与 unpkg 都出奇地慢，主观上甚至不如自己的 src-jywon.pages.dev。
+zstatic 在加载 fontawesome 时出现 500 Internal Server Error，不知道为什么。

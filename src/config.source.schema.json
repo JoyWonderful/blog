@@ -1,0 +1,56 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$comment": "Link this schema with config.source.json in your IDE. (I have already set this in .vscode/settings.json)",
+
+    "title": "source-path",
+    "description": "Configuration file for source-path.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "base_url": {
+                "description": "The url from which source loaded.(with protocol, without `/` suffix)",
+                "type": "string",
+                "pattern": "^https?://[A-Za-z0-9\\._-]+[^/]$",
+                "examples": ["https://registry.npmmirror.com", "https://s4.zstatic.net", "https://unpkg.com"]
+            },
+            "path_format": {
+                "description": "How to format the final source url. You may specific `:package, `:version`, `:file_path`. The `:file_path` is required.",
+                "type": "string",
+                "pattern": ".*:file_path.*",
+                "examples": ["/:package/:version/files/:file_path", "/npm/:package@:version/:file_path", "/:package@:version/:file_path"]
+            },
+            "package_list": {
+                "description": "The package list.",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "package": {
+                            "description": "Package name (with namespace/scope), just like in package.json.",
+                            "type": "string",
+                            "examples": ["@fortawesome/fontawesome-free", "lxgwwenkaimonogb-regular"]
+                        },
+                        "version": {
+                            "description": "Package version. (number & dot only) e.g. `1.2`, `3.14.3`, `1.522.0`",
+                            "type": "string",
+                            "pattern": "^[0-9\\.]+$"
+                        },
+                        "file_path": {
+                            "description": "An array of requested file's pathname. (starts with `/`)",
+                            "type": ["array"],
+                            "items": {
+                                "type": "string",
+                                "pattern": "^/.*"
+                            }
+                        }
+                    },
+                    "required": ["file_path"],
+                    "additionalProperties": false
+                }
+            }
+        },
+        "required": ["base_url", "path_format", "package_list"],
+        "additionalProperties": false
+    }
+}

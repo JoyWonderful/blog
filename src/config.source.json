@@ -1,0 +1,13 @@
+[{
+    "base_url": "https://registry.npmmirror.com",
+    "path_format": "/:package/:version/files/:file_path",
+    "package_list": [{
+        "package": "@fortawesome/fontawesome-free",
+        "version": "7.3.0",
+        "file_path": ["/css/all.min.css"]
+    }, {
+        "package": "lxgw-wenkai-gb-web",
+        "version": "1.522.0",
+        "file_path": ["/lxgwwenkaimonogb-regular/result.min.css"]
+    }]
+}]
