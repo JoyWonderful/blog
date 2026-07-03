@@ -1,34 +1,20 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-body {
+:root {
     font-family: $font_lxgw;
     font-size: 16px;
+    background: $color_1;
     line-height: 1.5;
     color: $color_text;
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
 }
 
-@for $headline from 1 through 6 {
-    $headbordercl: 200 + 5 * $headline;
-    h#{$headline} {
-        font-size: $title_font_size - $title_font_size_step * $headline;
-        font-weight: 700;
-        border-bottom: 1px solid rgb($headbordercl $headbordercl $headbordercl);
-        margin: 30px 0 15px;
-        .headerlink {
-            border-bottom: 0;
-            float: right;
-            font-size: 0.875em;
-        }
-        .headerlink::before {
-            @include fontawesome("\23");
-            opacity: 0;
-            transition: opacity .3s;
-        }
-        &:hover .headerlink::before {opacity:0.3}
-        &:target .headerlink::before {opacity:1}
-    }
-}
+// 基础样式
+/// 文字段
 a {
     color: $color_text;
     text-decoration: none;
@@ -45,5 +31,135 @@ a {
     .external-link-icon {
         color: $color_text;
         margin-left: 3px;
+    }
+}
+strong {
+    color: $color_text_3;
+    font-weight: bold; // 700
+}
+em {
+    color: $color_text_3;
+    font-style: italic;
+}
+code:not(pre code) {
+    font-family: $font_mono;
+    background: #fbfbfb;
+    border: 1px solid #e0e0e0;
+    padding: .125em .2em;
+    border-radius: $border_radius_0;
+}
+:is(h1,h2,h3,h4,h5,h6) {
+    display: flex;
+    align-items: center;
+    font-weight: bold; // 700
+    margin: 30px 0 15px;
+    color: $color_text_4;
+    .headerlink { // a
+        border-bottom: 0;
+        margin-right: .25em;
+        font-size: .875em;
+        margin-left: -1.125em; // -(0.250+0.875)
+    }
+    .headerlink::before {
+        @include fontawesome("\23"); // hashtag, #
+        opacity: 0;
+        transition: opacity $transition_time, color $transition_time;
+    }
+    &:hover .headerlink::before {opacity:0.3}
+    &:target {
+        .headerlink::before {opacity:1; color:$color_theme;}
+        .headerlink:hover::before {color:$color_7;}
+        .headerlink:active::before {color:$color_9;}
+    }
+}
+@for $headline from 1 through 6 {
+    $headbordercl: 200 + 5 * $headline;
+    h#{$headline} {
+        font-size: $title_font_size - $title_font_size_step * $headline;
+        border-bottom: 1px solid rgb($headbordercl $headbordercl $headbordercl);
+    }
+}
+/// 段落段
+//// margin 相关
+p, blockquote, ul:not(ul ul, ol ul), ol:not(ul ol, ol ol) {
+    margin: 0;
+    margin-bottom: $para_margin_bottom;
+}
+li > p,
+:is(blockquote) > p:last-child {
+    margin-bottom: 0
+}
+//// 一般
+ul, ol {
+    padding-left: 30px;
+}
+li {
+    &::marker {
+        color: $color_theme;
+        font-weight: bold;
+        transition: color $transition_time;
+    }
+    &:hover::marker {
+        color: $color_8;
+    }
+}
+blockquote {
+    border-left: 3px solid $color_text_0;
+    color: $color_text_1;
+    padding-left: 1em;
+    margin-left: calc((3px + 1em) * -1);
+    position: relative;
+    * {
+        position: relative;
+        z-index: 1;
+    }
+    &::before {
+        @include fontawesome("\f10d"); // quote-left
+        top: -.5rem;
+        left: .5rem;
+    }
+    &::after {
+        @include fontawesome("\f10e"); // quote-right
+        bottom: -.5rem;
+        right: .5rem;
+    }
+    &::before, &::after {
+        position: absolute;
+        color: $color_text_0;
+        font-size: 2em;
+        opacity: .4;
+        z-index: 0;
+        transition: color $transition_time;
+    }
+    &:hover::before, &:hover::after {
+        color: $color_theme;
+    }
+}
+hr {
+    margin: calc($para_margin_bottom + 10px) 0;
+    height: 4px;
+    border: none;
+    border-radius: 2px; // 4px / 2
+    filter: grayscale(1);
+    background: repeating-linear-gradient(135deg, $color_5 0 5px, $color_2 5px 10px);
+    overflow: visible;  //v
+    text-align: center; //为下面的 ::before 作准备
+    transition: filter $transition_time;
+    &::before {
+        @include fontawesome("\e447"); // \e447 section
+        position: relative;
+        padding: $para_margin_bottom calc(50% - 0.25ch);
+        top: calc(-0.5em - 2px); // -字体一半大小 - hr.style.height一半大小
+        transition: color $transition_time;
+    }
+    &:hover {
+        filter: grayscale(0);
+        &::before {
+            color: $color_theme;
+            content: "分割线";
+            font-family: $font_lxgw;
+            font-weight: normal; // 400
+            padding: $para_margin_bottom calc(50% - 1.5ic);
+        }
     }
 }

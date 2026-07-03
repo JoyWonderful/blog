@@ -16,11 +16,9 @@
             border-left: 8px solid $color_text;
             border-bottom: 0;
             padding-left: 10px;
-            border-radius: 3px;
+            border-radius: $border_radius_0;
             a {
                 display: inline-block; // 这样那个下划线在有多行时就不会出现在第一行了
-                color: $color_text;
-                text-decoration: none;
                 border-bottom: none;
                 &:hover {
                     color: $color_5;
@@ -42,6 +40,8 @@
                 time {
                     color: $color_text_1;
                     border-bottom: 1px dashed $color_text_1;
+                    transition: color $transition_time, border-bottom-color $transition_time;
+                    &:hover {color:$color_4;border-bottom-color:$color_3}
                 }
             }
             

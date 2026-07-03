@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "sass:map";
 
 @mixin activeShade($bdradius:$border_radius, $width:100%, $height:100%, $trans_start:scaleY(0), $trans_end:scaleY(1), $trans_origin_start:bottom, $trans_origin_end:bottom, $color:$color_theme, $color_text_active:$color_7, $opacity:0.2, $opacity_active:0.4) {
     position: relative;
@@ -29,7 +30,12 @@
     }
 }
 
-@mixin fontawesome($code) {
+// $style should be "solid" | "regular" | "brands"
+@mixin fontawesome($code, $style: "solid") {
+    $wanted_font: map.get($font_fontawesome, $style);
+    @if $wanted_font == null {
+        @error "Illegal value: `#{$style}'.\a$style should be \"solid\" | \"regular\" | \"brands\"";
+    }
     content: $code;
-    font-family: $font_fontawesome;
+    font: $wanted_font;
 }

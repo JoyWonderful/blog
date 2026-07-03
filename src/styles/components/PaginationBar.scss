@@ -13,12 +13,12 @@
         cursor: pointer;
         display: inline-block;
         padding: 0 10px;
-        border-radius: 3px;
+        border-radius: $border_radius_0;
         text-decoration: none;
         border-bottom: none;
         color: $color_text;
         margin-right: 10px;
-        @include activeShade(3px);
+        @include activeShade($border_radius_0);
         &.current {
             background: $color_4;
             color: $color_9;

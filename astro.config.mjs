@@ -37,7 +37,7 @@ export default defineConfig({
                     }]
                 }],
                 [rehypeAutolinkHeadings, {
-                    behavior: "append", // inject link after the heading text
+                    behavior: "prepend", // inject link before the heading text
                     content: {
                         type: "text",
                         value: ""
