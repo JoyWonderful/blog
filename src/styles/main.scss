@@ -1,6 +1,8 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+// 用 `//!!plugin` 标记用 rehype/remark 一类的插件生成所需的样式
+
 :root {
     font-family: $font_lxgw;
     font-size: 16px;
@@ -16,6 +18,8 @@ body {
 // 基础样式
 /// 文字段
 a {
+    display: inline-flex;
+    align-items: center;
     color: $color_text;
     text-decoration: none;
     border-bottom: 1px solid $color_text;
@@ -28,9 +32,10 @@ a {
         color: $color_7;
         border-bottom-color: $color_7;
     }
-    .external-link-icon {
-        color: $color_text;
+    .external-link-icon { //!!plugin rehype-external-links
+        color: $color_text_1;
         margin-left: 3px;
+        font-size: 0.875em;
     }
 }
 strong {
@@ -54,6 +59,7 @@ code:not(pre code) {
     font-weight: bold; // 700
     margin: 30px 0 15px;
     color: $color_text_4;
+    //!!plugin rehype-autolink-headings
     .headerlink { // a
         border-bottom: 0;
         margin-right: .25em;
@@ -71,6 +77,7 @@ code:not(pre code) {
         .headerlink:hover::before {color:$color_7;}
         .headerlink:active::before {color:$color_9;}
     }
+    //!!plugin end
 }
 @for $headline from 1 through 6 {
     $headbordercl: 200 + 5 * $headline;
