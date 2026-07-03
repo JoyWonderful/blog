@@ -9,7 +9,8 @@ const blogPosts = defineCollection({
         date: z.coerce.date(), // coerce 强制转换 https://zod.dev/api?id=coercion#coercion
         updated: z.coerce.date().optional(),
         tags: z.array(z.string()).or(z.string()).optional(),
-        categories: z.string().optional()
+        categories: z.string().optional(),
+        math: z.boolean().default(false)
     })
 });
 

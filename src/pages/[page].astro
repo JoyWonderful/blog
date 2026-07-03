@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import PostBlock from "~/components/PostBlock.astro";
 import PaginationBar from "~/components/PaginationBar.astro";
+import MathConfs from "~/components/MathConfs.astro";
 import config from "~/config.json";
 
 export const getStaticPaths = (async function({ paginate }) {
@@ -17,9 +18,20 @@ export const getStaticPaths = (async function({ paginate }) {
 
 const { page } = Astro.props; // 分页 https://docs.astro.build/zh-cn/guides/routing/#page-%E5%B1%9E%E6%80%A7
 var postLstContent:any[] = page.data; // page.data 就是上面传递的 blogPosts，即 [CollectionEntry](https://docs.astro.build/zh-cn/reference/modules/astro-content/#collectionentry) 类型的列表
+
+var katexEnabled = false;
+for(const post of postLstContent) {
+    if(post.data.math) {
+        katexEnabled = true; // 只要有其中一篇文章启用数学渲染，就加上数学渲染
+        break;
+    }
+}
 ---
 <Layout>
     <Fragment slot="document-title">{config.title}</Fragment>
+    <Fragment slot="html-head">
+        {katexEnabled && <MathConfs />}
+    </Fragment>
     {postLstContent.map((post) => {
         // 正则 i: 不区分大小写
         return <PostBlock frontMatter={post.data} id={post.id} isTitleLink={true} set:html={post.rendered.html.split(/<!--[ ]*more[ ]*-->/i)[0]}></PostBlock>;

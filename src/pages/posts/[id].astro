@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import PostBlock from "~/components/PostBlock.astro";
+import MathConfs from "~/components/MathConfs.astro";
 import config from "~/config.json";
 
 export const getStaticPaths = (async () => {
@@ -22,6 +23,9 @@ const { Content } = await render(post);
 ---
 <Layout>
     <Fragment slot="document-title">{post.data.title} | {config.title}</Fragment>
+    <Fragment slot="html-head">
+        {post.data.math && <MathConfs />}
+    </Fragment>
     <PostBlock frontMatter={post.data} id={id} isTitleLink={false}>
         <Content />
     </PostBlock>
