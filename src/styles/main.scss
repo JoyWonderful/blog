@@ -91,12 +91,13 @@ code:not(pre code) {
 }
 /// 段落段
 //// margin 相关
-p, blockquote, ul:not(ul ul, ol ul), ol:not(ul ol, ol ol) {
+p, blockquote, ul:not(ul ul, ol ul), ol:not(ul ol, ol ol),
+img, table {
     margin: 0;
     margin-bottom: $para_margin_bottom;
 }
-li > p,
-:is(blockquote) > p:last-child {
+:is(li, blockquote) > p:last-child,
+p > img:last-child {
     margin-bottom: 0
 }
 //// 一般
@@ -173,8 +174,12 @@ hr {
         }
     }
 }
+img {
+    max-width: 100%;
+    border-radius: $border_radius_0;
+    box-shadow: $box_shadow;
+}
 table {
-    margin-bottom: $para_margin_bottom;
     border-collapse: collapse;
     /*border-spacing: 0;*/ // 设置了 border-collapse: collapse，已经没有 border-spacing 了。
     word-break: break-all;
