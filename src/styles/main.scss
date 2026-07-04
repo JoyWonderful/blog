@@ -1,6 +1,7 @@
 @use "variables" as *;
 @use "mixins" as *;
 @use "sass:color";
+@use "sass:map";
 
 // 用 `//!!plugin` 标记用 rehype/remark 一类的插件生成所需的样式
 
@@ -112,7 +113,7 @@ p > img:last-child {
 }
 //// 一般
 ul, ol {
-    padding-left: 30px;
+    padding-left: $indent_left;
 }
 li {
     &::marker {
@@ -213,4 +214,34 @@ table {
         transition: background-color $transition_time;
         &:hover {background: $color_1}
     }
+}
+
+// 自定义段落
+.note:not(.note.title) {
+    border-radius: $border_radius_0;
+    margin-bottom: $para_margin_bottom;
+    padding: 1em 1em 1em $indent_left;
+    @each $type in $note_text {
+        &.#{$type} {
+            border-left: 3px solid map.get($note_fg, $type);
+            background: map.get($note_bg, $type);
+            > .note.title {
+                font-weight: bold; // 700
+                color: map.get($note-fg, $type);
+                margin-bottom: 10px;
+                position: relative;
+                display: flex;
+                align-items: center;
+                &::before {
+                    @include fontawesome(map.get($note_icon, $type));
+                    color: map.get($note_fg, $type);
+                    @extend %fa-fw; // width: 1.25em;
+                    padding-right: .125em;
+                    margin-left: -1.375em; // -1.25em-0.25em
+                }
+            }
+        }
+    }
+    > :last-child {margin-bottom:0;}
+    // .note 的直接子代的最后一个元素（不管是什么）什么都要 margin-bottom 为 0。
 }

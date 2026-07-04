@@ -39,3 +39,7 @@
     content: $code;
     font: $wanted_font;
 }
+%fa-fw {
+    --fa-width: 1.25em;
+    width: var(--fa-width);
+}

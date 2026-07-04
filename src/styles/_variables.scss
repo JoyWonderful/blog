@@ -24,6 +24,7 @@ $box_shadow:
 
 $card_margin_top: 12px;
 $para_margin_bottom: 20px;
+$indent_left: 2rem;
 
 $title_font_size: 1.625em;
 $title_font_size_step: .125em;
@@ -34,4 +35,24 @@ $font_fontawesome: (
     "regular": var(--fa-font-regular), // far, fa-regular
     "brands": var(--fa-font-brands) // fab, fa-brands
 );
-$font_mono: "Cascadia Code", "Cascadia Mono", "Consolas", "Courier New", "Courier", monospace;
+$font_mono: "Cascadia Code", "Cascadia Mono", "Consolas",  "Menlo", "Ubuntu Mono", "Courier New", "Courier", monospace;
+
+$note-text: ("info", "success", "warning", "danger");
+$note-fg  : (
+    "info"   : #428bca,
+    "success": #5cb85c,
+    "warning": #f0ad4e,
+    "danger" : #d9534f
+);
+$note-bg  : (
+    "info"   : #eef7fa,
+    "success": #eff8f0,
+    "warning": #fdf8ea,
+    "danger" : #fcf1f2
+);
+$note-icon: (
+    "info"   : "\f05a", // circle-info
+    "success": "\f058", // circle-check
+    "warning": "\f071", // triangle-exclamation
+    "danger" : "\f1e2"  // bomb
+);
