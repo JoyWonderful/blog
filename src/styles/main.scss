@@ -8,6 +8,7 @@
     font-size: 16px;
     background: $color_1;
     line-height: 1.5;
+    word-break: break-word;
     color: $color_text;
     scroll-behavior: smooth;
 }
@@ -51,6 +52,8 @@ code:not(pre code) {
     background: #fbfbfb;
     border: 1px solid #e0e0e0;
     padding: .125em .2em;
+    white-space: pre-wrap;
+    word-break: break-all;
     border-radius: $border_radius_0;
 }
 :is(h1,h2,h3,h4,h5,h6) {
@@ -168,5 +171,31 @@ hr {
             font-weight: normal; // 400
             padding: $para_margin_bottom calc(50% - 1.5ic);
         }
+    }
+}
+table {
+    margin-bottom: $para_margin_bottom;
+    border-collapse: collapse;
+    /*border-spacing: 0;*/ // 设置了 border-collapse: collapse，已经没有 border-spacing 了。
+    word-break: break-all;
+    width: 100%;
+    thead {
+        background: #fafafa;
+        tr th {
+            font-weight: bold; // 700
+            border: 1px solid $color_text_0;
+            padding: .2em .375em;
+            border-bottom-width: 2px;
+        }
+    }
+    tbody {
+        tr td {
+            border: 1px solid $color_text_0;
+            padding: .2em .375em;
+        }
+    }
+    tr {
+        transition: background-color $transition_time;
+        &:hover {background: $color_1}
     }
 }
