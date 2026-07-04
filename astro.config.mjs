@@ -21,8 +21,13 @@ export default defineConfig({
     output: "static", // 默认值
     build: {
         format: "file",
+        inlineStylesheets: "never"
     },
     markdown: {
+        syntaxHighlight: {
+            "type": "prism",
+            "excludeLangs": ["math"]
+        },
         processor: unified({
             remarkPlugins: [
                 remarkMath, // 放到最前面，防止太多干扰因素。
