@@ -1,4 +1,5 @@
 {
+    "$schema": "./config.source.schema.json",
     "base_css_npmmirror": {
         "base_url": "https://registry.npmmirror.com",
         "path_format": "/:package/:version/files/:file_path",

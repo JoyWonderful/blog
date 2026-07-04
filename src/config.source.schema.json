@@ -5,8 +5,9 @@
     "title": "source-path",
     "description": "Configuration file for source-path. Any object is an registry, and the name of the object is the identifier.",
     "type": "object",
-    "patternProperties": {".*": {
+    "patternProperties": {"^[^\\$].*": {
         "type":"object",
+        "description": "Any name you like to be the identifier of the registry.",
         "properties": {
             "base_url": {
                 "description": "The url from which source loaded.(with protocol, without `/` suffix)",
