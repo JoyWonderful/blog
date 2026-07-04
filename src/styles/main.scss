@@ -1,5 +1,6 @@
 @use "variables" as *;
 @use "mixins" as *;
+@use "sass:color";
 
 // 用 `//!!plugin` 标记用 rehype/remark 一类的插件生成所需的样式
 
@@ -46,6 +47,15 @@ strong {
 em {
     color: $color_text_3;
     font-style: italic;
+}
+del {
+    color: color.adjust($color: $color_text, $alpha: -0.32);
+    text-decoration: line-through $color_text_1;
+    transition: color $transition_time, text-decoration-color $transition_time;
+    &:hover {
+        color: $color_text;
+        text-decoration-color: #{$color_text_0}70; // 加上透明度
+    }
 }
 code:not(pre code) {
     font-family: $font_mono;
