@@ -103,13 +103,13 @@ code:not(pre code) {
 /// 段落段
 //// margin 相关
 p, blockquote, ul:not(ul ul, ol ul), ol:not(ul ol, ol ol),
-img, table {
+img, table, details {
     margin: 0;
     margin-bottom: $para_margin_bottom;
 }
-:is(li, blockquote) > p:last-child,
+:is(li, blockquote) > :last-child,
 p > img:last-child {
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 //// 一般
 ul, ol {
@@ -195,6 +195,7 @@ table {
     /*border-spacing: 0;*/ // 设置了 border-collapse: collapse，已经没有 border-spacing 了。
     word-break: break-all;
     width: 100%;
+    background: #fff;
     thead {
         background: #fafafa;
         tr th {
@@ -215,21 +216,73 @@ table {
         &:hover {background: $color_1}
     }
 }
+details {
+    border: 1px solid $color_text_1;
+    border-left: 0;
+    border-radius: $border_radius_0;
+    padding: 0;
+    margin-left: -3px;
+    background: #fff;
+    > summary::marker {content: none;}
+    > summary {
+        font-weight: bold;
+        border-left: 3px solid $color_text_0;
+        border-radius: $border_radius_0;
+        padding: .25em .25em .25em $indent_left;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color $transition_time;
+        &::before {
+            @include fontawesome("\f0da");
+            color: $color_text_1;
+            @extend %fa-fw; // width: 1.25em;
+            padding-right: .125em;
+            margin-left: -1.375em; // -1.25em-0.25em
+            transform: rotate(0deg);
+            transform-origin: .25em center;
+            transition: transform $transition_time, color $transition_time;
+        }
+        &:hover {
+            background: $color_1;
+            &::before {
+                color: $color_7;
+            }
+        }
+    }
+    &[open] {
+        > :not(summary) {
+            margin-right:1em; margin-left:$indent_left;
+            &:nth-child(2) {margin-top:1em;}
+            &:last-child {margin-bottom:1em;}
+        }
+        border-left: 3px solid $color_text_0;
+        > summary {
+            border-left: 0;
+            border-bottom: 2px dotted $color_text_0;
+            border-radius: $border_radius_0 $border_radius_0 0 0;
+            &::before {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}
 
-// 自定义段落
+// 自定义 container
 .note:not(.note.title) {
     border-radius: $border_radius_0;
     margin-bottom: $para_margin_bottom;
     padding: 1em 1em 1em $indent_left;
+    margin-left: -3px;
     @each $type in $note_text {
         &.#{$type} {
-            border-left: 3px solid map.get($note_fg, $type);
+            border: 1px solid map.get($note_fg, $type);
+            border-left-width: 3px;
             background: map.get($note_bg, $type);
             > .note.title {
                 font-weight: bold; // 700
                 color: map.get($note-fg, $type);
                 margin-bottom: 10px;
-                position: relative;
                 display: flex;
                 align-items: center;
                 &::before {
@@ -244,4 +297,9 @@ table {
     }
     > :last-child {margin-bottom:0;}
     // .note 的直接子代的最后一个元素（不管是什么）什么都要 margin-bottom 为 0。
+}
+
+/// 修复嵌套
+details > :is(details, .note) {
+    margin-left: calc($indent_left - 3px)!important;
 }
