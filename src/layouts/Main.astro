@@ -1,10 +1,15 @@
 ---
 import "~/styles/main.scss";
+import "~/styles/shikiCodeBlock.scss";
+import { getSourcePathList } from "~/scripts/helpers/source-path";
 import Layout from "~/layouts/Layout.astro";
 ---
 <Layout>
     <Fragment slot="document-title"><slot name="document-title" /></Fragment>
-    <Fragment slot="html-head"><slot name="html-head" /></Fragment>
+    <Fragment slot="html-head">
+        {getSourcePathList(["base_css_npmmirror"]).map((source) => <link rel="stylesheet" href={source} />)}
+        <slot name="html-head" />
+    </Fragment>
     <main>
         <slot />
     </main>

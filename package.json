@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.2.0",
+    "@shikijs/colorized-brackets": "^4.3.1",
     "@types/node": "^26.0.1",
     "astro": "^7.0.3",
     "rehype-autolink-headings": "^7.1.0",

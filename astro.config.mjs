@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import { unified, rehypeHeadingIds } from "@astrojs/markdown-remark";
+import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
 // 简单理解：remark-plugin 在 markdown 渲染时处理，rehype-plugin 在渲染成的 html 上处理
 import remarkCjkFriendly from "remark-cjk-friendly"; // 让中文两旁的 ** * （粗体，斜体）一类正常渲染
 import remarkCjkFriendlyGfmStrikethrough from "remark-cjk-friendly-gfm-strikethrough"; // 同上，但是 ~~ （删除线）
@@ -24,6 +25,10 @@ export default defineConfig({
         inlineStylesheets: "never"
     },
     markdown: {
+        shikiConfig: {
+            theme: "dark-plus",
+            transformers: [transformerColorizedBrackets()]
+        },
         processor: unified({
             remarkPlugins: [
                 remarkMath, // 放到最前面，防止太多干扰因素。
