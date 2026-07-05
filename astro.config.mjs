@@ -24,10 +24,6 @@ export default defineConfig({
         inlineStylesheets: "never"
     },
     markdown: {
-        syntaxHighlight: {
-            "type": "prism",
-            "excludeLangs": ["math"]
-        },
         processor: unified({
             remarkPlugins: [
                 remarkMath, // 放到最前面，防止太多干扰因素。
