@@ -13,13 +13,13 @@ const blog = {
                 navigator.clipboard.writeText(target.querySelector("code").innerText)
                 .then(() => { // onfulfilled
                     copyRes = "success";
-                }, () => { // onrejected
+                }, (err) => { // onrejected
                     copyRes = "error";
+                    console.error(err);
                 }).then(() => {
                     copyBtn.classList.add(copyRes);
                     setTimeout(() => {copyBtn.classList.remove(copyRes)}, 500);
                 });
-                
             });
             container.className = "language-"+lang;
             container.setAttribute("data-language", lang);
