@@ -196,8 +196,7 @@ table {
     border-collapse: collapse;
     /*border-spacing: 0;*/ // 设置了 border-collapse: collapse，已经没有 border-spacing 了。
     word-break: break-all;
-    max-width: 100%;
-    background: #fff;
+    width: 100%;
     thead {
         background: #fafafa;
         tr th {
@@ -301,4 +300,7 @@ details {
 /// 修复嵌套
 details > :is(details, .note) {
     margin-left: calc($indent_left - 3px)!important;
+}
+details > table {
+    width: calc(100% - $indent_top - $indent_left);
 }
