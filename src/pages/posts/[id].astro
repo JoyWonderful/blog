@@ -31,6 +31,6 @@ const { post } = Astro.props as any; // 这是当时传递的 `props: {post: pos
         <Markup
             content={post.rendered.html}
             components={{tabs: Tabs}}
-        />
+        /> {/*将 <tabs></tabs> 替换为 Astro 组件 !!plugin remark-flexible-containers*/}
     </PostBlock>
 </Main>
