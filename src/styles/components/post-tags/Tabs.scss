@@ -16,6 +16,7 @@
             border-top-width: 3px;
             border-bottom-color: $color_text_0;
             border-radius: $border_radius_0 $border_radius_0 0 0;
+            transition: all $transition_time;
             &.active {
                 border-left-color: $color_text_0;
                 border-right-color: $color_text_0;
