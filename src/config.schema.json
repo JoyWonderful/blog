@@ -21,6 +21,10 @@
             "description": "Language for your site. (Used for html.lang)",
             "type": "string"
         },
+        "favicon": {
+            "description": "The url to your site favicon.",
+            "type": "string"
+        },
 
         "posts_path": {
             "description": "Your path for posts. (Used for a.href in posts.)",

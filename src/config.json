@@ -4,6 +4,7 @@
     "title": "Some Notes",
     "subtitle": "Be hardworking every day.",
     "lang": "zh-CN",
+    "favicon": "https://src-jywon.pages.dev/favicons/favicon-64-blog.png",
 
     "posts_path": "/posts",
     "categories_path": "/categories",
