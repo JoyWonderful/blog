@@ -1,0 +1,40 @@
+@use "../../variables" as *;
+
+.tabs {
+    margin-bottom: $para_margin_bottom;
+    margin-left: -1px; // 保持 indent 一致
+    nav {
+        display: flex;
+        .tab.title {
+            display: inline;
+            border-bottom: none;
+            padding: .25em;
+            flex-grow: 1;
+            text-align: center;
+            border: 1px solid transparent;
+            border-top-width: 3px;
+            border-bottom-color: $color_text_0;
+            border-radius: $border_radius_0 $border_radius_0 0 0;
+            &.active {
+                border-left-color: $color_text_0;
+                border-right-color: $color_text_0;
+                border-top-color: $color_theme;
+                border-bottom-color: transparent;
+                color: $color_theme;
+            }
+        }
+    }
+    > .tab {
+        border: 1px solid $color_text_0;
+        border-top: 0;
+        padding: $indent_top $indent_left;
+        border-radius: 0 0 $border_radius_0 $border_radius_0;
+        display: none;
+        &.active {
+            display: block;
+        }
+        > :last-child pre, > :last-child {
+            margin-bottom: 0;
+        }
+    }
+}

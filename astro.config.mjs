@@ -34,11 +34,18 @@ export default defineConfig({
                 remarkMath, // 放到最前面，防止太多干扰因素。
                 remarkCjkFriendly,
                 remarkCjkFriendlyGfmStrikethrough,
-                [remarkFlexibleContainers, {
+                [remarkFlexibleContainers, { // 不用加 break，因为返回值后函数就直接结束了。
+                    containerTagName: (type, title) => {
+                        switch(type) {
+                            case "tabs": return "tabs";
+                            case "details": return "details";
+                            default: return "div";
+                        }
+                    },
                     containerClassName: (type, title) => {
-                        switch(type) { // 不用加 break，因为返回值后函数就直接结束了。
+                        switch(type) {
                             case "note": return ["note"]; // 返回的是 class 列表
-                            case "tabs": return ["tabs"];
+                            case "tabs": return [];
                             case "tab": return ["tab"];
                             case "details": return [];
                             default: {
@@ -79,7 +86,7 @@ export default defineConfig({
                         }
                     }]
                 }],
-                [rehypeAutolinkHeadings, {
+                [rehypeAutolinkHeadings, { // 需要 rehypeHeadingIds
                     behavior: "prepend", // inject link before the heading text
                     content: {
                         type: "text",
