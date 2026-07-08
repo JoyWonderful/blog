@@ -5,7 +5,7 @@ pre.astro-code {
     font-family: $font_mono;
     white-space: pre;
     overflow: auto;
-    padding: 1em $indent_left;
+    padding: $indent_top $indent_left;
     margin: 0;
     margin-bottom: $para_margin_bottom;
     border-radius: $border_radius_0;

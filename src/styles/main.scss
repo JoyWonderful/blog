@@ -107,9 +107,11 @@ img, table, details {
     margin: 0;
     margin-bottom: $para_margin_bottom;
 }
-:is(li, blockquote) > :last-child,
-p > img:last-child {
-    margin-bottom: 0;
+:is(li, blockquote, p) {
+    & > :last-child,
+    & > :last-child pre {
+        margin-bottom: 0;
+    }
 }
 //// 一般
 ul, ol {
@@ -218,7 +220,7 @@ table {
 }
 details {
     border: 1px solid $color_text_1;
-    border-left: 0;
+    border-left: 3px solid $color_text_0;
     border-radius: $border_radius_0;
     padding: 0;
     margin-left: -3px;
@@ -226,7 +228,6 @@ details {
     > summary::marker {content: none;}
     > summary {
         font-weight: bold;
-        border-left: 3px solid $color_text_0;
         border-radius: $border_radius_0;
         padding: .25em .25em .25em $indent_left;
         display: flex;
@@ -252,13 +253,11 @@ details {
     }
     &[open] {
         > :not(summary) {
-            margin-right:1em; margin-left:$indent_left;
-            &:nth-child(2) {margin-top:1em;}
-            &:last-child {margin-bottom:1em;}
+            margin-right:$indent_top; margin-left:$indent_left;
+            &:nth-child(2) {margin-top:$indent_top;}
+            &:last-child {margin-bottom:$indent_top;}
         }
-        border-left: 3px solid $color_text_0;
         > summary {
-            border-left: 0;
             border-bottom: 2px dotted $color_text_0;
             border-radius: $border_radius_0 $border_radius_0 0 0;
             &::before {
@@ -272,7 +271,7 @@ details {
 .note:not(.note.title) {
     border-radius: $border_radius_0;
     margin-bottom: $para_margin_bottom;
-    padding: 1em 1em 1em $indent_left;
+    padding: $indent_top $indent_top $indent_top $indent_left;
     margin-left: -3px;
     @each $type in $note_text {
         &.#{$type} {
@@ -295,7 +294,7 @@ details {
             }
         }
     }
-    > :last-child {margin-bottom:0;}
+    > :last-child, > :last-child pre {margin-bottom:0;}
     // .note 的直接子代的最后一个元素（不管是什么）什么都要 margin-bottom 为 0。
 }
 
