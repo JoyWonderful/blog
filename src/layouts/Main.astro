@@ -5,6 +5,7 @@ import { getSourcePathList } from "~/scripts/helpers/source-path";
 import Layout from "~/layouts/Layout.astro";
 import SiteBrand from "~/components/SiteBrand.astro";
 import SiteMenu from "~/components/SiteMenu.astro";
+import SiteFooter from "~/components/SiteFooter.astro";
 
 const { matchHref } = Astro.props; //-> ~/components/SiteMenu
 ---
@@ -14,6 +15,7 @@ const { matchHref } = Astro.props; //-> ~/components/SiteMenu
         {getSourcePathList(["base_css_npmmirror"]).map((source) => <link rel="stylesheet" href={source} />)}
         <slot name="html-head" />
     </Fragment>
+
     <div class="main-area">
         <div class="column">
             <header>
@@ -24,12 +26,12 @@ const { matchHref } = Astro.props; //-> ~/components/SiteMenu
                 <slot name="site-sidebar" />
             </aside>
         </div>
-        
         {/*<main> 元素的内容应当是独一无二的。任何同时存在于任意一系列文档中的相同、重复内容，比如侧边栏、导航栏链接、版权信息、网站 Logo，搜索框（除非搜索框为文档的主要功能），都不应当被包含在其内。*/}
         <main>
             <slot />
         </main>
     </div>
+    <SiteFooter />
     
     <script src="/main.js" is:inline></script>
 </Layout>

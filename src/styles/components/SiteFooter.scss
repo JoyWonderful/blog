@@ -1,0 +1,10 @@
+@use "../variables" as *;
+
+footer {
+    margin: $para_margin_bottom;
+    text-align: center;
+    color: #686868;
+    > span {
+        display: block;
+    }
+}

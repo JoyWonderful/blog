@@ -17,6 +17,10 @@
             "description": "The subtitle for your site. (bio, description, .etc)",
             "type": "string"
         },
+        "author": {
+            "description": "The author's name.",
+            "type": "string"
+        },
         "lang": {
             "description": "Language for your site. (Used for html.lang)",
             "type": "string"
@@ -114,7 +118,7 @@
         }
     },
     "required": [
-        "title", "subtitle", "lang", "menu",
+        "title", "subtitle", "author", "lang", "menu",
         "posts_path", "categories_path", "tags_path",
         "post_per_page", "meta_generator"
     ],
