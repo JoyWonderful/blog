@@ -255,7 +255,7 @@ details {
         cursor: pointer;
         transition: background-color $transition_time;
         &::before {
-            @include fontawesome("\f0da");
+            @include fontawesome("\f0da"); // caret-right
             color: $color_text_1;
             @extend %fa-fw; // width: 1.25em;
             padding-right: .125em;
