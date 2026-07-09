@@ -2,9 +2,48 @@
     "$schema": "config.schema.json",
 
     "title": "Some Notes",
-    "subtitle": "Be hardworking every day.",
+    "subtitle": "Be hard-working every day.",
     "lang": "zh-CN",
     "favicon": "https://src-jywon.pages.dev/favicons/favicon-64-blog.png",
+    "menu": [
+        {
+            "icon": "fa fa-home",
+            "name": "首页",
+            "href": "/"
+        },
+        {
+            "icon": "fa fa-rectangle-list",
+            "name": "分类",
+            "href": "/categories"
+        },
+        {
+            "icon": "fa fa-tags",
+            "name": "标签",
+            "href": "/tags"
+        },
+        {
+            "icon": "fa fa-box-archive",
+            "name": "文章列表",
+            "href": "/archives"
+        }
+    ],
+    "menu_more": [
+        {
+            "icon": "far fa-address-book",
+            "name": "友情链接",
+            "href": "/friends"
+        },
+        {
+            "icon": "far fa-comments",
+            "name": "留言簿",
+            "href": "/guestbook"
+        },
+        {
+            "icon": "fa fa-info",
+            "name": "关于",
+            "href": "/about"
+        }
+    ],
 
     "posts_path": "/posts",
     "categories_path": "/categories",

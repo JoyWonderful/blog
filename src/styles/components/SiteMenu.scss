@@ -1,0 +1,72 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+%indicator {
+    content: none;
+    position: absolute;
+    background: $color_4;
+    width: 5px; // 9px - 4px; (4px 给它两边空间的预留)
+    height: 80%;
+    top: 10%;
+    left: -7px; // (4px / 2) - 5px (两边空间 / 2 - 宽度)
+    border-radius: 2.5px; // 5px / 2
+}
+
+.site-nav {
+    padding: .875em 0;
+    background: #fff;
+    menu {
+        padding: 0;
+        margin: 0;
+        li.menu-item {
+            font-size: .9rem;
+            margin-left: 9px;
+            border-radius: $border_radius_0;
+            @include activeShade($bdradius:$border_radius_0, $trans_start:scaleX(0), $trans_end:scaleX(1), $trans_origin_start:left, $trans_origin_end:left);
+            &::before { // 让那个 shade 在链接后面
+                z-index: 0;
+            }
+            a {
+                display: block;
+                padding: .375rem .5rem;
+                border-bottom: 0;
+                position: relative;
+                z-index: 1;
+                i[class*="fa"] {
+                    margin-right: 5px;
+                }
+            }
+            &::marker {
+                content: none;
+            }
+            &::after {
+                @extend %indicator;
+            }
+            &.active {
+                background: #{$color_2}7a;
+            }
+            &.active::after {
+                content: "";
+            }
+        }
+        .more-button {
+            cursor: pointer;
+            & + .more-item-list {
+                height: 0;
+                visibility: hidden;
+                opacity: 0;
+                transition: all $transition_time;
+            }
+        }
+        .more-button:hover + .more-item-list, .more-item-list:hover {
+            // --list-length 在 astro 组件中已传递
+            height: calc((0.9rem*1.5 + 2*0.375rem) * var(--list-length)); // (字体大小 * line-height 倍率 + 两个 <a> 的上下 padding) * 项目个数
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    menu:has(.more-item-list .menu-item.active) .more-button::after {
+        @extend %indicator;
+        content: "";
+    }
+}

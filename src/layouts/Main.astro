@@ -3,6 +3,10 @@ import "~/styles/main.scss";
 import "~/styles/shikiCodeBlock.scss";
 import { getSourcePathList } from "~/scripts/helpers/source-path";
 import Layout from "~/layouts/Layout.astro";
+import SiteBrand from "~/components/SiteBrand.astro";
+import SiteMenu from "~/components/SiteMenu.astro";
+
+const { matchHref } = Astro.props; //-> ~/components/SiteMenu
 ---
 <Layout>
     <Fragment slot="document-title"><slot name="document-title" /></Fragment>
@@ -10,8 +14,22 @@ import Layout from "~/layouts/Layout.astro";
         {getSourcePathList(["base_css_npmmirror"]).map((source) => <link rel="stylesheet" href={source} />)}
         <slot name="html-head" />
     </Fragment>
-    <main>
-        <slot />
-    </main>
+    <div class="main-area">
+        <div class="column">
+            <header>
+                <SiteBrand />
+                <SiteMenu matchHref={matchHref} />
+            </header>
+            <aside>
+                <slot name="site-sidebar" />
+            </aside>
+        </div>
+        
+        {/*<main> 元素的内容应当是独一无二的。任何同时存在于任意一系列文档中的相同、重复内容，比如侧边栏、导航栏链接、版权信息、网站 Logo，搜索框（除非搜索框为文档的主要功能），都不应当被包含在其内。*/}
+        <main>
+            <slot />
+        </main>
+    </div>
+    
     <script src="/main.js" is:inline></script>
 </Layout>

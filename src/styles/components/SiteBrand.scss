@@ -1,0 +1,22 @@
+@use "../variables" as *;
+
+.site-brand {
+    background: $color_theme;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    .site-title { // h1
+        display: block;
+        color: #fff;
+        font-size: $title_font_size - ($title_font_size_step * 2);
+        border-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        line-height: 1;
+    }
+    .site-subtitle { // p
+        color: #fff;
+        font-size: smaller;
+        margin-bottom: 0;
+        line-height: 1;
+    }
+}

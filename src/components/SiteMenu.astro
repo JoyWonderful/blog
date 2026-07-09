@@ -1,0 +1,42 @@
+---
+import "~/styles/components/SiteMenu.scss";
+import config from "~/config.json";
+
+const { matchHref } = Astro.props; // 匹配 href 一致时，就加上 active 类
+var more_list_length_str = `--list-length:${config.menu_more.length}`
+---
+<nav class="site-nav">
+    <menu>
+        {config.menu.map((entry) => {
+            const CONTENT = (<Fragment>
+                <i class:list={[entry.icon, "fa-fw"]}></i>
+                {entry.name}
+            </Fragment>);
+            var class_list = ["menu-item"];
+            if(matchHref == entry.href) class_list.push("active");
+            return (
+                <li class:list={class_list}>
+                    {entry.href ? <a href={entry.href}>{CONTENT}</a> : <a>{CONTENT}</a>}
+                </li>
+            );
+        })}
+        {config.menu_more && <Fragment>
+            <li class="menu-item more-button"><a><i class="fa fa-ellipsis-vertical fa-fw"></i>更多</a></li>
+            <div class="more-item-list" style={more_list_length_str}>
+                {config.menu_more.map((entry) => {
+                    const CONTENT = (<Fragment>
+                        <i class:list={[entry.icon, "fa-fw"]}></i>
+                        {entry.name}
+                    </Fragment>);
+                    var class_list = ["menu-item"];
+                    if(matchHref == entry.href) class_list.push("active");
+                    return (
+                        <li class:list={class_list}>
+                            {entry.href ? <a href={entry.href}>{CONTENT}</a> : <a>{CONTENT}</a>}
+                        </li>
+                    );
+                })}
+            </div>
+        </Fragment>}
+    </menu>
+</nav>
