@@ -12,7 +12,6 @@ const ICON_LIST = [
 ];
 const PICKER = Math.floor(Math.random() * (ICON_LIST.length - 0) + 0); // 不包含最大值，包含最小值
 var color_str = `--hover-color:${ICON_LIST[PICKER][1]}`;
-Astro.logger.info(String(PICKER));
 ---
 <footer>
     <span class="footer-basic">Build in {YEAR}<i class={ICON_LIST[PICKER][0]} style={color_str}></i>{config.author}</span>
