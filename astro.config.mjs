@@ -29,7 +29,7 @@ export default defineConfig({
             theme: "dark-plus",
             transformers: [transformerColorizedBrackets()]
         },
-        processor: unified({
+        processor: unified({ // 文章插件，只对文章生效
             remarkPlugins: [
                 remarkMath, // 放到最前面，防止太多干扰因素。
                 remarkCjkFriendly,
