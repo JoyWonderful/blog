@@ -33,6 +33,18 @@ body {
             border-radius: $border_radius;
             overflow: clip; // 让 border-radius 生效
         }
+        aside:has(div) {
+            background: #fff;
+            padding: .875rem .5rem;
+            position: sticky;
+            top: $card_margin_top;
+            > .title {
+                font-weight: bold; // 700
+                text-align: center;
+                font-size: smaller;
+                margin-bottom: .25rem;
+            }
+        }
     }
     main {
         width: calc(100% - 240px - $card_margin_top); // 这里的 100% 是 main-area 基础上的
