@@ -1,8 +1,10 @@
 {
     "compilerOptions": {
         "strict": true,
-        "types": ["node"],
-        "typeRoots": ["node_modules/@types"],
+        // "types": ["node"], // install @types/node then
+        // "typeRoots": ["node_modules/@types"],
+        "types": ["astro/types/content"],
+        "typeRoots": ["node_modules"],
         "paths": {
             "~/*": ["./src/*"]
         },
