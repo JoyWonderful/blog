@@ -13,7 +13,7 @@
             "href": "/"
         },
         {
-            "icon": "fa fa-rectangle-list",
+            "icon": "fa fa-folder-tree",
             "name": "分类",
             "href": "/categories"
         },

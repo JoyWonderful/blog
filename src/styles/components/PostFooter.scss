@@ -1,0 +1,61 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.post-footer {
+    background: #fff;
+    color: $color_text;
+    margin: 0;
+    margin-top: $card_margin_top;
+    padding: $indent_top;
+    text-align: left;
+    box-shadow: $box_shadow;
+    border-radius: $border_radius;
+    i[class*="fa"] {
+        margin-right: .875rem;
+        color: $color_text_0;
+        vertical-align: center;
+    }
+    :is(.post-tags, .post-categories) a {
+        border-bottom: 0;
+    }
+    .post-tags a {
+        margin-right: .75rem;
+        &::before {
+            @include fontawesome("\f02b"); // tag
+            @extend %fa-fw;
+            margin-right: 3px;
+        }
+    }
+    .post-nav {
+        margin-top: 1rem;
+        padding-top: .25rem;
+        border-top: 1px dashed $color_text_1;
+        display: flex;
+        flex-flow: row;
+        a {
+            display: flex;
+            border-bottom: 0;
+            flex-basis: 50%;
+            &[rel="prev"] {
+                justify-content: flex-start;
+            }
+            &[rel="next"] {
+                justify-content: flex-end;
+            }
+            i[class*="fa"] {
+                color: $color_text;
+                transition: color $transition_time;
+                margin: 0;
+            }
+            &:hover i[class*="fa"] {
+                color: $color_theme;
+            }
+            &:active i[class*="fa"] {
+                color: $color_7;
+            }
+        }
+        &:has(a[rel="next"]):not(:has(a[rel="prev"])) { // 当只有下一篇时，靠右
+            justify-content: flex-end;
+        }
+    }
+}

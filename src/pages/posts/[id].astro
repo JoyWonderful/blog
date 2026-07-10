@@ -8,6 +8,7 @@ import PostBlock from "~/components/PostBlock.astro";
 import MathConfs from "~/components/MathConfs.astro";
 import Tabs from "~/components/post-tags/Tabs.astro";
 import config from "~/config.json";
+import PostFooter from "~/components/PostFooter.astro";
 
 export const getStaticPaths = (async () => {
     const blogPosts = await getCollection("blogPosts");
@@ -33,4 +34,5 @@ const { post } = Astro.props as any; // 这是当时传递的 `props: {post: pos
             components={{tabs: Tabs}}
         /> {/*将 <tabs></tabs> 替换为 Astro 组件 !!plugin remark-flexible-containers*/}
     </PostBlock>
+    <PostFooter id={id} />
 </Main>

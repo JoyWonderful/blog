@@ -25,7 +25,7 @@ const { frontMatter, id, isTitleLink } = Astro.props;
             }
             {frontMatter.categories &&
             <span class="item">
-                <i class="far fa-folder"></i>
+                <i class="far fa-folder-open"></i>
                 <span>分类于</span>
                 <a href={config.categories_path+"/"+frontMatter.categories}>{frontMatter.categories}</a>
             </span>}
