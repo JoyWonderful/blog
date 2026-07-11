@@ -1,0 +1,140 @@
+---
+import type { MarkdownHeading } from "astro";
+
+const { toc } = Astro.props;
+
+interface MarkdownHeadingWithChildren {
+    depth: number, // 留着吧，这样更方便调试/assign合并
+    slug: string;
+    text: string;
+    children: Array<MarkdownHeadingWithChildren>
+}
+function getTocTree(headings:MarkdownHeading[]):MarkdownHeadingWithChildren[] {
+    var root:MarkdownHeadingWithChildren[] = [],
+        stack:MarkdownHeadingWithChildren[] = []; /* 栈底 [0] -> 栈顶 [length-1] */
+    for (const heading of headings) {
+        const node = Object.assign(heading, {children:[]});
+        if (stack.length == 0) { // 如果栈为空，说明是顶层结点
+            root.push(node);
+            stack.push(node);
+            continue;
+        }
+        // 找到当前结点的父结点
+        // 从栈顶开始查找，直到找到 depth 小于当前 depth 的结点
+        while (stack.length > 0 && stack[stack.length - 1].depth >= heading.depth) {
+            stack.pop();
+        }
+        if (stack.length == 0) { // 如果栈为空，说明当前结点是顶层结点
+            root.push(node);
+        }
+        else { // 否则，栈顶元素就是父节点
+            stack[stack.length - 1].children.push(node);
+        }
+        stack.push(node);
+    }
+    return root;
+}
+function getTocHTML(nodes:MarkdownHeadingWithChildren[], depth:number/* 这里的 depth 是指 ol 嵌套层数 */): string {
+    if (nodes.length == 0) return '';
+    let html = `<ol data-depth="${depth}">`;
+    for (const node of nodes) {
+        html += `<li>`;
+        html += `<a href="#${node.slug}">${node.text}</a>`;
+        if (node.children.length > 0) {
+            html += getTocHTML(node.children, depth+1);
+        }
+        html += `</li>`;
+    }
+    html += '</ol>';
+    return html;
+}
+const tocWithChildren:MarkdownHeadingWithChildren[] = getTocTree(toc);
+const tocHTML:string = getTocHTML(tocWithChildren, 1);
+---
+<div class="title">大纲</div>
+<div class="toc" set:html={tocHTML} title="大纲"></div>
+
+<script src="~/scripts/PostAside.js"></script>
+
+<style lang="scss" is:global>
+    @use "../../styles/variables" as *;
+
+    @counter-style depth2 {
+        system: fixed;
+        symbols: "⒈" "⒉" "⒊" "⒋" "⒌" "⒍" "⒎" "⒏" "⒐" "⒑" "⒒" "⒓" "⒔" "⒕" "⒖" "⒗" "⒘" "⒙" "⒚" "⒛";
+        suffix: " ";
+        fallback: decimal;
+    }
+    @counter-style depth3 {
+        system: fixed;
+        symbols: "⑴" "⑵" "⑶" "⑷" "⑸" "⑹" "⑺" "⑻" "⑼" "⑽" "⑾" "⑿" "⒀" "⒁" "⒂" "⒃" "⒄" "⒅" "⒆" "⒇";
+        suffix: " ";
+        fallback: decimal;
+    }
+    @counter-style depth4 {
+        system: fixed;
+        symbols: "①" "②" "③" "④" "⑤" "⑥" "⑦" "⑧" "⑨" "⑩" "⑪" "⑫" "⑬" "⑭" "⑮" "⑯" "⑰" "⑱" "⑲" "⑳" "㉑" "㉒" "㉓" "㉔" "㉕" "㉖" "㉗" "㉘" "㉙" "㉚" "㉛" "㉜" "㉝" "㉞" "㉟" "㊱" "㊲" "㊳" "㊴" "㊵" "㊶" "㊷" "㊸" "㊹" "㊺" "㊻" "㊼" "㊽" "㊾" "㊿";
+        suffix: " ";
+        fallback: decimal;
+    }
+    @counter-style depth5 {
+        system: symbolic;
+        symbols: "ⓐ" "ⓑ" "ⓒ" "ⓓ" "ⓔ" "ⓕ" "ⓖ" "ⓗ" "ⓘ" "ⓙ" "ⓚ" "ⓛ" "ⓜ" "ⓝ" "ⓞ" "ⓟ" "ⓠ" "ⓡ" "ⓢ" "ⓣ" "ⓤ" "ⓥ" "ⓦ" "ⓧ" "ⓨ" "ⓩ";
+        suffix: " ";
+    }
+
+    .toc {
+        font-size: smaller;
+        white-space: nowrap;
+        overflow: auto;
+        max-height: calc(100vh - ($card_margin_top * 2) - (0.875rem * 2));
+        // 在这设置 text-overflow 没用，在 li 设置，由于 list-style-position:inside 与其冲突，overflow 时只剩一个（包含::marker的）省略号了
+        ol {
+            margin: 0;
+            padding-left: .6em;
+            list-style-position: inside; // ::marker 也被 padding 限制了
+            &[data-depth="1"] {
+                list-style-type: cjk-ideographic;
+            }
+            @for $depth from 2 through 5 {
+                &[data-depth="#{$depth}"] {
+                    list-style-type: depth#{$depth};
+                }
+            }
+        }
+        li {
+            &::marker {
+                color: $color_text_0;
+                transition: color $transition_time;
+            }
+            &:hover::marker {
+                color: $color_text_1;
+            }
+            :is(&:active, &.active, &:has(.active))::marker {
+                color: $color_text_3;
+            }
+            :is(&.active, &:has(.active)) > a {
+                font-weight: bold;
+                color: $color_text_4;
+            }
+        }
+        a {
+            border-bottom: 0;
+        }
+    }
+
+    aside > .title {
+        height: 1.5em; // line-height: 1.5
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        transition: all $transition_time;
+    }
+    aside > .title.deactive {
+        height: 0;
+        margin: 0;
+        opacity: 0;
+        transform: translateY(-2em);
+        visibility: hidden;
+    }
+</style>
