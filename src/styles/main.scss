@@ -337,3 +337,10 @@ details > :is(details, .note) {
 details > table {
     width: calc(100% - $indent_top - $indent_left);
 }
+
+
+// 修复 katex overflow
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
