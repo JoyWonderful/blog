@@ -35,7 +35,7 @@ function getTocTree(headings:MarkdownHeading[]):MarkdownHeadingWithChildren[] {
     return root;
 }
 function getTocHTML(nodes:MarkdownHeadingWithChildren[], depth:number/* 这里的 depth 是指 ol 嵌套层数 */): string {
-    if (nodes.length == 0) return '';
+    if (nodes.length == 0) return `<span style="display:block;text-align:center;opacity:0.7">文章太潦草了<br>以至于没有大纲<br>╮(╯_╰)╭</span>`;
     let html = `<ol data-depth="${depth}">`;
     for (const node of nodes) {
         html += `<li>`;
@@ -132,7 +132,7 @@ const tocHTML:string = getTocHTML(tocWithChildren, 1);
     }
     aside > .title.deactive {
         height: 0;
-        margin: 0;
+        margin-bottom: 0!important;
         opacity: 0;
         transform: translateY(-2em);
         visibility: hidden;
