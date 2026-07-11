@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import { getAllCategories, getAllTags } from "~/scripts/helpers/site-posts-stats";
+
+const blogPosts:Array<any> = await getCollection("blogPosts");
+var categoriesCount = getAllCategories().size;
+var tagsCount = getAllTags().size;
+/*var tags getAllTags();
+Astro.logger.info(`tagsCound:${tags.size}`);
+var tags_iterator = tags.entries();
+while(true) {
+    var now = tags_iterator.next();
+    if(now.done == true) break;
+    Astro.logger.info(String(now.value));
+}*/
+---
+<div class="title">统计信息</div>
+<div class="stat">
+    <div class="stat-item"><span class="stat-number">{blogPosts.length}</span><span class="stat-text">文章</span></div>
+    <div class="stat-item"><span class="stat-number">{categoriesCount}</span><span class="stat-text">分类</span></div>
+    <div class="stat-item"><span class="stat-number">{tagsCount}</span><span class="stat-text">标签</span></div>
+</div>
+
+<style lang="scss">
+    @use "../../styles/variables" as *;
+
+    .stat {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        column-gap: .75rem;
+    }
+    .stat-item {
+        span {
+            display: block;
+            text-align: center;
+        }
+        .stat-number {
+            font-weight: bold; // 700
+            color: $color_text_3;
+        }
+        .stat-text {
+            font-size: smaller;
+            color: $color_text_1
+        }
+    }
+</style>
