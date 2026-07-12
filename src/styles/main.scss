@@ -46,6 +46,7 @@ body {
                 // 以下为 deactive 准备
                 white-space: nowrap;
                 overflow-x: auto;
+                overflow-y: hidden;
                 height: 1.5em; // line-height: 1.5
                 opacity: 1;
                 transform: translateY(0);
