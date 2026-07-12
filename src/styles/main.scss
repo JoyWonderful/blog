@@ -43,6 +43,25 @@ body {
                 text-align: center;
                 font-size: smaller;
                 margin-bottom: .25rem;
+                // 以下为 deactive 准备
+                white-space: nowrap;
+                overflow-x: auto;
+                height: 1.5em; // line-height: 1.5
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+                transition: all $transition_time;
+            }
+            > .title.deactive {
+                height: 0;
+                margin-bottom: 0!important;
+                opacity: 0;
+                transform: translateY(-2em);
+                visibility: hidden;
+            }
+            > div {
+                overflow: auto;
+                max-height: calc(100vh - ($card_margin_top * 2) - (0.875rem * 2));
             }
         }
     }

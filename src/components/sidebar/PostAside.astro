@@ -86,8 +86,6 @@ const tocHTML:string = getTocHTML(tocWithChildren, 1);
     .toc {
         font-size: smaller;
         white-space: nowrap;
-        overflow: auto;
-        max-height: calc(100vh - ($card_margin_top * 2) - (0.875rem * 2));
         // 在这设置 text-overflow 没用，在 li 设置，由于 list-style-position:inside 与其冲突，overflow 时只剩一个（包含::marker的）省略号了
         ol {
             margin: 0;
@@ -127,20 +125,5 @@ const tocHTML:string = getTocHTML(tocWithChildren, 1);
         a {
             border-bottom: 0;
         }
-    }
-
-    aside > .title {
-        height: 1.5em; // line-height: 1.5
-        opacity: 1;
-        transform: translateY(0);
-        visibility: visible;
-        transition: all $transition_time;
-    }
-    aside > .title.deactive {
-        height: 0;
-        margin-bottom: 0!important;
-        opacity: 0;
-        transform: translateY(-2em);
-        visibility: hidden;
     }
 </style>
