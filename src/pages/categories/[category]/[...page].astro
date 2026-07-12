@@ -1,0 +1,66 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import { getAllCategories } from "~/scripts/helpers/site-posts-stats";
+import Main from "~/layouts/Main.astro";
+import CommonBlock from "~/components/CommonBlock.astro";
+import TimeLine from "~/components/TimeLine.astro";
+import PaginationBar from "~/components/PaginationBar.astro";
+import config from "~/config.json";
+
+/* 使用 map：
+[
+  [ // 分类1的分页结果
+    { params: {category: '分类1'}, props: {...} }, // 第1页
+    { params: {category: '分类1'}, props: {...} }  // 第2页
+  ],
+  [ // 分类2的分页结果
+    { params: {category: '分类2'}, props: {...} }, // 第1页
+    { params: {category: '分类2'}, props: {...} }  // 第2页
+  ]
+]
+使用 flatMap：
+[
+  { params: {category: '分类1'}, props: {...} }, // 分类1第1页
+  { params: {category: '分类1'}, props: {...} }, // 分类1第2页
+  { params: {category: '分类2'}, props: {...} }, // 分类2第1页
+  { params: {category: '分类2'}, props: {...} }  // 分类2第2页
+]
+getStaticPaths 希望获得的是 Array<Object>，而不是多重数组嵌套
+*/
+export const getStaticPaths = (({ paginate }) => {
+    const categories = getAllCategories();
+    return [...categories].flatMap((category) => {
+        const categoryPosts = category[1]; // [1] 内含所有文章的 ID
+        return paginate(categoryPosts, {
+            params: {category: category[0]}, // [0] 为分类名
+            props: {categoryPostsLength: category[1].length},
+            pageSize: config.archives_post_per_page
+        });
+    });
+}) satisfies GetStaticPaths;
+
+const { category } = Astro.params;
+const { page, categoryPostsLength } = Astro.props; // page.data 应该是该分页下文章 id 数组
+const pageTitle = config.menu.find((entry) => entry.href==config.categories_path)?.name;
+
+var posts:any[] = [];
+const blogPosts = await getCollection("blogPosts");
+page.data.forEach((postId:string) => {
+    posts.push(blogPosts.find((post:any) => post.id==postId));
+});
+// 用 getEntry 太麻烦了，promise 塞里面很烦
+---
+<Main matchHref={config.categories_path}>
+    <Fragment slot="document-title">{pageTitle}: {category} | {config.title}</Fragment>
+
+    <CommonBlock title={page.currentPage==1 ? `${pageTitle}: ${category}` : undefined} subtitle={page.currentPage==1 ? `共计 ${categoryPostsLength} 篇文章` : undefined}>
+        <TimeLine
+            posts={posts}
+            isStart={page.currentPage==1 ? true : false}
+            isEnd={page.currentPage==page.lastPage ? true : false}
+        />
+    </CommonBlock>
+
+    <PaginationBar page={page} />
+</Main>

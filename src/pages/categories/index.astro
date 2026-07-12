@@ -1,0 +1,57 @@
+---
+import { getAllCategories } from "~/scripts/helpers/site-posts-stats";
+import Main from "~/layouts/Main.astro";
+import CommonBlock from "~/components/CommonBlock.astro";
+import config from "~/config.json";
+
+const pageTitle = config.menu.find((entry) => entry.href==config.categories_path)?.name;
+const categories = getAllCategories();
+---
+<Main matchHref={config.categories_path}>
+    <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
+
+    <CommonBlock title={pageTitle} subtitle={`共计 ${categories.size} 个分类`}>
+        <ul class="categories-list">
+            {[...categories].map((category) => { // [0] 是分类名，[1] 是该分类下的所有文章 id
+                return <li>
+                    <a href={`${config.categories_path}/${category[0]}`}>
+                        {category[0]}
+                        <span class="count">{category[1].length}</span>
+                    </a>
+                </li>;
+            })}
+        </ul>
+    </CommonBlock>
+</Main>
+
+<style lang="scss">
+    @use "../../styles/variables" as *;
+    @use "../../styles/mixins" as *;
+    ul.categories-list {
+        padding-left: 0;
+        li::marker {
+            content: none;
+        }
+        li::before {
+            @include fontawesome("\f07b");
+            @extend %fa-fw;
+            display: inline-block;
+            margin-right: .1em;
+            color: $color_theme;
+            transition: color $transition_time;
+        }
+        li:hover::before {
+            content: "\f07c";
+            color: $color_7;
+        }
+        a {
+            border-bottom: none;
+            .count {
+                color: $color_text_0;
+                margin-left: .5em;
+                &::before {content: "(共计 ";}
+                &::after {content: " 篇文章)";}
+            }
+        }
+    }
+</style>
