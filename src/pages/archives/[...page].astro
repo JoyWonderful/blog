@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Main from "~/layouts/Main.astro";
+import ArchiveAside from "~/components/sidebar/ArchiveAside.astro";
+import TimeLine from "~/components/TimeLine.astro";
+import PaginationBar from "~/components/PaginationBar.astro";
+import config from "~/config.json";
+
+export const getStaticPaths = (async function({ paginate }) {
+    const blogPosts = (await getCollection("blogPosts")).sort((a:any, b:any) => {
+        return b.data.date.valueOf() - a.data.date.valueOf(); // 按发布时间排序
+    });
+    return paginate(blogPosts, {
+        pageSize: config.archives_post_per_page,
+        props: {blogPosts: blogPosts}
+    });
+}) satisfies GetStaticPaths;
+
+const { page, blogPosts } = Astro.props;
+const posts = page.data;
+---
+<Main matchHref={config.archives_path}>
+    <Fragment slot="document-title">{config.menu.find((entry) => entry.href==config.archives_path)?.name} | {config.title}</Fragment>
+    <Fragment slot="site-sidebar">
+        <ArchiveAside blogPosts={blogPosts} />
+    </Fragment>
+
+    <TimeLine
+        posts={posts}
+        isStart={page.currentPage==1 ? true : false}
+        isEnd={page.currentPage==page.lastPage ? true : false}
+    />
+    
+    <PaginationBar page={page} />
+</Main>

@@ -1,0 +1,175 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+$timeline_negative_left: 10px;
+
+.timeline-block {
+    margin-top: $card_margin_top;
+    padding: 30px 40px;
+    border-radius: $border_radius;
+    box-shadow: $box_shadow;
+    background: #fff;
+}
+
+// +----+
+// | \/ | 12px
+// | /\ | 12px
+// +----+
+//  24px
+:is(.timeline-start, .timeline-end) {
+    &::after { // 提示文字
+        display: block;
+        position: relative;
+        top: -1em;
+        line-height: 1;
+        font-size: small;
+        color: $color_5;
+        transform: translateX(0);
+        opacity: 0;
+        transition: all $transition_time;
+    }
+    &:hover::after {
+        opacity: 1;
+        transform: translateX(.5em);
+    }
+}
+.timeline-start {
+    height: 24px;
+    &::before { // 时间线箭头
+        content: "";
+        display: block;
+        position: relative;
+        width: 0;
+        height: 0;
+        border: 12px solid transparent; // 总体 border 宽度，高度均为 24px
+        border-bottom-color: $color_5; // 两条 border 样式，就可以形成一个尖角了
+        left: -12px - $timeline_negative_left; // 12px 就是 两个 border 的宽度 / 2，即一个 border 的宽度
+        transition: border-bottom-color $transition_time;
+    }
+    &:hover::before {
+        border-bottom-color: $color_theme;
+    }
+    &::after {
+        content: "时间还在继续……";
+    }
+}
+.timeline-connect-bottom, .timeline-connect-top {
+    height: 24px;
+    &::before {
+        content: "";
+        position: relative;
+        display: block;
+        width: 4px;
+        height: 24px;
+        left: -2px - $timeline_negative_left; // 2px 就是 width 的一半
+    }
+}
+.timeline-connect-bottom::before {
+    background: linear-gradient($color_3, #fff);
+}
+.timeline-connect-top::before {
+    background: linear-gradient(#fff, $color_3);
+}
+.timeline-end {
+    &::before {
+        content: "";
+        position: relative;
+        display: block;
+        width: 10px;
+        height: 10px;
+        background: $color_5;
+        left: -5px - $timeline_negative_left;
+        transition: background-color $transition_time;
+    }
+    &:hover::before {
+        background: $color_theme;
+    }
+    &::after {
+        content: "你似乎到了时间的尽头……";
+    }
+}
+.end-margin {
+    padding-bottom: 10px;
+    &::marker {
+        content: none;
+    }
+}
+
+ul.timeline {
+    margin-bottom: 0;
+    padding-left: 0;
+    position: relative;
+    li.item {
+        position: relative;
+        border-bottom: 1px dashed $color_text_0;
+        margin-bottom: 10px;
+        a {
+            border-bottom: 0;
+        }
+        time {
+            color: #{$color_text_1}bf;
+            margin-right: .5rem;
+            transition: color $transition_time;
+            &:hover {
+                color: $color_5;
+            }
+        }
+        &:hover {
+            border-bottom-color: $color_theme;
+        }
+        &::marker {
+            content: none;
+        }
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: $color_theme;
+            border-radius: 50%;
+            left: -2px - $timeline_negative_left; // -width 的一半 - 10px
+            top: calc(50% - 2px); // li 高度的一半 - height 的一半
+            transition: background-color $transition_time;
+        }
+        &:hover::before {
+            background: $color_7;
+        }
+    }
+    .year {
+        font-size: 1.3rem;
+        font-weight: bold; // 700
+        position: relative;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: $color_theme;
+            left: -4px - $timeline_negative_left; // -width 的一半 - 10px
+            top: calc(50% - 4px); // .year 高度的一半 - height 的一半
+            border-radius: 50%;
+            transition: background-color $transition_time;
+        }
+        &:hover::before {
+            background: $color_7;
+        }
+    }
+    .year:first-child {
+        margin-top: 0;
+    }
+    :is(.item, .year):last-child {
+        margin-bottom: 0;
+    }
+    &::before { // 时间线线条
+        content: "";
+        position: absolute;
+        background: $color_3;
+        width: 4px;
+        height: 100%;
+        left: -2px - $timeline_negative_left; // -width 的一半 - 10px
+    }
+}

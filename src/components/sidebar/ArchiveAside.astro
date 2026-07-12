@@ -1,0 +1,54 @@
+---
+import config from "~/config.json";
+
+const { blogPosts } = Astro.props;
+
+blogPosts.sort((a:any, b:any) => {
+    var a_date = a.data.updated ? a.data.updated.valueOf() : a.data.date.valueOf();
+    var b_date = b.data.updated ? b.data.updated.valueOf() : b.data.date.valueOf();
+    return b_date - a_date;
+});
+---
+
+<div class="title">共计 {blogPosts.length} 篇文章 | 最近更新</div>
+<div class="recent-update">
+    <ul>
+        {blogPosts.slice(0,10).map((post:any) => { /* slice 从 0 开始（包括），一直到 10（不包括 10，即截取 0~9，最近更新的前 10 篇） */
+            var post_date:Date = post.data.updated ? post.data.updated : post.data.date;
+            return <li>
+                <time datetime={post_date.toISOString()} title={post_date.toLocaleString()}>
+                    {post_date.toLocaleDateString()}
+                </time>
+                <a href={`${config.posts_path}/${post.id}`}>{post.data.title}</a>
+            </li>;
+        })}
+    </ul>
+</div>
+
+<style lang="scss">
+    @use "../../styles/variables" as *;
+    .recent-update {
+        font-size: smaller;
+        white-space: nowrap;
+        ul {
+            padding-left: 0;
+            margin-bottom: 0;
+            li {
+                &::marker {
+                    content: none;
+                }
+            }
+        }
+        a {
+            border-bottom: 0;
+        }
+        time {
+            color: $color_text_0;
+            margin-right: .5em;
+            transition: color $transition_time;
+            &:hover {
+                color: $color_5;
+            }
+        }
+    }
+</style>

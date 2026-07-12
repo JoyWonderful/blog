@@ -1,0 +1,33 @@
+---
+import "~/styles/components/TimeLine.scss";
+import config from "~/config.json";
+
+const { posts, isStart, isEnd } = Astro.props;
+var appeared_year:Array<number> = [];
+---
+
+<div class="timeline-block">
+    <div class={isStart ? "timeline-start" : "timeline-connect-top"}></div>
+    <ul class="timeline">
+        {posts.map((post:any) => {
+            const CONTENT = (
+            <li class="item">
+                <time datetime={post.data.date.toISOString()} title={post.data.date.toLocaleString()}>
+                    {`${String(post.data.date.getMonth()+1).padStart(2,"0")}-${String(post.data.date.getDate()).padStart(2,"0")}`}
+                </time>
+                <a href={`${config.posts_path}/${post.id}`}>{post.data.title}</a>
+            </li>);
+            const YEAR = post.data.date.getFullYear();
+            if(!appeared_year.includes(YEAR)) {
+                appeared_year.push(YEAR);
+                return <Fragment>
+                    <div class="year">{YEAR}</div>
+                    {CONTENT}
+                </Fragment>;
+            }
+            return CONTENT;
+        })}
+        {isEnd && <li class="end-margin"></li>}
+    </ul>
+    <div class={isEnd ? "timeline-end" : "timeline-connect-bottom"}></div>
+</div>
