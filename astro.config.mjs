@@ -14,10 +14,10 @@ import rehypeKatex from "rehype-katex"; // 配合 remark-math
 export default defineConfig({
     site: "https://blog-jywon.pages.dev",
     redirects: {
-        "/": {
-            status: 301, // Moved Permanently
-            destination: "/1"
-        }
+        // "/": {
+        //     status: 301, // Moved Permanently
+        //     destination: "/1"
+        // }
     },
     output: "static", // 默认值
     build: {

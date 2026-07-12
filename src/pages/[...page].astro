@@ -8,6 +8,10 @@ import PaginationBar from "~/components/PaginationBar.astro";
 import MathConfs from "~/components/MathConfs.astro";
 import config from "~/config.json";
 
+// 假如使用 [page] 作为文件名，那么会生成 /1, /2, /3, ...
+// 假如使用 [...page] 作为文件名，那么会生成 /, /2, /3 ...
+// 所以用第二种，这样更好导航
+
 export const getStaticPaths = (async function({ paginate }) {
     const blogPosts = (await getCollection("blogPosts")).sort((a:any, b:any) => {
         return b.data.date.valueOf() - a.data.date.valueOf(); // 按发布时间排序
