@@ -47,10 +47,12 @@
     ],
 
     "posts_path": "/posts",
+    "archives_path": "/archives",
     "categories_path": "/categories",
     "tags_path": "/tags",
 
     "post_per_page": 5,
+    "archives_post_per_page": 10,
 
     "meta_generator": true
 }

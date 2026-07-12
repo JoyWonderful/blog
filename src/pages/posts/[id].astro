@@ -41,7 +41,7 @@ h2
     Astro.logger.info(`{depth:${String(item.depth)}, slug:"${item.slug}", text:"${item.text}"},`);
 } */
 ---
-<Main matchHref="/archives">
+<Main matchHref={config.archives_path}>
     <Fragment slot="document-title">{post.data.title} | {config.title}</Fragment>
     <Fragment slot="html-head">
         {post.data.math && <MathConfs />}

@@ -56,7 +56,7 @@
                 {"icon": "fa fa-home", "name": "首页", "href": "/"},
                 {"icon": "fa fa-rectangle-list", "name": "分类", "href": "/categories"},
                 {"icon": "fa fa-tags", "name": "标签", "href": "/tags"},
-                {"icon": "fa fa-box-archive", "name": "文章列表", "href": "/archives"}
+                {"icon": "fa fa-box-archive", "name": "存档", "href": "/archives"}
             ]]
         },
         "menu_more": {
@@ -94,6 +94,11 @@
             "type": "string",
             "default": "/posts"
         },
+        "archives_path": {
+            "description": "Your path for archives. (Used for a.href in posts.)",
+            "type": "string",
+            "default": "/archives"
+        },
         "categories_path": {
             "description": "Your path for categories. (Used for a.href in posts.)",
             "type": "string",
@@ -106,7 +111,12 @@
         },
 
         "post_per_page": {
-            "description": "Amount of displayed posts on per page.",
+            "description": "Amount of displayed posts on per page.(At / (home))",
+            "type": "integer",
+            "default": 10
+        },
+        "archives_post_per_page": {
+            "description": "Amount of displayed posts on per page.(At /archives)",
             "type": "integer",
             "default": 10
         },
@@ -119,8 +129,8 @@
     },
     "required": [
         "title", "subtitle", "author", "lang", "menu",
-        "posts_path", "categories_path", "tags_path",
-        "post_per_page", "meta_generator"
+        "posts_path", "archives_path", "categories_path", "tags_path",
+        "post_per_page", "archives_post_per_page", "meta_generator"
     ],
     "additionalProperties": false
 }
