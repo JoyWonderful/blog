@@ -23,7 +23,7 @@ function activeTOC() {
     window.blogTOCItems[idx].classList.add("active");
 }
 
-function registerTOCTitle() {
+export function registerAsideTitle() {
     var sideBar = document.querySelector(".main-area .column aside");
     var sideBarTitle = sideBar.querySelector(".title");
     // 12 是 .aside top CSS 属性(top:12px)
@@ -38,9 +38,9 @@ function registerTOCTitle() {
 window.addEventListener("DOMContentLoaded", function() {
     registerHeadings();
     activeTOC();
-    registerTOCTitle();
+    registerAsideTitle();
 });
 window.addEventListener("scroll", function() {
     activeTOC();
-    registerTOCTitle();
+    registerAsideTitle();
 });
