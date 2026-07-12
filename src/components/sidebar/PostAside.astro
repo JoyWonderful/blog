@@ -116,6 +116,12 @@ const tocHTML:string = getTocHTML(tocWithChildren, 1);
             :is(&.active, &:has(.active)) > a {
                 font-weight: bold;
                 color: $color_text_4;
+                &:hover {
+                    color: $color_theme;
+                }
+                &:active {
+                    color: $color_7;
+                }
             }
         }
         a {
