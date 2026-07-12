@@ -10,7 +10,7 @@ blogPosts.sort((a:any, b:any) => {
 });
 ---
 
-<div class="title">共计 {blogPosts.length} 篇文章 | 最近更新</div>
+<div class="title">最近更新</div>
 <div class="recent-update">
     <ul>
         {blogPosts.slice(0,10).map((post:any) => { /* slice 从 0 开始（包括），一直到 10（不包括 10，即截取 0~9，最近更新的前 10 篇） */

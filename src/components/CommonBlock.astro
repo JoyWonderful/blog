@@ -1,4 +1,9 @@
+---
+const { title, subtitle } = Astro.props;
+---
 <div class="common-block">
+    {title && <h1>{title}</h1>}
+    {subtitle && <span class="subtitle">{subtitle}</span>}
     <slot />
 </div>
 
@@ -11,5 +16,20 @@
         border-radius: $border_radius;
         box-shadow: $box_shadow;
         background: #fff;
+        h1 {
+            display: block;
+            margin: 0;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        &:not(:has(.subtitle)) h1 {
+            border-bottom: none;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            display: block;
+            color: $color_text_1;
+            text-align: center;
+        }
     }
 </style>

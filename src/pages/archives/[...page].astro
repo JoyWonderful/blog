@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Main from "~/layouts/Main.astro";
 import ArchiveAside from "~/components/sidebar/ArchiveAside.astro";
+import CommonBlock from "~/components/CommonBlock.astro";
 import TimeLine from "~/components/TimeLine.astro";
 import PaginationBar from "~/components/PaginationBar.astro";
 import config from "~/config.json";
@@ -19,18 +20,21 @@ export const getStaticPaths = (async function({ paginate }) {
 
 const { page, blogPosts } = Astro.props;
 const posts = page.data;
+const pageTitle = config.menu.find((entry) => entry.href==config.archives_path)?.name;
 ---
 <Main matchHref={config.archives_path}>
-    <Fragment slot="document-title">{config.menu.find((entry) => entry.href==config.archives_path)?.name} | {config.title}</Fragment>
+    <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
     <Fragment slot="site-sidebar">
         <ArchiveAside blogPosts={blogPosts} />
     </Fragment>
 
-    <TimeLine
-        posts={posts}
-        isStart={page.currentPage==1 ? true : false}
-        isEnd={page.currentPage==page.lastPage ? true : false}
-    />
+    <CommonBlock title={page.currentPage==1 ? pageTitle : undefined} subtitle={page.currentPage==1 ? `共计 ${blogPosts.length} 篇文章` : undefined}>
+        <TimeLine
+            posts={posts}
+            isStart={page.currentPage==1 ? true : false}
+            isEnd={page.currentPage==page.lastPage ? true : false}
+        />
+    </CommonBlock>
     
     <PaginationBar page={page} />
 </Main>
