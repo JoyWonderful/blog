@@ -1,12 +1,13 @@
 ---
 import "~/styles/components/TimeLine.scss";
+import CommonBlock from "./CommonBlock.astro";
 import config from "~/config.json";
 
 const { posts, isStart, isEnd } = Astro.props;
 var appeared_year:Array<number> = [];
 ---
 
-<div class="timeline-block">
+<CommonBlock>
     <div class={isStart ? "timeline-start" : "timeline-connect-top"}></div>
     <ul class="timeline">
         {posts.map((post:any) => {
@@ -30,4 +31,4 @@ var appeared_year:Array<number> = [];
         {isEnd && <li class="end-margin"></li>}
     </ul>
     <div class={isEnd ? "timeline-end" : "timeline-connect-bottom"}></div>
-</div>
+</CommonBlock>

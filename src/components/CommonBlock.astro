@@ -1,0 +1,15 @@
+<div class="common-block">
+    <slot />
+</div>
+
+<style is:global lang="scss">
+    @use "../styles/variables" as *;
+
+    .common-block {
+        margin-top: $card_margin_top;
+        padding: 30px 40px;
+        border-radius: $border_radius;
+        box-shadow: $box_shadow;
+        background: #fff;
+    }
+</style>
