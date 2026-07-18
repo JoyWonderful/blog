@@ -1,0 +1,27 @@
+@use "../variables" as *;
+
+.common-block {
+    margin-top: $card_margin_top;
+    padding: 30px 40px;
+    border-radius: $border_radius;
+    box-shadow: $box_shadow;
+    background: #fff;
+    h1 {
+        display: block;
+        margin: 0;
+        text-align: center;
+        font-size: 1.5em;
+    }
+    &:not(:has(.subtitle)) h1 {
+        border-bottom: none;
+        margin-bottom: 10px;
+    }
+    .subtitle {
+        display: block;
+        color: $color_text_1;
+        text-align: center;
+    }
+    > :last-child {
+        margin-bottom: 0!important;
+    }
+}
