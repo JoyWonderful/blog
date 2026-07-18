@@ -67,10 +67,10 @@ $timeline_negative_left: 10px;
         content: "";
         position: relative;
         display: block;
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         background: $color_5;
-        left: -5px - $timeline_negative_left;
+        left: -6px - $timeline_negative_left;
         transition: background-color $transition_time;
     }
     &:hover::before {
@@ -129,7 +129,7 @@ ul.timeline {
         }
     }
     .year {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: bold; // 700
         position: relative;
         margin-top: 25px;

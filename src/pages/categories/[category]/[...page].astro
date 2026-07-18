@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import { getAllCategories } from "~/scripts/helpers/site-posts-stats";
 import Main from "~/layouts/Main.astro";
+import CategoryAside from "~/components/sidebar/CategoryAside.astro";
 import CommonBlock from "~/components/CommonBlock.astro";
 import TimeLine from "~/components/TimeLine.astro";
 import PaginationBar from "~/components/PaginationBar.astro";
@@ -53,6 +54,9 @@ page.data.forEach((postId:string) => {
 ---
 <Main matchHref={config.categories_path}>
     <Fragment slot="document-title">{pageTitle}: {category} | {config.title}</Fragment>
+    <Fragment slot="site-sidebar">
+        <CategoryAside matchCategory={category} />
+    </Fragment>
 
     <CommonBlock title={page.currentPage==1 ? `${pageTitle}: ${category}` : undefined} subtitle={page.currentPage==1 ? `共计 ${categoryPostsLength} 篇文章` : undefined}>
         <TimeLine
