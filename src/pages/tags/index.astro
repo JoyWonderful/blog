@@ -31,7 +31,7 @@ function getTagsCloud(): {tag:string, posts_size:number, font_size:number, opaci
 }
 const tagsCloud = getTagsCloud();
 ---
-<Main matchHref="/tags">
+<Main matchHref={config.tags_path}>
     <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
 
     <CommonBlock title={pageTitle} subtitle={`共计 ${tags.size} 个标签`}>
@@ -39,7 +39,7 @@ const tagsCloud = getTagsCloud();
             {tagsCloud.map((tagCloud) => {
                 return <a href={`${config.tags_path}/${tagCloud.tag}`}
                    class={`tag-cloud-item lv-${tagCloud.level}`}
-                   style={`font-size:${tagCloud.font_size.toFixed(3)}px;opacity:${tagCloud.opacity}`}>
+                   style={`font-size:${tagCloud.font_size.toFixed(3)}px;opacity:${tagCloud.opacity.toFixed(3)}`}>
                     {tagCloud.tag}
                     <span class="count">{tagCloud.posts_size}</span>
                 </a>;
