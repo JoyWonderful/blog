@@ -121,6 +121,40 @@
             "default": 10
         },
 
+        "tags_cloud": {
+            "description": "Configurations for tags cloud.",
+            "type": "object",
+            "properties": {
+                "min_font_size": {
+                    "description": "The min font size. Unit: px.",
+                    "type": "number",
+                    "default": 10
+                },
+                "max_font_size": {
+                    "description": "The max font size. Unit: px.",
+                    "type": "number",
+                    "default": 20
+                },
+                "max_opacity": {
+                    "description": "The max opacity.",
+                    "type": "number",
+                    "default": 1
+                },
+                "min_opacity": {
+                    "description": "The min opacity.",
+                    "type": "number",
+                    "default": 0.2
+                },
+                "max_level": {
+                    "description": "The max level. Level: 1 ~ max_level.",
+                    "type": "number",
+                    "default": 10
+                }
+            },
+            "additionalProperties": false,
+            "required": ["min_font_size", "max_font_size", "min_opacity", "max_opacity", "max_level"]
+        },
+
         "meta_generator": {
             "description": "Whether give metadata generator in <head>.",
             "type": "boolean",
@@ -130,6 +164,7 @@
     "required": [
         "title", "subtitle", "author", "lang", "menu",
         "posts_path", "archives_path", "categories_path", "tags_path",
+        "tags_cloud",
         "post_per_page", "archives_post_per_page", "meta_generator"
     ],
     "additionalProperties": false

@@ -22,7 +22,7 @@ export default defineConfig({
     output: "static", // 默认值
     build: {
         format: "file",
-        inlineStylesheets: "never"
+        inlineStylesheets: "auto"
     },
     markdown: {
         shikiConfig: {

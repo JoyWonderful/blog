@@ -1,0 +1,81 @@
+---
+import { getAllTags } from "~/scripts/helpers/site-posts-stats";
+import Main from "~/layouts/Main.astro";
+import CommonBlock from "~/components/CommonBlock.astro";
+import config from "~/config.json";
+
+const pageTitle = config.menu.find((entry) => entry.href==config.tags_path)?.name;
+const tags = getAllTags();
+
+// 参考 https://github.com/hexojs/hexo/blob/master/lib/plugins/helper/tagcloud.ts#L24 (hexo: MIT License)
+function getTagsCloud(): {tag:string, posts_size:number, font_size:number, opacity:number, level:number}[] {
+    var tags_sizes:Array<number> = [];
+    var tags_array = [...tags].sort((a, b) => { // 按照文章数排序
+        return a[1].length - b[1].length; // 前面一个的文章数比后面一个文章数少，返回负值
+    });
+    tags_array.forEach((tag) => {
+        if(!tags_sizes.includes(tag[1].length)) { // tag[1] 是文章 id 列表
+            tags_sizes.push(tag[1].length);
+        }
+    });
+    const { max_font_size, min_font_size, min_opacity, max_opacity, max_level } = config.tags_cloud;
+    return [...tags].map((tag) => { // 用原本的 Map 才能获得混乱的排序
+        var ratio = (tags_sizes.indexOf(tag[1].length) + 1) / tags_sizes.length;
+        var font_size = (max_font_size - min_font_size) * ratio + min_font_size;
+        var opacity = (max_opacity - min_opacity) * ratio + min_opacity;
+        var level = Math.round(ratio * max_level);
+        if(level == 0) level = 1;
+        // Astro.logger.info(`${tag[0]}: ${tag[1].length}篇, ${font_size}px, ${opacity}, lv${level}, ${ratio}`);
+        return {tag:tag[0], posts_size:tag[1].length, font_size:font_size, opacity:opacity, level:level};
+    });
+}
+const tagsCloud = getTagsCloud();
+---
+<Main matchHref="/tags">
+    <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
+
+    <CommonBlock title={pageTitle} subtitle={`共计 ${tags.size} 个标签`}>
+        <div class="tags-cloud">
+            {tagsCloud.map((tagCloud) => {
+                return <a href={`${config.tags_path}/${tagCloud.tag}`}
+                   class={`tag-cloud-item lv-${tagCloud.level}`}
+                   style={`font-size:${tagCloud.font_size.toFixed(3)}px;opacity:${tagCloud.opacity}`}>
+                    {tagCloud.tag}
+                    <span class="count">{tagCloud.posts_size}</span>
+                </a>;
+            })}
+        </div>
+    </CommonBlock>
+</Main>
+
+<style lang="scss">
+    @use "../../styles/variables" as *;
+    @use "../../styles/mixins" as *;
+    .tags-cloud {
+        text-align: center;
+        .tag-cloud-item { // a
+            display: inline-block;
+            margin: 10px;
+            border-bottom: 0;
+            transition: all $transition_time;
+            &::before {
+                @include fontawesome("\f02b"); // tag
+                margin-right: .2em;
+                color: $color_theme;
+            }
+            &:hover {
+                opacity: 1!important;
+            }
+        }
+        .count {
+            color: $color_text_0;
+            margin-left: .5em;
+            &::before {
+                content: "(";
+            }
+            &::after {
+                content: ")";
+            }
+        }
+    }
+</style>
