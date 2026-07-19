@@ -21,6 +21,11 @@ function activeTOC() {
         }
     });
     window.blogTOCItems[idx].classList.add("active");
+    window.blogTOCItems[idx].scrollIntoView({
+        behavior: "smooth",
+        container: "nearest", // 仅滚动最近的滚动祖先。不加上页面也跟着一起动了
+        block: "nearest" // 沿垂直方向将元素滚动至最近边缘。若元素更靠近滚动容器顶部，则对齐顶部；若更靠近底部，则对齐底部。此方式可最小化滚动距离。
+    });
 }
 
 export function registerAsideTitle() {
