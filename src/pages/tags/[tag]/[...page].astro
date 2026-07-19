@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import { getAllTags } from "~/scripts/helpers/site-posts-stats";
+import Main from "~/layouts/Main.astro";
+import CommonBlock from "~/components/CommonBlock.astro";
+import TimeLine from "~/components/TimeLine.astro";
+import PaginationBar from "~/components/PaginationBar.astro";
+import config from "~/config.json";
+
+export const getStaticPaths = (({paginate}) => {
+    const tags = getAllTags();
+    return [...tags].flatMap((tag) => {
+        return paginate(tag[1], { // tag[1] 为标签下所有文章
+            params: {tag: tag[0]}, // tag[0] 为标签名
+            props: {tagPostsLength: tag[1].length},
+            pageSize: config.archives_post_per_page
+        });
+    });
+}) satisfies GetStaticPaths;
+
+const pageTitle = config.menu.find((entry) => entry.href==config.tags_path)?.name;
+const { tag } = Astro.params;
+const { page, tagPostsLength } = Astro.props;
+
+var posts:any[] = [];
+const blogPosts = await getCollection("blogPosts");
+page.data.forEach((postId:string) => {
+    posts.push(blogPosts.find((post:any) => post.id==postId));
+});
+---
+<Main matchHref={config.tags_path}>
+    <Fragment slot="document-title">{pageTitle}: {tag} | {config.title}</Fragment>
+
+    <CommonBlock title={page.currentPage==1 ? `${pageTitle}: ${tag}` : undefined} subtitle={page.currentPage==1 ? `共计 ${tagPostsLength} 篇文章` : undefined}>
+        <TimeLine
+            posts={posts}
+            isStart={page.currentPage==1 ? true : false}
+            isEnd={page.currentPage==page.lastPage ? true : false}
+        />
+    </CommonBlock>
+    <PaginationBar page={page} />
+</Main>
