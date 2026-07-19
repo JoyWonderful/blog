@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import { getAllTags } from "~/scripts/helpers/site-posts-stats";
 import Main from "~/layouts/Main.astro";
+import TagAside from "~/components/sidebar/TagAside.astro";
 import CommonBlock from "~/components/CommonBlock.astro";
 import TimeLine from "~/components/TimeLine.astro";
 import PaginationBar from "~/components/PaginationBar.astro";
@@ -31,6 +32,9 @@ page.data.forEach((postId:string) => {
 ---
 <Main matchHref={config.tags_path}>
     <Fragment slot="document-title">{pageTitle}: {tag} | {config.title}</Fragment>
+    <Fragment slot="site-sidebar">
+        <TagAside matchTag={tag} />
+    </Fragment>
 
     <CommonBlock title={page.currentPage==1 ? `${pageTitle}: ${tag}` : undefined} subtitle={page.currentPage==1 ? `共计 ${tagPostsLength} 篇文章` : undefined}>
         <TimeLine

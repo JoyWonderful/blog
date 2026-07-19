@@ -1,0 +1,45 @@
+---
+import { getAllTags } from "~/scripts/helpers/site-posts-stats";
+import config from "~/config.json";
+
+const { matchTag } = Astro.props;
+const tags = getAllTags();
+---
+<div class="title">标签导览</div>
+<div class="tags-navigator">
+    {[...tags].map((tag) => {
+        var name = tag[0];
+        var href = `${config.tags_path}/${name}`;
+        if(matchTag == name) return <a href={href} class="active">{name}</a>
+        return <a href={href}>{name}</a>;
+    })}
+</div>
+
+<style lang="scss">
+    @use "../../styles/variables" as *;
+    @use "../../styles/mixins" as *;
+    .tags-navigator {
+        font-size: smaller;
+        text-align: center;
+        a {
+            margin: 0px 4px 2px 4px; // top right bottom left
+            border-bottom: 0;
+            &.active {
+                font-weight: bold; // 700
+            }
+            &::before {
+                @include fontawesome("\f02b"); // tag
+                font-size: smaller;
+                margin-right: 2px;
+                color: $color_theme;
+                transition: color $transition_time;
+            }
+            &:hover::before {
+                color: $color_7;
+            }
+            &.active::before {
+                color: $color_8;
+            }
+        }
+    }
+</style>
