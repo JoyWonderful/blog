@@ -1,7 +1,8 @@
 "use strict";
 
 export function registerCodeCopy() {
-    var codeBlockList = document.querySelectorAll("pre.astro-code");
+    // :not(div[class*=\"language-\"] > pre.astro-code) 是不选择已经注册过的代码块
+    var codeBlockList = document.querySelectorAll("pre.astro-code:not(div[class*=\"language-\"] > pre.astro-code)");
     codeBlockList.forEach((target) => {
         var lang = target.hasAttribute("data-language") ? target.getAttribute("data-language") : "plain";
         var container = document.createElement("div");
