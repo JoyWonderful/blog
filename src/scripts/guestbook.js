@@ -94,14 +94,14 @@ Sodesu.init({
 });
 
 var interval_id = setInterval(() => {
-    var comments_contents = document.querySelectorAll("#comment .sds-content > div:not(.reprocessed)");
+    var comments_contents = document.querySelectorAll("#comment .sds-content > div:not(:has(.reprocessed))");
     if(comments_contents.length > 0) { // 有未重新渲染过的评论
         comments_contents.forEach(async (content) => {
             const rendered = await processorReprocess.process(content.innerHTML);
             const html = rendered.toString();
             // console.debug(html);
-            content.classList.add("reprocessed");
             content.innerHTML = html;
+            content.childNodes[0].classList.add("reprocessed"); // 之所以这样做，是因为那个 div 加入后本身不会被替换，而是 div 内的内容被替换。
             content.querySelectorAll("pre.shiki")?.forEach((target) => {target.classList.add("astro-code");});
             registerCodeCopy();
         });
