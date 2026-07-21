@@ -30,12 +30,12 @@
     ],
     "menu_more": [
         {
-            "icon": "far fa-address-book",
+            "icon": "fa fa-address-book",
             "name": "友情链接",
             "href": "/friends"
         },
         {
-            "icon": "far fa-comments",
+            "icon": "fa fa-comments",
             "name": "留言簿",
             "href": "/guestbook"
         },
