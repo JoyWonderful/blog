@@ -1,0 +1,94 @@
+---
+import Main from "~/layouts/Main.astro";
+import FriendsAside from "~/components/sidebar/FriendsAside.astro";
+import CommonBlock from "~/components/CommonBlock.astro";
+import friends from "./friends.json";
+import config from "~/config.json";
+
+const matchHref = "/friends";
+const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
+---
+<Main matchHref={matchHref}>
+    <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
+    <Fragment slot="site-sidebar">
+        <FriendsAside />
+    </Fragment>
+
+    <CommonBlock title={pageTitle}>
+        <div class="friends-list">
+        {friends.map((friend) => {
+            return <a href={friend.url} class="friend" rel="noopener noreferer" target="_blank">
+                <img src={friend.avatar} class="avatar" />
+                <div class="info">
+                    <span class="line1">
+                        <span class="name">{friend.name}</span>
+                        {friend.tag && <span class="tag">{friend.tag}</span>}
+                    </span>
+                    <span class="bio" title={friend.bio}>{friend.bio}</span>
+                </div>
+            </a>;
+        })}
+        </div>
+    </CommonBlock>
+</Main>
+
+<style lang="scss">
+    @use "../styles/variables" as *;
+    @use "../styles/mixins" as *;
+    .friends-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5em;
+        .friend { // a
+            border: 1px solid $color_text_0;
+            padding: $indent_top;
+            display: flex;
+            column-gap: .875em;
+            min-width: 0; // 正常收缩并显示省略号，不溢出容器
+            border-radius: $border_radius_0;
+            @include activeShade($bdradius:$border_radius_0, $opacity:0.1, $opacity_active:0.3);
+            &::before {
+                z-index: 0;
+            }
+            * {
+                position: relative;
+                z-index: 1;
+            }
+        }
+        .info {
+            overflow: hidden;
+            display: flex;
+            flex-flow: column;
+            align-content: space-between;
+        }
+        .info > span {
+            display: block;
+        }
+        .line1 {
+            margin-bottom: .5em;
+        }
+        .name {
+            font-size: larger;
+            font-weight: bold; // 700
+            // color: $color_text_3;
+        }
+        .tag {
+            margin-left: .5em;
+            background: $color_theme;
+            color: #fff;
+            padding: .1em;
+            border-radius: $border_radius_0;
+        }
+        .bio {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            color: $color_text_0;
+        }
+        .avatar {
+            width: 75px;
+            height: 75px;
+            margin: 0;
+        }
+    }
+</style>

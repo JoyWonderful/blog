@@ -1,0 +1,35 @@
+---
+import { Markdown } from "astro-remote";
+import config from "~/config.json";
+
+const asideMd = 
+`请到[${config.menu_more.find((entry) => entry.href=="/guestbook")?.name}](/guestbook)提出**收录友链**的请求。  
+最好为 \`JSON\` 格式。  
+包含：
+
+- 名称 \`name\`；
+- 简介 \`bio\`；
+- 头像 \`avatar\`；
+- 链接 \`url\`；
+- 链接类型（如 GitHub, Blog） \`type\`。`;
+---
+<div class="title">收录须知</div>
+<div style="font-size:smaller">
+    <Markdown content={asideMd} />
+</div>
+
+{/* 之所以全局，是因为 Markdown 生成的东西不会加上 data-astro-* 属性 */}
+<style lang="scss" is:global>
+    .column aside {
+        ul {
+            list-style-position: inside;
+            padding: 0;
+        }
+        p {
+            margin-bottom: 5px;
+        }
+        > div:not(.title) > :last-child {
+            margin-bottom: 0;
+        }
+    }
+</style>
