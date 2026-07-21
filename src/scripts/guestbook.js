@@ -12,7 +12,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeShiki from "@shikijs/rehype";
 import rehypeStringify from "rehype-stringify";
 import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
-import { registerCodeCopy } from "./main";
+import { registerCodeCopy } from "./code-copy";
 
 const processor = unified()
     // .use(rehypeParse)

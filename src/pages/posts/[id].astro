@@ -58,4 +58,8 @@ h2
         /> {/*将 <tabs></tabs> 替换为 Astro 组件 !!plugin remark-flexible-containers*/}
     </PostBlock>
     <PostFooter id={id} />
+
+    <Fragment slot="html-body-script">
+        <script src="~/scripts/code-copy.js"></script>
+    </Fragment>
 </Main>

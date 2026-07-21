@@ -49,4 +49,8 @@ for(const post of posts) {
     })}
 
     <PaginationBar page={page} />
+    
+    <Fragment slot="html-body-script">
+        <script src="~/scripts/code-copy.js"></script>
+    </Fragment>
 </Main>
