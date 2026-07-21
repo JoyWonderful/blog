@@ -5,8 +5,8 @@ import CommonBlock from "~/components/CommonBlock.astro";
 import MathConfs from "~/components/MathConfs.astro";
 import config from "~/config.json";
 
-const matchHref = "/guestbook"
-const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name
+const matchHref = "/guestbook";
+const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
 ---
 <Main matchHref={matchHref}>
     <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
