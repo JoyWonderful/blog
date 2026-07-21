@@ -13,13 +13,25 @@
             "file_path": ["/lxgwwenkaimonogb-regular/result.min.css"]
         }]
     },
-    "katex_css": {
+    "katex": {
         "base_url": "https://registry.npmmirror.com",
         "path_format": "/:package/:version/files/:file_path",
         "package_list": [{
             "package": "katex",
             "version": "0.17.0",
+            "$comment": "用不了最新的(>=0.18.0)，因为 css 改了 prefix。",
+            "$comment": "但是 rehype-katex 又没改 katex 依赖。",
+            "$comment": "https://github.com/KaTeX/KaTeX/pull/4229/ https://github.com/KaTeX/KaTeX/releases/tag/v0.18.0",
             "file_path": ["/dist/katex.min.css"]
+        }]
+    },
+    "comment": {
+        "base_url": "https://s4.zstatic.net",
+        "path_format": "/npm/:package@:version/:file_path",
+        "package_list": [{
+            "package": "sodesu-comment",
+            "version": "0.5.1",
+            "file_path": ["/dist/sodesu-comment.css", "/dist/sodesu.aio.umd.js"]
         }]
     }
 }

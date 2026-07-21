@@ -2,6 +2,8 @@
 import { getSourcePathList } from "~/scripts/helpers/source-path";
 ---
 <Fragment>
-    {getSourcePathList(["katex_css"]).map((source) => <link rel="stylesheet" href={source} />)}
+    {getSourcePathList(["katex"]).map((source) => {
+        if(source.endsWith(".css")) return <link rel="stylesheet" href={source} />;
+    })}
     <script id="config-katex-enabled" type="application/json" is:inline>true</script>
 </Fragment>

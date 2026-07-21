@@ -1,0 +1,73 @@
+---
+import { getSourcePathList } from "~/scripts/helpers/source-path";
+import Main from "~/layouts/Main.astro";
+import CommonBlock from "~/components/CommonBlock.astro";
+import MathConfs from "~/components/MathConfs.astro";
+import config from "~/config.json";
+
+const matchHref = "/guestbook"
+const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name
+---
+<Main matchHref={matchHref}>
+    <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
+    <Fragment slot="html-head">
+        {getSourcePathList(["comment"]).map((source) => {
+            if(source.endsWith(".css")) return <link rel="stylesheet" href={source} />;
+        })}
+        <MathConfs /> {/* 应用 katex 样式 */}
+    </Fragment>
+
+    <CommonBlock title={pageTitle}>
+        <div id="comment"></div>
+    </CommonBlock>
+
+    <Fragment slot="html-body-script">
+        {getSourcePathList(["comment"]).map((source) => {
+            if(source.endsWith(".js")) return <script src={source} is:inline />;
+        })}
+        <script src="~/scripts/guestbook.js"></script>
+    </Fragment>
+</Main>
+
+<style lang="scss" is:global>
+    @use "../styles/variables" as *;
+    #comment .font-sans {
+        font-family: $font_lxgw!important;
+    }
+    #comment {
+        --sds-font-size: inherit;
+        // --sds-white: #fff;
+        // --sds-light-grey: #999;
+        // --sds-dark-grey: #666;
+        --sds-theme-color: #f18913; // 在这里用 sass 变量会爆炸
+        --sds-active-color: #cc6906;
+        // --sds-color: #444;
+        // --sds-bgcolor: #fff;
+        // --sds-bgcolor-light: #f8f8f8;
+        // --sds-bgcolor-hover: #f0f0f0;
+        // --sds-border-color: #ddd;
+        // --sds-disable-bgcolor: #f8f8f8;
+        // --sds-disable-color: #000;
+        // --sds-code-bgcolor: #282c34;
+        // --sds-bq-color: #f0f0f0;
+        // --sds-avatar-size: 3.25rem;
+        // --sds-avatar-radius: 50%;
+        // --sds-m-avatar-size: calc(var(--sds-avatar-size) * 9 / 13);
+        --sds-badge-color: #ffab3d;
+        // --sds-badge-font-size: 0.75em;
+        // --sds-info-bgcolor: #f8f8f8;
+        // --sds-info-color: #999;
+        // --sds-info-font-size: 0.625em;
+        // --sds-border: 1px solid var(--sds-border-color);
+        a {
+            border-bottom: 0;
+        }
+        hr {
+            outline: 0;
+            border: 0;
+        }
+        .text-sm {
+            font-size: .9rem!important;
+        }
+    }
+</style>
