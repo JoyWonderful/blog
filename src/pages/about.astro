@@ -18,86 +18,57 @@ const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
         <strong>NPM Dependencies:</strong>
         <pre style="margin-top:0;margin-bottom:30px;"><code>{
         Object.keys(dependencies).map((dep) => {
-            return (<><a href={`https://npmmirror.com/package/${dep}`} rel="noopener noreferer" target="_blank">{dep}</a>: {dependencies[dep]}<br /></>)
+            return (<Fragment><a href={`https://npmmirror.com/package/${dep}`} rel="noopener noreferer" target="_blank">{dep}</a>: {dependencies[dep]}<br /></Fragment>)
         })}</code></pre>
 
         <strong>Site Deploy Status:</strong> <span style="opacity:0.7">(deployed on CloudFlare Pages)</span>
         <div id="last-deploy-info">
             <span id="dpi-waiting">Please wait...</span>
-            <div id="dpi-cmt-id"></div>
-            <div id="dpi-stat"></div>
-            <div id="dpi-durat"></div>
-            <div id="dpi-update"></div>
         </div>
+        <style is:global lang="scss">
+            @use "../styles/variables" as *;
+            #last-deploy-info {
+                white-space: nowrap;
+                overflow-x: auto;
+                font-family: $font_mono;
+                &[data-fetch-error] {
+                    color: #db0000;
+                }
+            }
+            #dpi-waiting {
+                color: $color_text_0;
+            }
+        </style>
+    </CommonBlock>
+    <Fragment slot="html-body-script">
         <script>
             // https://docs.github.com/zh/rest/checks/runs?apiVersion=2022-11-28#list-check-runs-for-a-git-reference
-            fetch("https://api.github.com/repos/JoyWonderful/blog/commits/heads/main/check-runs").then((result) => {
+            fetch("https://api.github.com/repos/JoyWonderful/blog/commits/heads/main/check-runs?check_name=Cloudflare%20Pages")
+            .then((result) => {
+                var deploy_element = document.querySelector("#last-deploy-info");
+                if(!deploy_element) return;
+
                 if(!result.ok) {
                     console.error(result.status);
-                    var emsgd = document.querySelector("#last-deploy-info");
-                    emsgd.innerHTML = `Failed to fetch deploy data.<br>The server returned a status of ${result.status}.`;
-                    emsgd.style.color = "#bd0000";
+                    deploy_element.setAttribute("data-fetch-error", "");
+                    deploy_element.innerHTML = `Failed to fetch deploy data.<br>The server returned a status of ${result.status}.`;
                 }
+
                 var remain = result.headers.get("X-Ratelimit-Remaining"); // 获取速率限制
                 console.debug("Ratelimit remaining: " + remain + "\nRate limit reset after: " + result.headers.get("X-Ratelimit-Reset"));
                 if(remain == "0") {
                     console.debug("Too many requests.");
-                    var emsgd = document.querySelector("#last-deploy-info");
-                    emsgd.innerHTML = `The number of requests is out of range.<br>Rate limit reset after: ${result.headers.get("X-Ratelimit-Reset")}.`;
-                    emsgd.style.color = "#bd0000";
+                    deploy_element.setAttribute("data-fetch-error", "");
+                    deploy_element.innerHTML = `The number of requests is out of range.<br>Rate limit reset after: ${result.headers.get("X-Ratelimit-Reset")}.`;
                 }
+
                 return result.json();
             }).then((data) => {
-                document.querySelector("#dpi-waiting").style.display = "none";
-
-                var lrun = data.check_runs[0];
-                var cmt_id = document.querySelector("#dpi-cmt-id"), stat = document.querySelector("#dpi-stat"), durat = document.querySelector("#dpi-durat"), update = document.querySelector("#dpi-update");
-
-                const d1 = new Date(lrun.completed_at), d2 = new Date(lrun.started_at);
-                const totdura = (d1.getTime() - d2.getTime()) / 1000;
-
-                if(lrun.conclusion == null) var statstr = lrun.status;
-                else var statstr = lrun.conclusion;
-                var staticon = '<i class="fa-solid fa-question fa-fw fa-sm" style="color:#111;margin-left:5px"></i>';
-                if(statstr == "failure") staticon = '<i class="fa fa-xmark fa-fw fa-sm" style="color:#d1242f;margin-left:5px"></i>';
-                else if(statstr == "success" || statstr == "completed") staticon = '<i class="fa fa-check fa-fw fa-sm" style="color:#1a7f37;margin-left:5px"></i>';
-                else if(statstr == "in_progress" || statstr == "queued" || statstr == "waiting") staticon = '<i class="far fa-circle-dot fa-fw fa-sm" style="color:#dbab0a;margin-left:5px"></i>';
-                else if(statstr == "skipped" || statstr == "cancelled") staticon = '<i class="fa fa-ban fa-sm fa-fw fa-rotate-90" style="color:#656d76;margin-left:5px"></i>';
-
-                cmt_id.style.borderRight = "2px dashed #444";
-                cmt_id.style.paddingRight = "25px";
-                cmt_id.innerHTML = `<span class="ititle">Run_Id: </span><a href="${lrun.html_url}" target="_blank">${lrun.id}</a><br><span class="ititle">Commit: </span><a href="https://github.com/JoyWonderful/blog/commit/${lrun.head_sha}" target="_blank">${lrun.head_sha.slice(0, 7)}</a>`;
-                stat.innerHTML = `<span class="ititle">Status</span><br><span class="indexcnt">${statstr}</span>${staticon}`;
-                durat.innerHTML = `<span class="ititle">Total Duration</span><br><span class="indexcnt">${totdura}<span style="opacity:0.7;">sec</span></span>`;
-                update.innerHTML = `<span class="ititle">Created At</span><br><span class="indexcnt">${d2.getFullYear()}-${d2.getMonth()+1}-${d2.getDate()} ${d2.getHours()}:${d2.getMinutes()}:${d2.getSeconds()}</span>`;
+                document.querySelector("#dpi-waiting")?.remove();
+                var deploy_element = document.querySelector("#last-deploy-info");
+                if(!deploy_element) return;
+                deploy_element.innerHTML = data.check_runs[0].output.summary.replace(/\[View logs\]\(https?:\/\/.+\)/, "");
             });
         </script>
-        <style is:global>
-            div#last-deploy-info {
-                display: flex;
-                white-space: nowrap;
-                overflow-x: auto;
-                margin-bottom: 20px;
-            }
-            div#last-deploy-info div {
-                margin-right: 25px;
-            }
-            div#last-deploy-info span.ititle {
-                color: #888;
-            }
-            div#last-deploy-info span.indexcnt {
-                color: #111;
-            }
-            div#last-deploy-info span, div#last-deploy-info a {
-                font-family: 'Cascadia Code', Consolas, Menlo, monospace;
-                border-bottom: 1px solid transparent;
-            }
-            div#last-deploy-info a:hover {
-                border-bottom-color: inherit;
-            }
-            div#last-deploy-info #dpi-waiting {
-                color: #999;
-            }
-        </style>
-    </CommonBlock>
+    </Fragment>
 </Main>
