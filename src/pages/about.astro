@@ -13,6 +13,7 @@ const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
 
     <CommonBlock title={pageTitle} subtitle="从这里了解到关于所有的事情？不可能的。">
         <Content />
+
         <p><strong>Version:</strong><br />Built with {Astro.generator}.</p>
 
         <strong>NPM Dependencies:</strong>
@@ -63,6 +64,12 @@ const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
                 }
 
                 return result.json();
+            }, (err) => {
+                var deploy_element = document.querySelector("#last-deploy-info");
+                if(!deploy_element) return;
+                console.error(err);
+                deploy_element.setAttribute("data-fetch-error", "");
+                deploy_element.innerHTML = `Failed to fetch deploy data.<br>${err}`;
             }).then((data) => {
                 document.querySelector("#dpi-waiting")?.remove();
                 var deploy_element = document.querySelector("#last-deploy-info");
