@@ -2,11 +2,11 @@
 这个博客主要就是放一些我的见闻和看法，以及**一大堆**(课程)?.笔记的。  
 你既然看到这里了，不如就在[留言簿](/guestbook)**留个言**吧，让我知道有人来过。
 
-以及，这个站点是我用 [Astro](https://astro.build/) *手搓*的。相当于重构了原来的 [hexo](https://hexo.io/) 博客，加载速度有所提高，代码没那么屎山了。  
+以及，这个站点是我用 [Astro](https://astro.build/) *手搓*的。相当于重构了原来的 [Hexo](https://hexo.io/) 博客，加载速度有所提高，代码没那么屎山了。  
 它长得很像 [hexo-theme-next 的 Gemini](https://theme-next.js.org/)，这是由于我很喜欢这个主题~~，并且 CSS 抄起来更方便~~。  
 好吧，我在用 Scss/Sass 写样式，我认为它比 Stylus 有更明确的规范。因此，我基本上只复用了设计和操作逻辑，代码全是自己写的。
 
-源代码可见于 [GitHub](https://github.com/JoyWonderful/blog)，使用 [GPL-3.0-or-layter](https://choosealicense.com/zh/licenses/gpl-3.0/) 许可。  
+源代码可见于 [GitHub](https://github.com/JoyWonderful/blog)，使用 [GPL-3.0-or-later](https://choosealicense.com/zh/licenses/gpl-3.0/) 许可。  
 欢迎用它作为你的 Astro 博客模板，~~先点个 Star 再 Fork 吧，~~但恕不提供详尽文档。
 
 ### 有关我
