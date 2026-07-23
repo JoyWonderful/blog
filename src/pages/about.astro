@@ -17,7 +17,7 @@ const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
         <p><strong>Version:</strong><br />Built with {Astro.generator}.</p>
 
         <strong>NPM Dependencies:</strong>
-        <pre style="margin-top:0;margin-bottom:30px;"><code>{
+        <pre style="margin-top:0;margin-bottom:30px;overflow-x:auto"><code>{
         Object.keys(dependencies).map((dep) => {
             return (<Fragment><a href={`https://npmmirror.com/package/${dep}`} rel="noopener noreferer" target="_blank">{dep}</a>: {dependencies[dep]}<br /></Fragment>)
         })}</code></pre>
