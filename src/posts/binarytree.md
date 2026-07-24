@@ -32,7 +32,7 @@ math: true
 
 例如，下面的图片就是一个二叉搜索树(csAcademy graph editor 炸了，只能用 mermaid 生成的图片凑合)：
 
-{% cdnimg bitree-search.png, bittreeSearch.png %}
+![bitree-search](https://src-jywon.pages.dev/img/blog/binarytree/bittreeSearch.png)
 
 ### 平衡二叉树
 这里以平衡树中的 AVL 树来说。它的**左子树的深度和右子树的深度的差不大于** $1$。例如完全二叉树就是衡二叉树。  
@@ -53,7 +53,7 @@ math: true
 
 这是一个完美（满）二叉树，也是完全二叉树。
 
-{% cdnimg tree, tree.png %}
+![tree](https://src-jywon.pages.dev/img/blog/binarytree/tree.png)
 
 可以发现其结点符合上面的规则。
 

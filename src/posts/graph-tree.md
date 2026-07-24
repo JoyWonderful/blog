@@ -25,14 +25,14 @@ math: true
 
 ### 判断一张图是否为树
 树最重要的就是**每两个结点之间有且只有一条路径可以到达**，也就是说，不可以形成环，不可以在一个树中无法到达所有结点。例如，下面就是一个树：
-{% cdnimg graph-tree-1.png, graphTree1.png %}
+![graph-tree-1](https://src-jywon.pages.dev/img/blog/graph-tree/graphTree1.png)
 下面两张图不是树，他们分别违反了“不可以形成环”、“不可以在一个树中无法到达所有结点”。
-{% cdnimg err-tree1, errTree1.png %}
-{% cdnimg err-tree2, errTree2.png %}
+![err-tree1](https://src-jywon.pages.dev/img/blog/graph-tree/errTree1.png)
+![err-tree2](https://src-jywon.pages.dev/img/blog/graph-tree/errTree2.png)
 
 ### 更多的概念
 首先放一张图：
-{% cdnimg lizi, lizi.png %}
+![lizi](https://src-jywon.pages.dev/img/blog/graph-tree/lizi.png)
 
 以这张图为例，来说下面的概念吧。
 
@@ -94,4 +94,4 @@ n 叉树中，又出现了一个**二叉树 Binary Tree** 这么个奇怪的概�
 
 <p id="tree-root-node2">假设根结点为 2 时的情况：</p>
 
-{% cdnimg node2, node2.png %}
+![node2](https://src-jywon.pages.dev/img/blog/graph-tree/node2.png)

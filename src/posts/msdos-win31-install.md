@@ -45,7 +45,7 @@ tags: Other-Tag
 3. 要先把 `DISK1` 目录下的 `IO.SYS` 和 `MSDOS.SYS` 这两个文件先后拖进 UltraISO。（并且设置IO.SYS为引导文件，我测出来好像不设也行）然后再把其他的所有文件拖进 UltraISO；
 4. 保存为 `DISK1.ima`。（`.ima`,`.img` 好像无所谓？）
 
-{% cdnimg uiso, uiso.png, loading="lazy" %}
+![uiso](https://src-jywon.pages.dev/img/blog/msdos-win31-install/uiso.png)
 
 :::note{.warning} 一定要先把 IO.SYS 和 MSDOS.SYS 加进去
 
@@ -68,7 +68,7 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 创建虚拟机选择 `其他`->`MS-DOS` 就行。  
 要添加软盘驱动器，并且在开机前先换上 `DISK1.ima`。
 
-{% cdnimg add-floppy-driver, floppy.png, loading="lazy" %}
+![add-floppy-driver](https://src-jywon.pages.dev/img/blog/msdos-win31-install/floppy.png)
 
 开始安装之前要先分区磁盘并且格式化。  
 **分区**：
@@ -80,7 +80,7 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 5. 输入Y后，回车；
 6. 继续回车，虚拟机就会重新启动。
 
-{% cdnimg fdisk, fdisk.png, loading="lazy" %}
+![fdisk](https://src-jywon.pages.dev/img/blog/msdos-win31-install/fdisk.png)
 
 **格式化**：
 
@@ -89,12 +89,12 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 3. 选择 `Y`；
 4. 磁盘卷标命名可以随便取，或者直接默认回车。
 
-{% cdnimg format-c, format.png, loading="lazy" %}
+![format-c](https://src-jywon.pages.dev/img/blog/msdos-win31-install/format.png)
 
 然后就可以开始**安装**了。（可以先重启一下）  
 不重启就输入 `A:` 和 `setup`，进入那个蓝色的安装界面。按提示换上对应的软盘（映像）就行。
 
-{% cdnimg dos-setup, dossetup.png, loading="lazy" %}
+![dos-setup](https://src-jywon.pages.dev/img/blog/msdos-win31-install/dossetup.png)
 
 
 #### 中文系统（可选）
@@ -109,7 +109,7 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 之后，可以输入 `pdos` 加载中文环境，`Ctrl`+`Space` 切换中英文输入，`Ctrl`+`Shift` 切换输入法。（和现在电脑的输入法切换热键是一模一样的）  
 输入 `quit` 可以退出中文环境。
 
-{% cdnimg pdos, pdos.png, loading="lazy" %}
+![pdos](https://src-jywon.pages.dev/img/blog/msdos-win31-install/pdos.png)
 
 ## Windows
 
@@ -119,11 +119,11 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 由于没法给 MS-DOS 安装 *VMware Tools*，而且它似乎读不了光盘，只能读文件系统为 FAT16 的磁盘。Windows 10 还没有 FAT16 这个格式化选项，只能用 *DG 专业版*了。
 
 - 打开 DiskGenius（[专业版](https://down.hotpe.top/HotProgMods/%E7%A3%81%E7%9B%98%E5%B7%A5%E5%85%B7/DiskGenius%E4%B8%93%E4%B8%9A%E7%89%88_hjinke_6.0.1.1645_%E4%B8%93%E4%B8%9A%E5%88%86%E5%8C%BA%E8%BD%AF%E4%BB%B6.HPM)，按 7z 压缩包打开），选择 `磁盘`->`新建虚拟磁盘文件`->`新建 VMware 虚拟磁盘文件`。大小选择定为 1GB 够用了。  
-  {% cdnimg vmdk-create, vmdkcreate.png, loading="lazy" %}
+  ![vmdk-create](https://src-jywon.pages.dev/img/blog/msdos-win31-install/vmdkcreate.png)
 - 选中虚拟磁盘的“空闲”部分，选择上方工具栏 `建立新分区`，文件系统选 **FAT16**，其他默认。完成后选择 `保存更改`。  
-  {% cdnimg vmdk-partition, vmdkpartition.png, loading="lazy" %}
+  ![vmdk-partition](https://src-jywon.pages.dev/img/blog/msdos-win31-install/vmdkpartition.png)
 - 提示是否立即格式化“未格式化”部分，选择 `是`。
-  {% cdnimg vmdk-format, vmdkformat.png, loading="lazy" %}
+  ![vmdk-format](https://src-jywon.pages.dev/img/blog/msdos-win31-install/vmdkformat.png)
 - 选中磁盘“主分区”部分，将 `windows31` 文件夹复制（拖）进去，“文件复制选项”窗口全默认。将该文件夹命名为 `window31`。（防止 8.3 命名限制）
 - 选择 `磁盘`->`关闭虚拟磁盘文件`。
 
@@ -140,9 +140,9 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 
 把制作好的虚拟磁盘 `vmdk` 文件挂到虚拟机上。打开 MS-DOS 6.22，输入 `D:`（假如提示找不到，那你可能上面的步骤做错了）。再输入 `setup`。进入蓝色的 Windows Setup。按步骤操作即可。
 
-{% cdnimg window-install-command, wincommand.png, loading="lazy" %}
-{% cdnimg windows-setup, setup.png, loading="lazy" %}
-{% cdnimg windows-setup-gui, setupgui.png, loading="lazy" %}
+![window-install-command](https://src-jywon.pages.dev/img/blog/msdos-win31-install/wincommand.png)
+![windows-setup](https://src-jywon.pages.dev/img/blog/msdos-win31-install/setup.png)
+![windows-setup-gui](https://src-jywon.pages.dev/img/blog/msdos-win31-install/setupgui.png)
 
 ### Windows 自启动
 
@@ -188,14 +188,14 @@ $%我现在已经用上 Ubuntu 了。$
 
 按下 `Ctrl`+`Shift` 不放，选择 `帮助(H)`->`关于程序管理器(A)...`，点几下 Windows 徽标，再点确定，多重复几次，就能看到下面的东西：
 
-{% cdnimg easter-flag, easteregg.png, loading="lazy" %}
+![easter-flag](https://src-jywon.pages.dev/img/blog/msdos-win31-install/easteregg.png)
   
-{% cdnimg easter-bradsilverberg, easter1.png, loading="lazy"; class="pixel" %}
+![easter-bradsilverberg](https://src-jywon.pages.dev/img/blog/msdos-win31-install/easter1.png; class="pixel")
 
 <p style="overflow-y:auto">
 <span style="position:sticky;left:0">所有可能出现的“人”“物”：&nbsp;&nbsp;（请滑动）</span>  
 
-{% cdnimg easter-all-of-the-people, easterall.png, loading="lazy"; class="pixel p1" %}
+![easter-all-of-the-people](https://src-jywon.pages.dev/img/blog/msdos-win31-install/easterall.png; class="pixel p1")
 
 </p>
 

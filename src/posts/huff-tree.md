@@ -20,7 +20,7 @@ categories: CourseNotes
 
 ## 哈夫曼树的构建
 前面写了，哈夫曼树的带权路径长度最小，若想带权路径最小，则权值小的结点的路径长，权值大的结点路径短。哈夫曼树构建的结点都必须是叶子结点，例如用 1 2 5 6 构建的哈夫曼树是这样的：
-{% cdnimg 哈夫曼树示例, example.png %}
+![哈夫曼树示例](https://src-jywon.pages.dev/img/blog/huff-tree/example.png)
 这个树的带权路径长度为 25。
 
 构造过程：
@@ -29,7 +29,7 @@ categories: CourseNotes
 3. 重复以上步骤，直至达到要求。
 
 演示：
-{% cdnimg demo, demo.png %}
+![demo](https://src-jywon.pages.dev/img/blog/huff-tree/demo.png)
 
 ## 哈夫曼编码
 基于哈夫曼树，按照字符出现的频率（也就是哈夫曼树中的权值）进行二进制编码。  

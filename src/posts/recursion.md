@@ -130,7 +130,7 @@ int main()
 ```
 
 但是，递归并不是刚完成就返回，而是**完成了整个分支**才返回。以 $n=3$ 为例，画个上面那个递归函数的图：
-{% cdnimg recur-stack, recurStack.svg %}
+![recur-stack](https://src-jywon.pages.dev/img/blog/recursion/recurStack.png)
 （说明：圆圈中的数字是前进的顺序，从小到大；实线箭头和虚线箭头先走实线，走完以后再走虚线；箭头上的数字代表输出的值。
 
 ## 递归的分治思想
@@ -203,10 +203,10 @@ int main()
 
 但是，对角线的标记比较难弄，对角线似乎无法打标记。对角线的标记并不是无解，对角线的 (x,y) 是有规律的。引用原文图片来找规律。  
 **先看右斜的对角线有什么规律：**  
-{% cdnimg blue-bhh, blueBhh.jpg %}
+![blue-bhh](https://src-jywon.pages.dev/img/blog/recursion/blueBhh.jpg)
 可以看到，中间一条蓝色的线对应圈起来的坐标，(3,3) (5,5)；靠左一条蓝色的线对应划线的坐标，(4,2) (6,4)。不难看出，$3-3=0=5-5=0; \hspace{5px} 4-2=2=6-4=2$。可见，同一条右斜对角线上，x 坐标减 y 坐标的绝对值相等。但是相对的对角线上x 坐标减 y 坐标的绝对值也一样，这就比较麻烦。C++ 不能用负数，也不能两条对角线都是同一个标记。老师给了我们一个办法，将他们的差加上 20（别的数也行），问题就解决了。  
 **再看左斜的对角线有什么规律：**  
-{% cdnimg red-bhh, redBhh.jpg %}
+![red-bhh](https://src-jywon.pages.dev/img/blog/recursion/redBhh.jpg)
 同上，中间一条对应 (2,5) (5,2)，左上一条对应 (1,3) (3,1)。与右斜的对角线不同，它们不是差有规律而是和有规律。$2+5=7=5+2=7; \hspace{5px} 1+3=4=3+1=4$。那么，打标记时将 x+y 作为下标即可。
 
 加上<a href="/posts/dfs" style="border-bottom:none">深搜</a>，代码就出来了：

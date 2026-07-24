@@ -75,13 +75,13 @@ int find(int num)
 **按秩合并**（启发式合并）：
 每次查找时，深度（秩）影响查找的速度。当一个深度较大的集合合并到深度较小的集合中时，它的深度一定会加一，就像这样：
 
-> {% cdnimg mrg-wrong, mrgWrong.png %}  
+> ![mrg-wrong](https://src-jywon.pages.dev/img/blog/disjoint-set-union/mrgWrong.png)  
 > \[1, 2, 3, 4\] 这个集合深度为 4；\[5, 6\] 这个集合深度为 2；将 1 的父结点设为 5 合并后整个集合深度为 5。  
 > 深度加一，这不利于查找
 
 当深度较小的集合合并到较大的集合中，深度才不会加深（也就保持在较深集合的深度）：
 
-> {% cdnimg mrg-azhb, mrgAzhb.png %}  
+> ![mrg-azhb](https://src-jywon.pages.dev/img/blog/disjoint-set-union/mrgAzhb.png)  
 > 两个集合同上。将 5 的父结点设为 1，深度还是 4。  
 > 查找集合 \[1, 2, 3, 4\] 中任意一个结点，花费时间不变。
 

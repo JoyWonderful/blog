@@ -7,6 +7,7 @@ import Main from "~/layouts/Main.astro";
 import PostAside from "~/components/sidebar/PostAside.astro";
 import PostBlock from "~/components/PostBlock.astro";
 import Tabs from "~/components/post-tags/Tabs.astro";
+import ImgPerf from "~/components/post-tags/ImgPerf.astro";
 import PostFooter from "~/components/PostFooter.astro";
 import MathConfs from "~/components/MathConfs.astro";
 import config from "~/config.json";
@@ -54,7 +55,10 @@ h2
     <PostBlock frontMatter={post.data} id={id} isTitleLink={false}>
         <Markup
             content={post.rendered.html}
-            components={{tabs: Tabs}}
+            components={{
+                tabs: Tabs,
+                img: ImgPerf
+            }}
         /> {/*将 <tabs></tabs> 替换为 Astro 组件 !!plugin remark-flexible-containers*/}
     </PostBlock>
     <PostFooter id={id} />

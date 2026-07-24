@@ -97,4 +97,4 @@ int main()
 中序遍历：<code><span style="border: solid 1px #777; border-radius: 2px;">4 <span style="border-bottom: solid 2px #ccc;">2</span></span> <span style="border-bottom: solid 2px #999;">1</span> <span style="border: solid 1px #555; border-radius: 2px;">5 <span style="border-bottom: solid 2px #111;">3</span> 6</span></code>
 
 最终，得到这样一个树：
-{% cdnimg graph, 1.png %}
+![graph](https://src-jywon.pages.dev/img/blog/binarytree-fme/1.png)

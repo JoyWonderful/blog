@@ -63,7 +63,7 @@ Edge 是这样的，Chrome 也基本一样。
 如果没问题，新建标签页会跳到 chrome-search://local-ntp/local-ntp.html。（标签页会闪一下）
 
 ## 后面的废话
-自己写一个简单扩展的原因是 Edge 默认的新标签页太离谱了些，默认是[这样](#edgentp)的<del>（很好奇微软中国怎么也搞什么传奇“开局领礼包”的广告了）</del>。这时打开 DevTools，可以发现 `window.location.href` 指向 [https://ntp.msn.cn/edge/ntp](https://ntp.msn.cn/edge/ntp)。即使可以设置把那一大堆花里胡哨的东西关掉，但它还是要加载第三方资源，存奇怪的缓存和其他东西用了 [十几 MiB](#ntpstroage)。  
+自己写一个简单扩展的原因是 Edge 默认的新标签页太离谱了些，默认是[这样](#edgentp)的<del>（很好奇微软中国怎么也搞什么传奇“开局领礼包”的广告了）</del>。这时打开 DevTools，可以发现 `window.location.href` 指向 [https://ntp.msn.cn/edge/ntp](https://ntp.msn.cn/edge/ntp)。即使可以设置把那一大堆花里胡哨的东西关掉，但它还是要加载第三方资源，存奇怪的缓存和其他东西用了 [十几 MiB](#ntpstorage)。  
 Edge 在断网的时候其实有个[干净的标签页](#localntp)，实际是 [chrome-search://local-ntp/local-ntp.html](chrome-search://local-ntp/local-ntp.html)，所以就想用这个新标签页。
 
 随后，我准备把新标签页换掉。欣喜地发现设置改不了新标签页。研究了半天发现浏览器扩展可以改新标签页，随后又进行很多奇奇怪怪的试错才成功运行的。
@@ -75,6 +75,7 @@ Edge 在断网的时候其实有个[干净的标签页](#localntp)，实际是 [
 <hr>
 
 **图片们：**
-{% cdnimg edgentp, edgentp.jpg, id="edgentp"; loading="lazy" %}
-{% cdnimg ntpstroage, ntpstorage.png, id="ntpstroage"; loading="lazy" %}
-{% cdnimg localntp, localntp.png, id="localntp"; loading="lazy" %}
+
+<img alt="edgentp" src="https://src-jywon.pages.dev/img/blog/chrome-ext/edgentp.jpg" id="edgentp">
+<img alt="ntpstorage" src="https://src-jywon.pages.dev/img/blog/chrome-ext/ntpstorage.png" id="ntpstorage">
+<img alt="localntp" src="https://src-jywon.pages.dev/img/blog/chrome-ext/localntp.png" id="localntp">

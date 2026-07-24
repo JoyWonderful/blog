@@ -49,7 +49,7 @@ updated: 2026-06-21 21:30:27 +08:00
 
 可以访问 [vscode.dev](https://vscode.dev/) 后打开扩展搜索“Live Share”(@id:`MS-vsliveshare.vsliveshare`)点击安装。
 
-{% cdnimg market, market.png, loading="lazy" %}
+![market](https://src-jywon.pages.dev/img/blog/liveshare/market.png)
 
 或者主持人可以直接访问 [vscode.dev/editor/liveshare](https://vscode.dev/editor/liveshare/)，点击安装这一步都省了。（P.S.: 这样子 Live Share 会变成“内置(@builtin)”扩展）  
 协作者可以不用在 Web 端手动安装，直接访问主持人的邀请链接就可以了（也会自动安装 Live Share 为“内置”扩展，并自动加入协作）。
@@ -66,7 +66,7 @@ Visual Studio 内置 Live Share，不必手动安装。
 
 打开扩展搜索“[Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare)”(@id:`MS-vsliveshare.vsliveshare`)点击安装。
 
-{% cdnimg market2, market.png, loading="lazy" %}
+![market2](https://src-jywon.pages.dev/img/blog/liveshare/market.png)
 
 :::
 
@@ -120,8 +120,9 @@ Live Share 有很多项设置，在这里全部翻译（说明好像只有英文
 | `liveshare.showReadOnlyUsersInEditor` | 控制只读协作者的光标和高亮的可见性。可选值 `"whileFollowing"`,`"always"`。 | `"whileFollowing"` |
 | `liveshare.showVerboseNotifications` | 控制是否显示详细通知，例如当访客加入或离开会话时。 | `true` |
 
-{% cdnimg nametag, nametag.png, id="name-tag"; loading="lazy"; title="名字标签" %}
-{% cdnimg cursor, cursor.png, loading="lazy"; title="没有名字标签的光标" %}
+<img alt="nametag" src="https://src-jywon.pages.dev/img/blog/liveshare/nametag.png" id="name-tag" title="名字标签">
+
+![cursor](https://src-jywon.pages.dev/img/blog/liveshare/cursor.png "没有名字标签的光标")
 
 :::
 
@@ -213,8 +214,9 @@ Live Share 有很多项设置，在这里全部翻译（说明好像只有英文
 
 主持者可通过 `liveshare.guestApprovalRequired` 设置项为 `true` 启用批准来宾功能（默认为 `false`：来宾自动加入）。当来宾试图加入时，必须要经过主持者的批准。见下图。
 
-{% cdnimg reqj, requestjoin.png, id="request-join"; loading="lazy"; title="主持者批准请求" %}
-{% cdnimg wfap, waitingforapp.png, loading="lazy"; title="来宾等待主持者批准" %}
+<img alt="reqj" src="https://src-jywon.pages.dev/img/blog/liveshare/requestjoin.png" id="request-join" title="主持者批准请求">
+
+![wfap](https://src-jywon.pages.dev/img/blog/liveshare/waitingforapp.png "来宾等待主持者批准")
 
 
 #### 加入

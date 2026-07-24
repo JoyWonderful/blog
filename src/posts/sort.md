@@ -329,7 +329,7 @@ int main()
 ### 例子
 一个数列 $8 \ 5 \ 7 \ 9 \ 2 \ 6$ 的归并排序：
 
-{% cdnimg merge-sort, 1.svg %}
+![merge-sort](https://src-jywon.pages.dev/img/blog/sort/1.png)
 
 ### 示例程序
 ```cpp
