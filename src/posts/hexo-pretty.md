@@ -27,12 +27,12 @@ date: 2023-12-26 15:35:17 +08:00
 
 Hexo 是基于 Node.js 开发的，若未安装，需要先安装 [Node.js](https://nodejs.org/en)，两个版本都可以。安装完毕后打开终端检查：
 
-```bash
-$ node -v
+```ansi
+[1;94m$[0m node -v
 v18.16.0
-$ npm -v
+[1;94m$[0m npm -v
 9.5.1
-$ npx -v
+[1;94m$[0m npx -v
 9.5.1
 ```
 
@@ -40,21 +40,21 @@ $ npx -v
 
 随后，下载 Hexo 包。执行以下命令：
 
-```bash
-$ npm install -g hexo-cli
+```ansi
+[1;94m$[0m npm install -g hexo-cli
 
-$ hexo -v
+[1;94m$[0m hexo -v
 hexo-cli: 4.3.0
 os: ...
-# 出现一些依赖包的版本号表示安装成功
+[3;32m# 出现一些依赖包的版本号表示安装成功[0m
 ```
 
 随后，可以开始建立站点文件夹了。执行以下命令初始化 Hexo 站点：
 
-```bash
-$ hexo init blog # 文件夹的名字，自己可更改，同下
-$ cd blog
-$ npm install
+```ansi
+[1;94m$[0m hexo init blog [3;32m# 文件夹的名字，自己可更改，同下[0m
+[1;94m$[0m cd blog
+[1;94m$[0m npm install
 ```
 
 此时，站点文件夹已新建完毕。目录大概是这样（`......` 表示省略了很多文件）：
@@ -83,11 +83,11 @@ $ npm install
 
 随后，可以在本地运行查看效果：
 
-```bash
-$ hexo server
-INFO  Validating config
-INFO  Start processing
-INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.
+```ansi
+[1;94m$[0m hexo server
+[32mINFO[0m  Validating config
+[32mINFO[0m  Start processing
+[32mINFO[0m  Hexo is running at [4mhttp://localhost:4000/[24m . Press Ctrl+C to stop.
 ```
 
 :::note{.info} 端口占用
@@ -260,9 +260,9 @@ deploy:
 
 通常来说，写完文章后运行：
 
-```bash
-$ hexo g
-$ hexo d # -m "..."     # commit 信息，可选
+```ansi
+[1;94m$[0m hexo g
+[1;94m$[0m hexo d [32m# -m "..."     [3m# commit 信息，可选[0m
 ```
 
 ## 部署到 Github Pages
@@ -272,8 +272,8 @@ $ hexo d # -m "..."     # commit 信息，可选
 
 运行以下命令：
 
-```bash
-$ npm install hexo-deployer-git --save
+```ansi
+[1;94m$[0m npm install hexo-deployer-git --save
 ```
 
 随后打开 _config.yml 文件，找到 `deploy` 字样，更改如下：
@@ -294,9 +294,9 @@ deploy:
 NexT 是一个很简洁美观且不断维护的 Hexo 主题。这个博客就是 Next 主题。  
 首先，进行下载，运行以下命令：
 
-```bash
-$ cd themes
-$ git clone https://github.com/next-theme/hexo-theme-next.git
+```ansi
+[1;94m$[0m cd themes
+[1;94m$[0m git clone https://github.com/next-theme/hexo-theme-next.git
 ```
 
 完成后，打开 config.yml，找到 `theme` 字样，更改如下：
@@ -410,9 +410,9 @@ menu:
 
 随后运行以下命令：
 
-```bash
-$ hexo new page tags
-$ hexo new page categories
+```ansi
+[1;94m$[0m hexo new page tags
+[1;94m$[0m hexo new page categories
 ```
 
 完成后打开 source/tags/index.md，在两个 `---` 内新加一行 `type: tags`；  
@@ -515,8 +515,8 @@ custom_file_path:
 #### 插件：搜索功能 hexo-generator-searchdb
 运行以下命令下载：
 
-```bash
-$ npm install hexo-generator-searchdb --save
+```ansi
+[1;94m$[0m npm install hexo-generator-searchdb --save
 ```
 
 打开主题配置文件 themes/hexo-theme-next/_config.yml，找到 local_search 项，更改如下：
@@ -541,8 +541,8 @@ $ npm install hexo-generator-searchdb --save
 #### 插件：置顶功能 hexo-generator-index-pin-top
 运行以下命令下载：
 
-```bash
-$ npm install hexo-generator-index-pin-top --save
+```ansi
+[1;94m$[0m npm install hexo-generator-index-pin-top --save
 ```
 
 如果需要置顶一篇文章，在这篇文章的 Front-matter 中添加：

@@ -137,7 +137,7 @@ int main()
 
 输出：
 
-```markdown
+```ansi
 3
 Hello
 ```
@@ -189,7 +189,7 @@ int main(int argc, char *argv[])
 
 结果为：
 
-```bash
+```ansi
 sum: 7
 argc[0], 未命名1.exe
 argc[1], hello

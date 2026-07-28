@@ -133,7 +133,9 @@ int main()
 }
 ```
 
-```bash
-fc test.out test.ans
-code -d test.out test.ans
+这是 Windows 下的命令，所以提示符用 `>`。
+
+```ansi
+[1;94m>[0m fc test.out test.ans
+[1;94m>[0m code -d test.out test.ans
 ```
