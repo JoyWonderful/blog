@@ -15,5 +15,5 @@ tags: Other-Tag
 放假了闲着没事情干，便画了一些画，放在这儿，留此纪念。
 <!--more-->
 
-![pencil-box](https://src-jywon.pages.dev/img/blog/draw-pic/pencilBox.jpg)
-![naozhong](https://src-jywon.pages.dev/img/blog/draw-pic/naozhong.jpg)
+![pencil-box](/images/draw-pic/pencilBox.webp)
+![naozhong](/images/draw-pic/naozhong.webp)

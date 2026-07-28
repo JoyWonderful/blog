@@ -18,7 +18,7 @@ date: 2024-05-26 10:29:51 +08:00
 
 例如 $14 + (1 + 2) \times (7 - (6 \div 2))$，表示为：
 
-![mermaid-expr-tree](https://src-jywon.pages.dev/img/blog/expres/1.png)
+![mermaid-expr-tree](/images/expres/1.webp)
 
 使用后序遍历即表示为 $\mathtt{14 \ \ 1 \ \ 2 \ \ + \ \ 7 \ \ 6 \ \ 2 \ \ \div \ \ - \ \ \times \ \ +}$，这就是它的后缀表达式。它们的结果都是 $26$。
 

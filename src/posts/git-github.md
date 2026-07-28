@@ -27,7 +27,7 @@ $ ssh-keygen -t rsa -C "email"
 
 成功后会在用户文件夹（Windows 下通常是 `%USERPROFILE%` 环境变量，Linux 直接打开 `~/`）下生成一个 `.ssh` 文件夹，打开 `id_rsa.pub` 文件，复制里面的密钥后回到 Github 打开设置，找到 "**SSH anf PGP keys**" 一栏，点击 "New SSH key"，Title 填上，将刚刚复制的密钥粘贴到 "Key" 一栏，点击 "Add SSH key" 保存。
 
-![git-github](https://src-jywon.pages.dev/img/blog/git-github/1.png)
+![git-github](/images/git-github/1.webp)
 
 随后可以验证是否完成，打开终端输入：
 

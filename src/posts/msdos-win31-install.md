@@ -45,7 +45,7 @@ tags: Other-Tag
 3. 要先把 `DISK1` 目录下的 `IO.SYS` 和 `MSDOS.SYS` 这两个文件先后拖进 UltraISO。（并且设置IO.SYS为引导文件，我测出来好像不设也行）然后再把其他的所有文件拖进 UltraISO；
 4. 保存为 `DISK1.ima`。（`.ima`,`.img` 好像无所谓？）
 
-![uiso](https://src-jywon.pages.dev/img/blog/msdos-win31-install/uiso.png)
+![uiso](/images/msdos-win31-install/uiso.webp)
 
 :::note{.warning} 一定要先把 IO.SYS 和 MSDOS.SYS 加进去
 
@@ -68,7 +68,7 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 创建虚拟机选择 `其他`->`MS-DOS` 就行。  
 要添加软盘驱动器，并且在开机前先换上 `DISK1.ima`。
 
-![add-floppy-driver](https://src-jywon.pages.dev/img/blog/msdos-win31-install/floppy.png)
+![add-floppy-driver](/images/msdos-win31-install/floppy.webp)
 
 开始安装之前要先分区磁盘并且格式化。  
 **分区**：
@@ -80,7 +80,7 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 5. 输入Y后，回车；
 6. 继续回车，虚拟机就会重新启动。
 
-![fdisk](https://src-jywon.pages.dev/img/blog/msdos-win31-install/fdisk.png)
+![fdisk](/images/msdos-win31-install/fdisk.webp)
 
 **格式化**：
 
@@ -89,12 +89,12 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 3. 选择 `Y`；
 4. 磁盘卷标命名可以随便取，或者直接默认回车。
 
-![format-c](https://src-jywon.pages.dev/img/blog/msdos-win31-install/format.png)
+![format-c](/images/msdos-win31-install/format.webp)
 
 然后就可以开始**安装**了。（可以先重启一下）  
 不重启就输入 `A:` 和 `setup`，进入那个蓝色的安装界面。按提示换上对应的软盘（映像）就行。
 
-![dos-setup](https://src-jywon.pages.dev/img/blog/msdos-win31-install/dossetup.png)
+![dos-setup](/images/msdos-win31-install/dossetup.webp)
 
 
 #### 中文系统（可选）
@@ -109,7 +109,7 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 之后，可以输入 `pdos` 加载中文环境，`Ctrl`+`Space` 切换中英文输入，`Ctrl`+`Shift` 切换输入法。（和现在电脑的输入法切换热键是一模一样的）  
 输入 `quit` 可以退出中文环境。
 
-![pdos](https://src-jywon.pages.dev/img/blog/msdos-win31-install/pdos.png)
+![pdos](/images/msdos-win31-install/pdos.webp)
 
 ## Windows
 
@@ -119,11 +119,11 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 由于没法给 MS-DOS 安装 *VMware Tools*，而且它似乎读不了光盘，只能读文件系统为 FAT16 的磁盘。Windows 10 还没有 FAT16 这个格式化选项，只能用 *DG 专业版*了。
 
 - 打开 DiskGenius（[专业版](https://down.hotpe.top/HotProgMods/%E7%A3%81%E7%9B%98%E5%B7%A5%E5%85%B7/DiskGenius%E4%B8%93%E4%B8%9A%E7%89%88_hjinke_6.0.1.1645_%E4%B8%93%E4%B8%9A%E5%88%86%E5%8C%BA%E8%BD%AF%E4%BB%B6.HPM)，按 7z 压缩包打开），选择 `磁盘`->`新建虚拟磁盘文件`->`新建 VMware 虚拟磁盘文件`。大小选择定为 1GB 够用了。  
-  ![vmdk-create](https://src-jywon.pages.dev/img/blog/msdos-win31-install/vmdkcreate.png)
+  ![vmdk-create](/images/msdos-win31-install/vmdkcreate.webp)
 - 选中虚拟磁盘的“空闲”部分，选择上方工具栏 `建立新分区`，文件系统选 **FAT16**，其他默认。完成后选择 `保存更改`。  
-  ![vmdk-partition](https://src-jywon.pages.dev/img/blog/msdos-win31-install/vmdkpartition.png)
+  ![vmdk-partition](/images/msdos-win31-install/vmdkpartition.webp)
 - 提示是否立即格式化“未格式化”部分，选择 `是`。
-  ![vmdk-format](https://src-jywon.pages.dev/img/blog/msdos-win31-install/vmdkformat.png)
+  ![vmdk-format](/images/msdos-win31-install/vmdkformat.webp)
 - 选中磁盘“主分区”部分，将 `windows31` 文件夹复制（拖）进去，“文件复制选项”窗口全默认。将该文件夹命名为 `window31`。（防止 8.3 命名限制）
 - 选择 `磁盘`->`关闭虚拟磁盘文件`。
 
@@ -140,9 +140,9 @@ PC 的 DOS 系统启动顺序，先将第一个扇区的内容载入内存执行
 
 把制作好的虚拟磁盘 `vmdk` 文件挂到虚拟机上。打开 MS-DOS 6.22，输入 `D:`（假如提示找不到，那你可能上面的步骤做错了）。再输入 `setup`。进入蓝色的 Windows Setup。按步骤操作即可。
 
-![window-install-command](https://src-jywon.pages.dev/img/blog/msdos-win31-install/wincommand.png)
-![windows-setup](https://src-jywon.pages.dev/img/blog/msdos-win31-install/setup.png)
-![windows-setup-gui](https://src-jywon.pages.dev/img/blog/msdos-win31-install/setupgui.png)
+![window-install-command](/images/msdos-win31-install/wincommand.webp)
+![windows-setup](/images/msdos-win31-install/setup.webp)
+![windows-setup-gui](/images/msdos-win31-install/setupgui.webp)
 
 ### Windows 自启动
 
@@ -188,14 +188,14 @@ $%我现在已经用上 Ubuntu 了。$
 
 按下 `Ctrl`+`Shift` 不放，选择 `帮助(H)`->`关于程序管理器(A)...`，点几下 Windows 徽标，再点确定，多重复几次，就能看到下面的东西：
 
-![easter-flag](https://src-jywon.pages.dev/img/blog/msdos-win31-install/easteregg.png)
+![easter-flag](/images/msdos-win31-install/easteregg.webp)
   
-![easter-bradsilverberg](https://src-jywon.pages.dev/img/blog/msdos-win31-install/easter1.png; class="pixel")
+<img alt="easter-bradsilverberg" src="/images/msdos-win31-install/easter1.webp" class="pixel"> 
 
 <p style="overflow-y:auto">
 <span style="position:sticky;left:0">所有可能出现的“人”“物”：&nbsp;&nbsp;（请滑动）</span>  
 
-![easter-all-of-the-people](https://src-jywon.pages.dev/img/blog/msdos-win31-install/easterall.png; class="pixel p1")
+<img alt="easter-all-of-the-people" src="/images/msdos-win31-install/easterall.webp" class="pixel p1">
 
 </p>
 

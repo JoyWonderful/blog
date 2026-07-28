@@ -76,6 +76,6 @@ Edge 在断网的时候其实有个[干净的标签页](#localntp)，实际是 [
 
 **图片们：**
 
-<img alt="edgentp" src="https://src-jywon.pages.dev/img/blog/chrome-ext/edgentp.jpg" id="edgentp">
-<img alt="ntpstorage" src="https://src-jywon.pages.dev/img/blog/chrome-ext/ntpstorage.png" id="ntpstorage">
-<img alt="localntp" src="https://src-jywon.pages.dev/img/blog/chrome-ext/localntp.png" id="localntp">
+<img alt="edgentp" src="/images/chrome-ext/edgentp.webp" id="edgentp">
+<img alt="ntpstorage" src="/images/chrome-ext/ntpstorage.webp" id="ntpstorage">
+<img alt="localntp" src="/images/chrome-ext/localntp.webp" id="localntp">

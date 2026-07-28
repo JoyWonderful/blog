@@ -84,11 +84,11 @@ cjk-ideographic
 [Back to home](/)  
 [404 check](/404A114514 "标题显示？")
 
-![djks](https://src-jywon.pages.dev/img/blog/draw-pic/naozhong.jpg "图片标题显示测试")
+![djks](/images/draw-pic/naozhong.webp "图片标题显示测试")
 
 abc
 
-<p><img src="https://src-jywon.pages.dev/img/blog/draw-pic/naozhong.jpg" alt="nowalarm" style="width:1500px"></p>
+<p><img src="/images/draw-pic/naozhong.webp" alt="nowalarm" style="width:1500px"></p>
 
 |test1|test2|test3|
 |:---:|:----|----:|

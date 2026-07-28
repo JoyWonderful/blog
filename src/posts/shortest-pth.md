@@ -239,7 +239,7 @@ int main()
 
 设 起点(s) 为 1，INF 代表无穷大，上方注释 c 表示这次访问并改变了，v 表示仅访问过。如下：
 
-![spth1](https://src-jywon.pages.dev/img/blog/shortest-pth/1.png)
+![spth1](/images/shortest-pth/1.webp)
 
 ```cpp
 dis[4] = {0, INF, INF, INF};
@@ -247,8 +247,9 @@ vis[4] = {0, 0, 0, 0};
 pq = {{.id=1, .dis=0}};
 ```
 
+----------
 
-![spth2](https://src-jywon.pages.dev/img/blog/shortest-pth/2.png)
+![spth2](/images/shortest-pth/2.webp)
 
 ```cpp
 //           c  c  c
@@ -257,8 +258,9 @@ vis[4] = {1, 0, 0, 0};
 pq = {{.id=2, .dis=2},  {.id=4, .dis=4},  {.id=3, .dis=5}};
 ```
 
+----------
 
-![spth3](https://src-jywon.pages.dev/img/blog/shortest-pth/3.png)
+![spth3](/images/shortest-pth/3.webp)
 
 ```cpp
 //              c  c
@@ -267,8 +269,9 @@ vis[4] = {1, 1, 0, 0};
 pq = {{.id=4, .dis=3},  {.id=4, .dis=4},  {.id=3, .dis=4},  {.id=3, .dis=5}};
 ```
 
+----------
 
-![spth4](https://src-jywon.pages.dev/img/blog/shortest-pth/4.png)
+![spth4](/images/shortest-pth/4.webp)
 
 ```cpp
 //              v  v

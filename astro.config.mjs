@@ -26,9 +26,6 @@ export default defineConfig({
         format: "file",
         inlineStylesheets: "auto"
     },
-    image: {
-        domains: ["src-jywon.pages.dev", "drv-jywon.pages.dev"]
-    },
     markdown: {
         shikiConfig: {
             theme: "dark-plus",
