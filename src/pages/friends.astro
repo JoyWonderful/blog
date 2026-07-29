@@ -38,6 +38,9 @@ const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
     .friends-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        @include narrowScreen() {
+            grid-template-columns: 1fr;
+        }
         gap: 1.5em;
         .friend { // a
             border: 1px solid $color_text_0;

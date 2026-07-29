@@ -1,8 +1,12 @@
 @use "../variables" as *;
+@use "../mixins" as *;
 
 .site-brand {
     background: $color_theme;
     padding: 1.5rem 1rem;
+    @include mobile() {
+        padding: 1rem .5rem;
+    }
     text-align: center;
     .site-title { // h1
         display: block;

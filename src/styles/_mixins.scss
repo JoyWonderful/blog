@@ -30,6 +30,23 @@
     }
 }
 
+// 适配不同设备
+@mixin narrowScreen() {
+    @media (max-width: 991px) {
+        @content;
+    }
+}
+@mixin narrowerScreen() {
+    @media (max-width: 800px) {
+        @content;
+    }
+}
+@mixin mobile() {
+    @media (max-width: 612px) {
+        @content;
+    }
+}
+
 // $style should be "solid" | "regular" | "brands"
 @mixin fontawesome($code, $style: "solid") {
     $wanted_font: map.get($font_fontawesome, $style);

@@ -5,6 +5,9 @@
     display: block;
     margin-top: $card_margin_top;
     padding: 40px;
+    @include mobile() {
+        padding: 25px;
+    }
     background: #fff;
     box-shadow: $box_shadow;
     border-radius: $border_radius;

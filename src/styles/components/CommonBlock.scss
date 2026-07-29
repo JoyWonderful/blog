@@ -1,8 +1,12 @@
 @use "../variables" as *;
+@use "../mixins" as *;
 
 .common-block {
     margin-top: $card_margin_top;
     padding: 30px 40px;
+    @include mobile() {
+        padding: 25px;
+    }
     border-radius: $border_radius;
     box-shadow: $box_shadow;
     background: #fff;
