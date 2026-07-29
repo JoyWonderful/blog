@@ -172,7 +172,7 @@ b:  35 30 20 10  5  1
 
 ### sort
 
-见 [`<algorithm>` 头文件 `sort()` 排序](/posts/sort/#头文件-sort-排序)
+见 [`<algorithm>` 头文件 `sort()` 排序](/posts/sort/#algorithm-头文件-sort-排序)
 
 
 ### swap
