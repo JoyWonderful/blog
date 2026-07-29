@@ -11,7 +11,7 @@ var appeared_year:Array<number> = [];
     {posts.map((post:any) => {
         const CONTENT = (
         <li class="item">
-            <time datetime={post.data.date.toISOString()} title={post.data.date.toLocaleString()}>
+            <time datetime={post.data.date.toISOString()} title={post.data.date.toLocaleString(config.lang)}>
                 {`${String(post.data.date.getMonth()+1).padStart(2,"0")}-${String(post.data.date.getDate()).padStart(2,"0")}`}
             </time>
             <a href={`${config.posts_path}/${post.id}`}>{post.data.title}</a>

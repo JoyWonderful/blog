@@ -16,8 +16,8 @@ blogPosts.sort((a:any, b:any) => {
         {blogPosts.slice(0,10).map((post:any) => { /* slice 从 0 开始（包括），一直到 10（不包括 10，即截取 0~9，最近更新的前 10 篇） */
             var post_date:Date = post.data.updated ? post.data.updated : post.data.date;
             return <li>
-                <time datetime={post_date.toISOString()} title={post_date.toLocaleString()}>
-                    {post_date.toLocaleDateString()}
+                <time datetime={post_date.toISOString()} title={post_date.toLocaleString(config.lang)}>
+                    {post_date.toLocaleDateString(config.lang)}
                 </time>
                 <a href={`${config.posts_path}/${post.id}`}>{post.data.title}</a>
             </li>;
