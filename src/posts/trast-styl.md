@@ -18,12 +18,12 @@ categories: Programming
 这里更改下划线的颜色，或者说是 `border-bottom-color`。因为直接设置过渡 `border` 不会有效果。
 
 <style>
-    .post-body span.egunlcolor {
+    span.egunlcolor {
         border-bottom: 1px solid transparent;
         cursor: pointer;
         transition: border-bottom-color .2s;
     }
-    .post-body span.egunlcolor:hover {
+    span.egunlcolor:hover {
         border-bottom-color: #555;
     }
 </style>
@@ -46,12 +46,12 @@ span:hover {
 这里更改下划线（伪元素）的长度，或者说是 `transform:scaleX()`。
 
 <style>
-    .post-body div.egunderline span {
+    div.egunderline span {
         margin-bottom: 5px;
         cursor: pointer;
         position: relative;
     }
-    .post-body div.egunderline span::before {
+    div.egunderline span::before {
         content: '';
         position: absolute;
         bottom: 0;
@@ -63,10 +63,10 @@ span:hover {
         transform-origin: inherit;
         transition: transform .2s;
     }
-    .post-body div.egunderline span:hover::before {
+    div.egunderline span:hover::before {
         transform: scaleX(1);
     }
-    .post-body div.egunderline span#egleftirighto:hover::before {
+    div.egunderline span#egleftirighto:hover::before {
         transform-origin: left;
     }
 </style>
@@ -114,23 +114,23 @@ span:hover::before {
 代码是：
 
 ```css
-.post-body span.egultobg {
+span.egultobg {
     box-shadow: inset 0px -1px 0 0 #555;
     transition: box-shadow .2s, color .2s;
 }
-.post-body span.egultobg:hover {
+span.egultobg:hover {
     box-shadow: inset 0px -1lh 0 0 #555; /* 注意：lh 单位一些浏览器还不支持 */
     color: #eee;
 }
 ```
 
 <style>
-    .post-body span.egultobg {
+    span.egultobg {
         box-shadow: inset 0px -1px 0 0 #555;
         transition: box-shadow .2s, color .2s;
         cursor: pointer;
     }
-    .post-body span.egultobg:hover {
+    span.egultobg:hover {
         box-shadow: inset 0px -1.5em 0 0 #555;
         color: #eee;
     }

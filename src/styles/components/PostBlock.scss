@@ -51,4 +51,19 @@
     article > :last-child {
         margin-bottom: 0!important;
     }
+    article {
+        %anchor-icon { // 特殊链接前面的图表
+            color: $color_text_1;
+            margin-right: 3px;
+            font-size: 0.875em!important;
+        }
+        a[href^="/posts/"]::before {
+            @include fontawesome("\f187"); // box-archive
+            @extend %anchor-icon;
+        }
+        a[href^="#"]:not(.tab.title, .headerlink)::before {
+            @include fontawesome("\23"); // hashtag
+            @extend %anchor-icon;
+        }
+    }
 }

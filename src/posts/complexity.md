@@ -68,7 +68,7 @@ int main()
 [数位和](https://vjudge.net/problem/%E8%AE%A1%E8%92%9C%E5%AE%A2-T3092)
 <!--https://www.luogu.com.cn/problem/U262459-->
 
-大意：输入一个整数 $x(0 \le x \le 10^6)$，求每一位加起来和为 $x$ 的自然数最小是多少
+大意：输入一个整数 $x(0 \le x \le 10^6)$，求每一位加起来和为 $x$ 的自然数最小是多少。
 
 :::note{.warning} 注意
 

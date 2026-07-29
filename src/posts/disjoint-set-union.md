@@ -10,7 +10,7 @@ math: true
 ## 写在前面
 
 > 又有好长时间没有写过课程笔记了啊~  
-> <span style="display:block;text-align:right">—— by JoyWonderful</span>
+> <span style="display:block;text-align:right">—— JoyWonderful</span>
 
 **并查集**就是将一些集合融合，然后查询某个数字和某个数字是否在这个集合里~~（蒟蒻奇怪的自我理解，大概也没人看这句话）~~。  
 并查集有一个思想，一个元素的父亲为自己，这是**初始化**时会用到的。
@@ -21,7 +21,7 @@ math: true
 - **合并**：将两个元素所在的集合合并；
 - **查找**：两个元素是否都在同一个集合里。
 
-并查集的“集合”中有<a href="/posts/graph-tree" style="border-bottom:none">树</a>的概念，每一个集合就像是树，父亲就像父结点（根节点）。
+并查集的“集合”中有[树](/posts/graph-tree)的概念，每一个集合就像是树，父亲就像父结点（根节点）。
 
 ## 代码
 ### 初始化

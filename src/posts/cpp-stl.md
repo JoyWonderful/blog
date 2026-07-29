@@ -100,7 +100,7 @@ stack，STL 的栈，提供先进后出 (FILO, First In Last Out) 的结构。
 *In header `<queue>`.*  
 queue，STL 的队列，提供先进先出 (FIFO, First In First Out) 的结构。
 
-[之前讲过](/posts/stackandqueue)，不再赘述
+在[数据结构：队列和栈](/posts/stackandqueue)讲过，不再赘述
 
 
 ### priority_queue
@@ -109,7 +109,7 @@ queue，STL 的队列，提供先进先出 (FIFO, First In First Out) 的结构�
 
 优先队列，默认为最大优先队列（大的元素在上）(`std::less<typename>`)。填写模板形参时，第一个填写数据类型，第二个填写容器（默认和通常都写 `vector<typename>`，第三个填写该如何比较（默认为 `std::less<typename>`，通常另外填 `std::greater<typename>` 最小优先队列）。
 
-它的成员函数与 [stack](/posts/stackandqueue/#栈) 类似，不再赘述。
+它的成员函数与[数据结构：队列和栈 **#**栈](/posts/stackandqueue/#栈)类似，不再赘述。
 
 **例子**：
 
@@ -167,7 +167,7 @@ b:  35 30 20 10  5  1
 
 `upper_bound` 参数同上，返回第一个**大于** `value` 的值的地址（迭代器）。
 
-**[例子](/posts/lcs/#第二种)**
+**例子**：[最长上升/公共子序列 **#**第二种](/posts/lcs/#第二种)
 
 
 ### sort
