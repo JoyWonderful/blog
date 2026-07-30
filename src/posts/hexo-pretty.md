@@ -406,7 +406,7 @@ menu:
   #commonweal: /404/ || fa fa-heartbeat
 ```
 
-你也可以更改 “`||`” 之后的图标，去 [font-awesome.com](https://fontawesome.com/icons) 用英文搜索你想要的图标。例如 `fa-rectangle-list` 显示为 <i class="fa fa-rectangle-list"></i>
+你也可以更改 “`||`” 之后的图标，去 [fontawesome.com](https://fontawesome.com/icons) 用英文搜索你想要的图标。例如 `fa-rectangle-list` 显示为<i class="fa fa-rectangle-list"></i>。
 
 随后运行以下命令：
 
@@ -419,7 +419,7 @@ menu:
 同样地，打开 source/tags/index.md，加一行 `type: categories`。
 顺便你也可以更改它们的 `title` 值分别为 标签 和 分类。
 
-完成以上所有步骤后，你我期待的像样的一个博客诞生了。此时，新拥有博客的人可以开始<a href="#写作"><i class="fa fa-hashtag fa-sm"></i>写作</a>了
+完成以上所有步骤后，你我期待的像样的一个博客诞生了。此时，新拥有博客的人可以开始[写作](#写作)了
 
 ### 更多修改
 #### CSS(Stylus) 方面

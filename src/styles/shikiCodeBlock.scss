@@ -4,18 +4,23 @@
 pre.astro-code {
     font-family: $font_mono;
     white-space: pre;
+    tab-size: 4;
     overflow: auto;
     padding: $indent_top $indent_left;
     margin: 0;
     margin-bottom: $para_margin_bottom;
     border-radius: $border_radius_0;
+    &[data-language="ansi"] {
+        padding-top: $indent_top * 2;
+        background: linear-gradient(#555 0 ($indent_top * 1.7), #1e1e1e ($indent_top * 1.5) 100%);
+    }
 }
 
 // 以下为加上的
 %code-container-copy {
     position: absolute;
-    top: .5em;
-    right: .5em;
+    top: .5rem;
+    right: .5rem;
 }
 div[class*="language-"] {
     position: relative;
@@ -70,5 +75,36 @@ div[class*="language-"] {
     }
     &:hover button.copy {
         opacity: 1;
+    }
+    &[data-language="ansi"] {
+        &::before {
+            content: "🟢️ 🟡️ 🔴️";
+            font-family: sans-serif;
+            visibility: visible;
+            opacity: 0.8;
+            font-size: $indent_top * 1.7 - 1rem;
+        }
+        &:hover::before {
+            visibility: visible;
+            opacity: 1;
+        }
+        &::after {
+            position: absolute;
+            left: .5rem;
+            top: .5rem;
+            content: "SHELL";
+            color: #999;
+            font-size: $indent_top * 1.7 - 1rem;
+            font-weight: bold; // 700
+            line-height: 1;
+            visibility: visible;
+            opacity: 1;
+            transition: opacity $transition_time, visibility $transition_time;
+        }
+        button.copy, &:hover button.copy {
+            opacity: 0;
+            visibility: hidden;
+            display: none;
+        }
     }
 }
