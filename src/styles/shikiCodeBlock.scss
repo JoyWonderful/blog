@@ -11,8 +11,9 @@ pre.astro-code {
     margin-bottom: $para_margin_bottom;
     border-radius: $border_radius_0;
     &[data-language="ansi"] {
-        padding-top: $indent_top * 2;
-        background: linear-gradient(#555 0 ($indent_top * 1.7), #1e1e1e ($indent_top * 1.5) 100%);
+        padding-top: $indent_top * 2.7; // 标题栏(1.7) + 1(indent_top)
+        background: linear-gradient(#555 0 ($indent_top * 1.7), #1e1e1e ($indent_top * 1.7) 100%);
+        // 标题栏有 1.7
     }
 }
 
@@ -82,7 +83,7 @@ div[class*="language-"] {
             font-family: sans-serif;
             visibility: visible;
             opacity: 0.8;
-            font-size: $indent_top * 1.7 - 1rem;
+            font-size: $indent_top * 1.7 - 1rem; // 上下各空 0.5，因此 -1
         }
         &:hover::before {
             visibility: visible;
