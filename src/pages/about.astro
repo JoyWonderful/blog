@@ -3,10 +3,18 @@ import { Content } from "~/markdowns/about.md";
 import Main from "~/layouts/Main.astro";
 import CommonBlock from "~/components/CommonBlock.astro";
 import config from "~/config.json";
+import source from "~/config.source.json";
 import { dependencies } from "~/../package.json";
 
 const matchHref = "/about";
 const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
+
+var source_list = Object.values(source).flatMap((src_entry) => {
+    if(typeof(src_entry) == "object") {
+        return src_entry.package_list;
+    }
+});
+delete source_list [source_list.findIndex((src_entry) => src_entry==undefined)]; // 丢掉那个 "$schema"
 ---
 <Main matchHref={matchHref}>
     <Fragment slot="document-title">{pageTitle} | {config.title}</Fragment>
@@ -16,11 +24,35 @@ const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
 
         <p><strong>Version:</strong><br />Built with {Astro.generator}.</p>
 
-        <strong>NPM Dependencies:</strong>
+        <strong>NPM Dependencies:</strong><br />
         <pre style="margin-top:0;margin-bottom:30px;overflow-x:auto"><code>{
         Object.keys(dependencies).map((dep) => {
             return (<Fragment><a href={`https://npmmirror.com/package/${dep}`} rel="noopener noreferer" target="_blank">{dep}</a>: {dependencies[dep]}<br /></Fragment>)
         })}</code></pre>
+
+        <strong>Using Source:</strong><br />
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Package</th>
+                    <th scope="col">Version</th>
+                    <th scope="col">Files</th>
+                </tr>
+            </thead>
+            <tbody>
+                {source_list.map((src_entry) => {
+                    if(src_entry == undefined) return;
+                    return <>
+                        <tr>
+                            <th scope="row" rowspan={src_entry.file_path.length}>{src_entry.package}</th>
+                            <td rowspan={src_entry.file_path.length}>{src_entry.version}</td>
+                            <td>{src_entry.file_path[0]}</td>
+                        </tr>
+                        {src_entry.file_path.slice(1).map((file) => <tr><td>{file}</td></tr>) /* slice(1) 去掉头一个 */}
+                    </>;
+                })}
+            </tbody>
+        </table>
 
         <strong>Site Deploy Status:</strong> <span style="opacity:0.7">(deployed on CloudFlare Pages)</span>
         <div id="last-deploy-info">
