@@ -17,6 +17,11 @@
 body {
     margin: 0;
 }
+::selection {
+    background-color: $color_5;
+    color: $color_1;
+    text-shadow: 1px 1px 2px $color_9;
+}
 
 // 站点样式
 .main-area {
