@@ -1,27 +1,39 @@
 ---
 import "~/styles/components/PostBlock.scss";
 import config from "~/config.json";
-const { frontMatter, id, isTitleLink } = Astro.props;
+const { frontMatter, id, isTitleLink, pageFind } = Astro.props;
 ---
-<div class="post-block">
+<div class="post-block" data-pagefind-body={pageFind ? true : undefined}>
     <header>
-        <h1 class="post-title">
+        <h1 class="post-title" data-pagefind-meta={pageFind ? "title" : undefined}>
             {isTitleLink ?
             <a href={config.posts_path+"/"+id}>{frontMatter.title}</a>:
             frontMatter.title}
         </h1>
-        <div class="post-meta">
+        <div class="post-meta" data-pagefind-ignore={pageFind ? true : undefined}> {/* `index`（默认值）将会不索引内部元素，但是索引内部的 metadata */}
             <span class="item">
                 <i class="far fa-calendar"></i>
                 <span>发表于</span>
                 {/* toLocaleString 要指定区域(zh-CN)，不然在 CloudFlare 上部署会出毛病 */}
-                <time datetime={frontMatter.date.toISOString()} title={frontMatter.date.toLocaleString(config.lang)}>{`${frontMatter.date.getFullYear()}-${String(frontMatter.date.getMonth()+1).padStart(2,"0")}-${String(frontMatter.date.getDate()).padStart(2,"0")}`}</time>
+                <time
+                    datetime={frontMatter.date.toISOString()}
+                    title={frontMatter.date.toLocaleString(config.lang)}
+                    data-pagefind-meta={pageFind ? "date[datetime]" : undefined}
+                >
+                    {`${frontMatter.date.getFullYear()}-${String(frontMatter.date.getMonth()+1).padStart(2,"0")}-${String(frontMatter.date.getDate()).padStart(2,"0")}`}
+                </time>
             </span>
             {frontMatter.updated &&
             <span class="item">
                 <i class="far fa-calendar-check"></i>
                 <span>更新于</span>
-                <time datetime={frontMatter.updated.toISOString()} title={frontMatter.updated.toLocaleString(config.lang)}>{`${frontMatter.updated.getFullYear()}-${String(frontMatter.updated.getMonth()+1).padStart(2,"0")}-${String(frontMatter.updated.getDate()).padStart(2,"0")}`}</time>
+                <time
+                    datetime={frontMatter.updated.toISOString()}
+                    title={frontMatter.updated.toLocaleString(config.lang)}
+                    data-pagefind-meta={pageFind ? "updated[datetime]" : undefined}
+                >
+                    {`${frontMatter.updated.getFullYear()}-${String(frontMatter.updated.getMonth()+1).padStart(2,"0")}-${String(frontMatter.updated.getDate()).padStart(2,"0")}`}
+                </time>
             </span>
             }
             {frontMatter.categories &&

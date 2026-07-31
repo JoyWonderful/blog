@@ -1,0 +1,49 @@
+---
+import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
+---
+<PagefindConfig />
+<pagefind-modal-trigger
+    placeholder="搜索文章…"
+    hide-shortcut={true /* 隐藏键盘快捷键显示 */}
+></pagefind-modal-trigger> {/* 这个是搜索“按钮”，用于触发后面的 modal */}
+<pagefind-modal> {/* 搜索界面，默认可以为空，我只是加上了 filter-pane */}
+    <pagefind-modal-header>
+        <pagefind-input></pagefind-input>
+    </pagefind-modal-header>
+    <pagefind-modal-body>
+        <pagefind-filter-pane style="margin-bottom:0.5rem"></pagefind-filter-pane>
+        <pagefind-summary></pagefind-summary>
+        <pagefind-results></pagefind-results>
+    </pagefind-modal-body>
+    <pagefind-modal-footer>
+        <pagefind-keyboard-hints></pagefind-keyboard-hints>
+    </pagefind-modal-footer>
+</pagefind-modal>
+
+<style lang="scss" is:global>
+    @use "../styles/variables" as *;
+    pagefind-modal-trigger {
+        display: block;
+        padding-top: .5rem;
+        margin-left: 9px;
+        :is([class^="pf-"]) {
+            font-family: $font_lxgw!important;
+        }
+    }
+    pagefind-modal {
+        :is([class^="pf-"]) {
+            font-family: $font_lxgw!important;
+        }
+        mark { // 高亮的关键字
+            background-color: $color_2!important;
+            color: $color_10!important;
+            font-weight: bold!important; // 700
+        }
+        --pf-outline-focus: #f18913!important; // 即 $color_theme
+    }
+    pagefind-filter-pane {
+        details > summary::before {
+            content: none; // 覆盖掉 main.scss 里原有的
+        }
+    }
+</style>

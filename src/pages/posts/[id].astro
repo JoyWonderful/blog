@@ -51,7 +51,7 @@ h2
         <PostAside toc={toc} />
     </Fragment>
 
-    <PostBlock frontMatter={post.data} id={id} isTitleLink={false}>
+    <PostBlock frontMatter={post.data} id={id} isTitleLink={false} pageFind={true}>
         <Markup
             content={post.rendered.html}
             components={{

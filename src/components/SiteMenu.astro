@@ -1,5 +1,6 @@
 ---
 import "~/styles/components/SiteMenu.scss";
+import Search from "./Search.astro";
 import config from "~/config.json";
 
 const { matchHref } = Astro.props; // 匹配 href 一致时，就加上 active 类
@@ -39,4 +40,5 @@ var more_list_length_str = `--list-length:${config.menu_more.length}`
             </div>
         </Fragment>}
     </menu>
+    <Search />
 </nav>

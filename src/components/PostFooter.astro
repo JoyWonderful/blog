@@ -19,19 +19,22 @@ var prevHref = null, nextHref = null;
 if(postIndex - 1 >= 0) prevHref = `${config.posts_path}/${blogPosts[postIndex-1].id}`;
 if(postIndex + 1 < blogPosts.length) nextHref = `${config.posts_path}/${blogPosts[postIndex+1].id}`;
 ---
-<footer class="post-footer">
+<footer class="post-footer" data-pagefind-body>
     <div class="post-categories">
         <i class="fa fa-folder-open fa-fw" title="分类"></i>
-        <a href={`${config.categories_path}/${blogPosts[postIndex].data.categories}`}>{blogPosts[postIndex].data.categories}</a>
+        <a
+            href={`${config.categories_path}/${blogPosts[postIndex].data.categories}`}
+            data-pagefind-filter="categories"
+        >{blogPosts[postIndex].data.categories}</a>
     </div>
     <div class="post-tags">
         <i class="fa fa-tags fa-fw" title="标签"></i>
         {postTags.map((tag:string) => {
             var tag_href = `${config.tags_path}/${tag}`;
-            return <a href={tag_href}>{tag}</a>;
+            return <a href={tag_href} data-pagefind-filter="tags">{tag}</a>;
         })}
     </div>
-    <nav class="post-nav">
+    <nav class="post-nav" data-pagefind-ignore>
         {prevHref && <a rel="prev" href={prevHref}><i class="fa fa-angle-left fa-fw"></i><span>{blogPosts[postIndex-1].data.title}</span></a>}
         {nextHref && <a rel="next" href={nextHref}><span>{blogPosts[postIndex+1].data.title}</span><i class="fa fa-angle-right fa-fw"></i></a>}
     </nav>

@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-// import pagefind from "astro-pagefind";
+import pagefind from "astro-pagefind";
 import { unified, rehypeHeadingIds } from "@astrojs/markdown-remark";
 import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
 // 简单理解：remark-plugin 在 markdown 渲染时处理，rehype-plugin 在渲染成的 html 上处理
@@ -20,7 +20,9 @@ export default defineConfig({
         //     destination: "/1"
         // }
     },
-    // integrations: [pagefind()],
+    integrations: [
+        pagefind()
+    ],
     output: "static", // 默认值
     build: {
         format: "file",
