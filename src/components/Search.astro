@@ -24,8 +24,9 @@ import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
     @use "../styles/variables" as *;
     pagefind-modal-trigger {
         display: block;
-        padding-top: .5rem;
+        margin-top: .5rem;
         margin-left: 9px;
+        margin-right: 9px;
         :is([class^="pf-"]) {
             font-family: $font_lxgw!important;
         }
@@ -47,3 +48,11 @@ import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
         }
     }
 </style>
+
+<noscript>
+<style lang="scss">
+    pagefind-modal-trigger, pagefind-modal {
+        display: none;
+    }
+</style>
+</noscript>
