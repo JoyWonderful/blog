@@ -2,18 +2,10 @@
 # 煞笔微软式中文传到 GitHub 文档上了，还用英文看吧，否则排版就是一团乱麻
 version: 2
 
-# https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#top-level-registries-key
-registries:
-  npm-registry:
-    type: npm-registry
-    url: https://registry.npmmirror.com
-
 updates:
   # update npm packages
   - package-ecosystem: "npm"
     directory: "/"
-    registries:
-      - npm-registry
     schedule:
       interval: "weekly"
       day: "saturday"
