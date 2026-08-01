@@ -109,12 +109,6 @@ Container 标志 `:::` 和（任何）内容（无论是内部内容还是外部
 `div.title` 最好不要超出宽度，因为只显示一行。  
 当然，如果你能确保不溢出，放多少都行。
 
-#### Dependencies
-
-以下这两个依赖只在留言簿中使用。
-
-- rehype-parse
-
 ### License
 
 代码使用 [GPL-3.0-or-later](LICENSE.txt)。  

@@ -20,7 +20,6 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-external-links": "^3.0.0",
     "rehype-katex": "^7.0.1",
-    "rehype-parse": "^9.0.1",
     "remark-cjk-friendly": "^2.3.1",
     "remark-cjk-friendly-gfm-strikethrough": "^2.3.1",
     "remark-flexible-containers": "^1.5.5",
