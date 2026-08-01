@@ -13,7 +13,7 @@
                 "description": "The url from which source loaded.(with protocol, without `/` suffix)",
                 "type": "string",
                 "pattern": "^https?://[A-Za-z0-9\\._-]+[^/]$",
-                "examples": ["https://registry.npmmirror.com", "https://s4.zstatic.net/", "https://unpkg.com"]
+                "examples": ["https://registry.npmmirror.com", "https://s4.zstatic.net", "https://unpkg.com"]
             },
             "path_format": {
                 "description": "How to format the final source url. You may specific `:package, `:version`, `:file_path`. The `:file_path` is required.",
