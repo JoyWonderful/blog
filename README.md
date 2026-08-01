@@ -113,7 +113,6 @@ Container 标志 `:::` 和（任何）内容（无论是内部内容还是外部
 
 以下这两个依赖只在留言簿中使用。
 
-- @shikijs/rehype
 - rehype-parse
 
 ### License

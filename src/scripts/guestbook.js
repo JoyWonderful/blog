@@ -9,7 +9,7 @@ import remarkCjkFriendlyGfmStrikethrough from "remark-cjk-friendly-gfm-strikethr
 // import remarkStringify from "remark-stringify";
 import remarkRehype from "remark-rehype";
 import rehypeKatex from "rehype-katex";
-import rehypeShiki from "@shikijs/rehype";
+// import rehypeShiki from "@shikijs/rehype";
 import rehypeStringify from "rehype-stringify";
 import { transformerColorizedBrackets } from "@shikijs/colorized-brackets";
 import { registerCodeCopy } from "./code-copy";
@@ -30,16 +30,16 @@ const processor = unified()
         output: "html",
         strict: false
     })
-    .use(rehypeShiki, {
-        theme: "dark-plus",
-        langs: [
-            "html", "javascript", "typescript", "css", "json",
-            "c", "cpp", "python",
-            "astro", "scss", "sass",
-            "diff"
-        ],
-        transformers: [transformerColorizedBrackets()]
-    })
+    // .use(rehypeShiki, {
+    //     theme: "dark-plus",
+    //     langs: [
+    //         "html", "javascript", "typescript", "css", "json",
+    //         "c", "cpp", "python",
+    //         "astro", "scss", "sass",
+    //         "diff"
+    //     ],
+    //     transformers: [transformerColorizedBrackets()]
+    // })
     .use(rehypeStringify, {
         allowDangerousCharacters: true,
         allowDangerousHtml: true
@@ -60,7 +60,7 @@ const processorReprocess = unified()
         output: "html",
         strict: false
     })
-    .use(rehypeShiki, {
+    /*.use(rehypeShiki, {
         theme: "dark-plus",
         langs: [
             "html", "javascript", "typescript", "css", "json",
@@ -69,7 +69,7 @@ const processorReprocess = unified()
             "diff"
         ],
         transformers: [transformerColorizedBrackets()]
-    })
+    })*/
     .use(rehypeStringify, {
         allowDangerousCharacters: true,
         allowDangerousHtml: true
@@ -102,8 +102,8 @@ var interval_id = setInterval(() => {
             // console.debug(html);
             content.innerHTML = html;
             content.childNodes[0].classList.add("reprocessed"); // 之所以这样做，是因为那个 div 加入后本身不会被替换，而是 div 内的内容被替换。
-            content.querySelectorAll("pre.shiki")?.forEach((target) => {target.classList.add("astro-code");});
-            registerCodeCopy();
+            // content.querySelectorAll("pre.shiki")?.forEach((target) => {target.classList.add("astro-code");});
+            // registerCodeCopy();
         });
     }
 }, 300);
