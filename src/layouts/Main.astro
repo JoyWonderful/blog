@@ -6,6 +6,7 @@ import Layout from "~/layouts/Layout.astro";
 import SiteBrand from "~/components/SiteBrand.astro";
 import SiteMenu from "~/components/SiteMenu.astro";
 import SiteFooter from "~/components/SiteFooter.astro";
+import Search from "~/components/Search.astro";
 
 const { matchHref } = Astro.props; //-> ~/components/SiteMenu
 ---
@@ -34,4 +35,5 @@ const { matchHref } = Astro.props; //-> ~/components/SiteMenu
     <SiteFooter />
     
     <slot name="html-body-script"></slot>
+    <Search />
 </Layout>

@@ -1,18 +1,17 @@
 ---
-import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
+// import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
+import "@pagefind/component-ui/css/pagefind-component-ui.css";
 ---
-<PagefindConfig />
-<pagefind-modal-trigger
-    placeholder="搜索文章…"
-    hide-shortcut={true /* 隐藏键盘快捷键显示 */}
-></pagefind-modal-trigger> {/* 这个是搜索“按钮”，用于触发后面的 modal */}
+{/*<PagefindConfig />*/}
+<script src="/pagefind/pagefind-component-ui.js" type="module" is:inline></script>
+
 <pagefind-modal> {/* 搜索界面，默认可以为空，我只是加上了 filter-pane */}
     <pagefind-modal-header>
         <pagefind-input></pagefind-input>
     </pagefind-modal-header>
     <pagefind-modal-body>
         <pagefind-filter-pane style="margin-bottom:0.5rem"></pagefind-filter-pane>
-        <pagefind-summary></pagefind-summary>
+        <pagefind-summary default-message="使用上方的筛选器可筛选分类、标签；你不仅可以搜索文章内容，也可以搜索文章发布/更新日期。"></pagefind-summary>
         <pagefind-results></pagefind-results>
     </pagefind-modal-body>
     <pagefind-modal-footer>
@@ -50,7 +49,7 @@ import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 </style>
 
 <noscript>
-<style lang="scss">
+<style>
     pagefind-modal-trigger, pagefind-modal {
         display: none;
     }
