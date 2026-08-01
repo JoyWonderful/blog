@@ -1,3 +1,4 @@
+/*
 import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 // import rehypeRemark from "rehype-remark";
@@ -60,20 +61,21 @@ const processorReprocess = unified()
         output: "html",
         strict: false
     })
-    /*.use(rehypeShiki, {
-        theme: "dark-plus",
-        langs: [
-            "html", "javascript", "typescript", "css", "json",
-            "c", "cpp", "python",
-            "astro", "scss", "sass",
-            "diff"
-        ],
-        transformers: [transformerColorizedBrackets()]
-    })*/
+    // .use(rehypeShiki, {
+    //     theme: "dark-plus",
+    //     langs: [
+    //         "html", "javascript", "typescript", "css", "json",
+    //         "c", "cpp", "python",
+    //         "astro", "scss", "sass",
+    //         "diff"
+    //     ],
+    //     transformers: [transformerColorizedBrackets()]
+    // })
     .use(rehypeStringify, {
         allowDangerousCharacters: true,
         allowDangerousHtml: true
     });
+*/
 
 Sodesu.init({
     el: "#comment",
@@ -86,13 +88,14 @@ Sodesu.init({
         login: "管理员登录",
         logout: "退出登录",
         placeholder: "请不要发布违反法律的内容。\nEnter键是换行，Ctrl+Enter可以发送。"
-    },
+    }/*,
     renderPreview: async function(text) { // 预览 markdown
         const rendered = await processor.process(text);
         return rendered.toString();
-    }
+    }*/
 });
 
+/*
 var interval_id = setInterval(() => {
     var comments_contents = document.querySelectorAll("#comment .sds-content > div:not(:has(.reprocessed))");
     if(comments_contents.length > 0) { // 有未重新渲染过的评论
@@ -106,4 +109,4 @@ var interval_id = setInterval(() => {
             // registerCodeCopy();
         });
     }
-}, 300);
+}, 300);*/

@@ -18,6 +18,9 @@ const pageTitle = config.menu_more.find((entry) => entry.href==matchHref)?.name;
     </Fragment>
 
     <CommonBlock title={pageTitle}>
+        <noscript>
+            <p style="margin-bottom:0">您需要<strong>启用 JavaScript</strong> 才能正常留言。</p>
+        </noscript>
         <div id="comment"></div>
     </CommonBlock>
 
