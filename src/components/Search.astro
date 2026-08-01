@@ -1,6 +1,7 @@
 ---
 // import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 import "@pagefind/component-ui/css/pagefind-component-ui.css";
+import "~/styles/components/Search.scss";
 ---
 {/*<PagefindConfig />*/}
 <script src="/pagefind/pagefind-component-ui.js" type="module" is:inline></script>
@@ -18,35 +19,6 @@ import "@pagefind/component-ui/css/pagefind-component-ui.css";
         <pagefind-keyboard-hints></pagefind-keyboard-hints>
     </pagefind-modal-footer>
 </pagefind-modal>
-
-<style lang="scss" is:global>
-    @use "../styles/variables" as *;
-    pagefind-modal-trigger {
-        display: block;
-        margin-top: .5rem;
-        margin-left: 9px;
-        margin-right: 9px;
-        :is([class^="pf-"]) {
-            font-family: $font_lxgw!important;
-        }
-    }
-    pagefind-modal {
-        :is([class^="pf-"]) {
-            font-family: $font_lxgw!important;
-        }
-        mark { // 高亮的关键字
-            background-color: $color_2!important;
-            color: $color_10!important;
-            font-weight: bold!important; // 700
-        }
-        --pf-outline-focus: #f18913!important; // 即 $color_theme
-    }
-    pagefind-filter-pane {
-        details > summary::before {
-            content: none; // 覆盖掉 main.scss 里原有的
-        }
-    }
-</style>
 
 <noscript>
 <style>
