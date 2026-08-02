@@ -78,6 +78,7 @@ div[class*="language-"] {
         opacity: 1;
     }
     &[data-language="ansi"] {
+        line-height: normal; // 行间不空距，模拟终端效果
         &::before {
             content: "🟢️ 🟡️ 🔴️";
             font-family: sans-serif;
