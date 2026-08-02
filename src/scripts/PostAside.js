@@ -3,7 +3,8 @@
 function registerHeadings() {
     window.blogTOCItems = document.querySelectorAll(".toc li");
     window.blogHeadings = [...document.querySelectorAll(".toc li > a")].map((link) => { // 获取 toc 内的所有导航链接
-        return document.querySelector(decodeURI(new URL(link.href).hash)); // decodeURI 之后才能获取正常的选择器，如 `#安装`，而不是 `#%E5%AE%89%E8%A3%85`
+        // 用 getElementById 可以避免用 CSS 选择器时 id 以数字开头而爆炸的问题
+        return document.getElementById(decodeURI(new URL(link.href).hash).replace(/^#/, "")); // decodeURI 之后才能获取正常的选择器，如 `#安装`，而不是 `#%E5%AE%89%E8%A3%85`
     });
 }
 function activeTOC() {
