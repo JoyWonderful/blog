@@ -96,6 +96,11 @@ rehype plugins:
 
 ### Attention
 
+#### FrontMatter - Date
+
+由于无法解决的时区问题，请在 MarkDown 的 FrontMatter 的日期类型指明**时区**。
+方法为加上 ` +08:00`（指定时区为东八区）。
+
 #### Container
 
 Container 的标题上**不能用 Markdown**，不然会有奇奇怪怪的 bug（但是可以有空格）。  
@@ -112,4 +117,4 @@ Container 标志 `:::` 和（任何）内容（无论是内部内容还是外部
 ### License
 
 代码使用 [GPL-3.0-or-later](LICENSE.txt)。  
-文章使用 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans)。
+除特殊说明外文章使用 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hans)。
