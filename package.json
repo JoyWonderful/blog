@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.2.0",
+    "@astrojs/markdown-remark": "^7.2.3",
     "@shikijs/colorized-brackets": "^4.4.3",
     "astro": "^7.2.1",
     "astro-pagefind": "^2.0.1",
