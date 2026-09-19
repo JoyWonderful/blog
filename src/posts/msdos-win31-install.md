@@ -3,7 +3,8 @@ title: MS-DOS 6.22 和 Windows 3.1 的安装
 date: 2026-05-05 16:47:43 +08:00
 updated: 2026-06-21 21:30:27 +08:00
 categories: Programming
-tags: Other-Tag
+tags:
+  - 虚拟机
 ---
 
 在 [MSDN, I Tell You](https://msdn.itellyou.cn) “操作系统”里可以找到 MS-DOS 和 Windows 3.1 (16-bit) 一栏，当即决定研究一下它俩怎么安装。  
