@@ -24,7 +24,7 @@
     "remark-cjk-friendly-gfm-strikethrough": "^2.3.1",
     "remark-flexible-containers": "^1.5.8",
     "remark-math": "^6.0.0",
-    "sass": "^1.104.1"
+    "sass": "^1.105.0"
   },
   "allowScripts": {
     "@parcel/watcher@2.5.6": true,
