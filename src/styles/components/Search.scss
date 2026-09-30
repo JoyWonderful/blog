@@ -5,12 +5,12 @@ pagefind-modal-trigger {
     margin-left: 9px;
     margin-right: 9px;
     :is([class^="pf-"]) {
-        font-family: $font_lxgw!important;
+        font-family: $font_default!important;
     }
 }
 pagefind-modal {
     :is([class^="pf-"]) {
-        font-family: $font_lxgw!important;
+        font-family: $font_default!important;
     }
     mark { // 高亮的关键字
         background-color: $color_2!important;

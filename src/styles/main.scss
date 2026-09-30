@@ -6,7 +6,7 @@
 // 用 `//!!plugin` 标记用 rehype/remark 一类的插件生成所需的样式
 
 :root {
-    font-family: $font_lxgw;
+    font-family: $font_default;
     font-size: 16px;
     background: $color_1;
     line-height: 1.5;
@@ -258,7 +258,7 @@ hr {
         &::before {
             color: $color_theme;
             content: "分割线";
-            font-family: $font_lxgw;
+            font-family: $font_default;
             font-weight: normal; // 400
             padding: $para_margin_bottom calc(50% - 1.5ic);
         }
