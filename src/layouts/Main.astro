@@ -14,6 +14,8 @@ const { matchHref } = Astro.props; //-> ~/components/SiteMenu
     <Fragment slot="document-title"><slot name="document-title" /></Fragment>
     <Fragment slot="html-head">
         {getSourcePathList(["base_css_npmmirror"]).map((source) => <link rel="stylesheet" href={source} />)}
+        <link href="https://fontsapi.zeoseven.com/442/main/result.css" onload="this.rel='stylesheet'" rel="preload" as="style" crossorigin />
+        <noscript><link rel="stylesheet" href="https://fontsapi.zeoseven.com/442/main/result.css" /></noscript>
         <slot name="html-head" />
     </Fragment>
 

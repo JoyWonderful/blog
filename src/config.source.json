@@ -8,9 +8,9 @@
             "version": "7.3.0",
             "file_path": ["/css/all.min.css"]
         }, {
-            "package": "lxgw-wenkai-gb-web",
+            "package": "lxgw-wenkai-screen-web",
             "version": "1.522.0",
-            "file_path": ["/lxgwwenkaimonogb-regular/result.min.css"]
+            "file_path": ["/lxgwwenkaigbscreen/result.min.css"]
         }]
     },
     "katex": {
