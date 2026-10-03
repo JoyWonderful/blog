@@ -25,10 +25,5 @@
     "remark-flexible-containers": "^1.5.8",
     "remark-math": "^6.0.0",
     "sass": "^1.105.1"
-  },
-  "allowScripts": {
-    "@parcel/watcher@2.5.6": true,
-    "esbuild@0.28.1": true,
-    "sharp@0.34.5": true
   }
 }
