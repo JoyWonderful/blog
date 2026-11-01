@@ -98,3 +98,68 @@ via the convenience script [35mInstallation_guide[0m.
 不要尝试打开中文 Arch Wiki，**tty 无法显示中文的**。
 
 :::
+
+### 磁盘分区
+
+:::note{.warning} 注意数据备份
+
+即使是**目的不是破坏性的**磁盘操作也会有概率损坏数据。  
+在安装任何系统前，都应该做好备份。
+
+:::
+
+1. *运行* `lsblk` 查看磁盘（可以根据大小判断）。随后，*运行* `cfdisk /dev/<device name>` 在图形化的 TUI 里分区。还请参见 [Wiki 上的分区示例](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97#%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88%E7%A4%BA%E4%BE%8B)。
+2. *运行*分区对应类型的 `mkfs`（例如 `mkfs.ext4`, `mkfs.fat`, `mkswap`）来格式化分区。
+3. *运行* `mount /dev/<partition> <mount point>` 来挂载分区。*运行* `swapon /dev/<swap partition>` 来启用交换空间分区。
+4. 确定一切无误后，*运行* `genfstab -U /mnt > /mnt/etc/fstab` 来生成 fstab 配置文件。建议检查一下是否无误。
+
+::::details 运行示例
+
+```ansi
+[1;94m#[0m lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 476.9G  0 disk
+[1;94m#[0m cfdisk /dev/nvme0n1
+```
+
+:::details cfdisk 的使用说明
+
+一开始可能会让你选择分区表类型。一般来说，现代硬件*选择*“GPT”。
+
+- 如果有原来系统的分区，不想弄双系统的话，用“[DELETE]”删除所有分区就可以了。
+- 用“[NEW]”新建分区。此时会提示指定大小。
+- 用“[TYPE]”更改分区类型。
+- 完成所有后，用“[WRITE]”写入分区表，并且用“[QUIT]”退出。
+
+:::
+
+:::details TUI 呈现与我的分区方案
+
+```ansi
+                                         [1mDisk: /dev/nvme0n1[0m
+                      Size: 476.94 GiB, 512110190592 bytes, 1000215216 sectors
+                    Label: gpt, identifier: C62954AB-A636-4BB8-B19A-D4777598BF5F
+
+[1m    Device                     Start             End        Sectors       Size Type[0m
+[7m>>  /dev/nvme0n1p1              2048         2203647        2201600         1G EFI System           [0m
+    /dev/nvme0n1p2           2203648       539074559      536870912       256G Linux filesystem
+    /dev/nvme0n1p3         539074560       973185023      434110464       207G Linux filesystem
+    /dev/nvme0n1p4         973185024      1000214527       27029504      12.9G Linux swap
+
+
+ ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ Partition name: boot                                                                           │
+ │ Partition UUID: 4EBB8F70-A742-4A0C-B1C5-ED58C6F8CA46                                           │
+ │ Partition type: EFI System (C12A7328-F81F-11D2-BA4B-00A0C93EC93B)                              │
+ │Filesystem UUID: A7F4-F477                                                                      │
+ │     Filesystem: vfat                                                                           │
+ └────────────────────────────────────────────────────────────────────────────────────────────────┘
+         [ Delete ]  [ Resize ]  [7m[  Quit  ][0m  [  Type  ]  [  Help  ]  [  Write ]  [  Dump  ]
+                                [1mQuit program without writing changes[0m
+```
+
+:::
+
+<!--这里应该继续 mkfs, mount 等演示流程-->
+
+::::
