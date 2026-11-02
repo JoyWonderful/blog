@@ -160,6 +160,62 @@ nvme0n1     259:0    0 476.9G  0 disk
 
 :::
 
-<!--这里应该继续 mkfs, mount 等演示流程-->
+**按照上面的分区方案进行的格式化与挂载**：
+
+```ansi
+[1;94m#[0m mkfs.fat -F 32 /dev/nvme0n1p1 [3;32m# 这是 EFI 系统分区[0m
+[1;94m#[0m mkfs.ext4 /dev/nvme0n1p2 [3;32m# 根分区[0m
+[1;94m#[0m mkfs.ext4 /dev/nvme0n1p3 [3;32m# 用户目录分区[0m
+[1;94m#[0m mkswap /dev/nvme0n1p4 [3;32m# 交换空间[0m
+[3;32m# 注意挂载顺序[0m
+[1;94m#[0m mount /dev/nvme0n1p2 /mnt
+[1;94m#[0m mount --mkdir /dev/nvme0n1p1 /mnt/boot
+[1;94m#[0m mount --mkdir /dev/nvme0n1p3 /mnt/home
+[1;94m#[0m swapon /dev/nvme0n1p4
+[1;94m#[0m genfstab -U /mnt > /mnt/etc/fstab
+[1;94m#[0m cat /mnt/etc/fstab [3;32m# 确认无误[0m
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p2
+UUID=5dfeff69-4c2f-43c9-9ae0-d036da9aa9ec	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p1
+UUID=A7F4-F477      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p3
+UUID=854ee50a-7abc-404a-b223-574dd098179e	/home     	ext4      	rw,relatime	0 2
+
+# /dev/nvme0n1p4
+UUID=5bf9af85-f34e-42c4-ae79-e0b917b44af7	none      	swap      	defaults  	0 0
+
+
+```
 
 ::::
+
+## 开始使用 pacman 安装
+
+```ini
+##
+## Arch Linux repository mirrorlist
+## Generated on 2026-06-10
+##
+
+## China
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.nju.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.hit.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.jlu.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirror.nyist.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.wsyu.edu.cn/archlinux/$repo/os/$arch
+Server = https://mirrors.jcut.edu.cn/archlinux/$repo/os/$arch
+# Server = https://mirrors.qlu.edu.cn/archlinux/$repo/os/$arch
+# Server = https://mirrors.hust.edu.cn/archlinux/$repo/os/$arch
+# Server = https://mirrors.cqu.edu.cn/archlinux/$repo/os/$arch
+# Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
+# Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch
+# Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch
+# Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+```
