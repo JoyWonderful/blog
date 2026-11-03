@@ -4,7 +4,7 @@ categories: Programming
 tags:
   - Linux
   - 终端
-date: 2026-10-24 22:32:23 +08:00
+date: 2026-11-03 22:32:23 +08:00
 license: GFDL-1.3-or-later
 license_reason: | 
   文章有内容引用自 [Arch Linux Wiki](https://wiki.archlinuxcn.org/)，文章使用 GFDL 进行授权，要求使用相同许可。  
@@ -21,7 +21,7 @@ license_reason: |
 :::
 
 <!--more-->
-提示
+
 ## 安装前期准备
 
 ### 下载与准备安装介质
@@ -195,27 +195,24 @@ UUID=5bf9af85-f34e-42c4-ae79-e0b917b44af7	none      	swap      	defaults  	0 0
 
 ::::
 
-## 开始使用 pacman 安装
+## 开始使用 pacman 安装基本系统
+
+### 选择镜像站
+
+原本的 `mirrorlist` 的排序往往并不合适。我们通常只需要中国的。*运行* `curl -L 'https://archlinux.org/mirrorlist/?country=CN&protocol=https' -o /etc/pacman.d/mirrorlist` 获取中国镜像站。根据需要自行*去除注释*或*删除*以及*排序*。  
+**建议以下**：
 
 ```ini
-##
-## Arch Linux repository mirrorlist
-## Generated on 2026-06-10
-##
-
-## China
+# 中国科学技术大学
 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+# 南京大学
 Server = https://mirrors.nju.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.hit.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.jlu.edu.cn/archlinux/$repo/os/$arch
+# 浙江大学
+Server = https://mirrors.zju.edu.cn/archlinux/$repo/os/$arch
+# 南阳理工学院
 Server = https://mirror.nyist.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.wsyu.edu.cn/archlinux/$repo/os/$arch
-Server = https://mirrors.jcut.edu.cn/archlinux/$repo/os/$arch
-# Server = https://mirrors.qlu.edu.cn/archlinux/$repo/os/$arch
-# Server = https://mirrors.hust.edu.cn/archlinux/$repo/os/$arch
-# Server = https://mirrors.cqu.edu.cn/archlinux/$repo/os/$arch
-# Server = https://mirrors.aliyun.com/archlinux/$repo/os/$arch
-# Server = https://mirrors.sjtug.sjtu.edu.cn/archlinux/$repo/os/$arch
-# Server = https://mirrors.bfsu.edu.cn/archlinux/$repo/os/$arch
-# Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+# 哈尔滨工业大学
+Server = https://mirrors.hit.edu.cn/archlinux/$repo/os/$arch
 ```
+
+### 安装软件包
