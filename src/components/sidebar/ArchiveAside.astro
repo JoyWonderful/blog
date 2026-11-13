@@ -1,7 +1,6 @@
 ---
+import { blogPosts } from "~/scripts/helpers/site-posts-stats";
 import config from "~/config.json";
-
-const { blogPosts } = Astro.props;
 
 blogPosts.sort((a:any, b:any) => {
     var a_date = a.data.updated ? a.data.updated.valueOf() : a.data.date.valueOf();

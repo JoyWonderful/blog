@@ -1,12 +1,12 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
 import { getAllCategories } from "~/scripts/helpers/site-posts-stats";
 import Main from "~/layouts/Main.astro";
 import CategoryAside from "~/components/sidebar/CategoryAside.astro";
 import CommonBlock from "~/components/CommonBlock.astro";
 import TimeLine from "~/components/TimeLine.astro";
 import PaginationBar from "~/components/PaginationBar.astro";
+import { blogPosts } from "~/scripts/helpers/site-posts-stats";
 import config from "~/config.json";
 
 /* 使用 map：
@@ -46,7 +46,6 @@ const { page, categoryPostsLength } = Astro.props; // page.data 应该是该分�
 const pageTitle = config.menu.find((entry) => entry.href==config.categories_path)?.name;
 
 var posts:any[] = [];
-const blogPosts = await getCollection("blogPosts");
 page.data.forEach((postId:string) => {
     posts.push(blogPosts.find((post:any) => post.id==postId));
 });

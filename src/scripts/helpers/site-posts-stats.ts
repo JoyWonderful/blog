@@ -3,6 +3,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 const blogPosts:[CollectionEntry<"blogPosts">] = (await getCollection("blogPosts")).sort((a:any, b:any) => {
     return b.data.date.valueOf() - a.data.date.valueOf(); // 按发布时间排序
 });
+export { blogPosts };
 
 /* Map 的形式是 ["<tag/category>", ["<post.id 1>", "<post.id 2>", ...]]
 即 Map 的 key 是标签名或分类名，value 是该标签/分类下的所有文章。*/

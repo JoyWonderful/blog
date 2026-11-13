@@ -1,15 +1,15 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
 import { getAllTags } from "~/scripts/helpers/site-posts-stats";
 import Main from "~/layouts/Main.astro";
 import TagAside from "~/components/sidebar/TagAside.astro";
 import CommonBlock from "~/components/CommonBlock.astro";
 import TimeLine from "~/components/TimeLine.astro";
 import PaginationBar from "~/components/PaginationBar.astro";
+import { blogPosts } from "~/scripts/helpers/site-posts-stats";
 import config from "~/config.json";
 
-export const getStaticPaths = (({paginate}) => {
+export const getStaticPaths = (function({paginate}) {
     const tags = getAllTags();
     return [...tags].flatMap((tag) => {
         return paginate(tag[1], { // tag[1] 为标签下所有文章
@@ -25,7 +25,6 @@ const { tag } = Astro.params;
 const { page, tagPostsLength } = Astro.props;
 
 var posts:any[] = [];
-const blogPosts = await getCollection("blogPosts");
 page.data.forEach((postId:string) => {
     posts.push(blogPosts.find((post:any) => post.id==postId));
 });

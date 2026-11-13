@@ -1,15 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
 import PostLicense from "~/components/PostLicense.astro";
 import "~/styles/components/PostFooter.scss";
+import { blogPosts } from "~/scripts/helpers/site-posts-stats";
 import config from "~/config.json";
 
 const { id } = Astro.props;
 
-const blogPosts = (await getCollection("blogPosts")).sort((a:any, b:any) => {
-    return b.data.date.valueOf() - a.data.date.valueOf(); // 按发布时间排序
-});
 const postIndex = blogPosts.findIndex((post:CollectionEntry<"blogPosts">) => post.id == id);
 
 var postTags;

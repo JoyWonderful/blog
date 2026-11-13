@@ -1,7 +1,6 @@
 ---
 import type { GetStaticPaths, MarkdownHeading } from "astro";
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
 import { Markup } from "astro-remote";
 import Main from "~/layouts/Main.astro";
 import PostAside from "~/components/sidebar/PostAside.astro";
@@ -9,10 +8,10 @@ import PostBlock from "~/components/PostBlock.astro";
 import Tabs from "~/components/post-tags/Tabs.astro";
 import PostFooter from "~/components/PostFooter.astro";
 import MathConfs from "~/components/MathConfs.astro";
+import { blogPosts } from "~/scripts/helpers/site-posts-stats";
 import config from "~/config.json";
 
-export const getStaticPaths = (async () => {
-    const blogPosts = await getCollection("blogPosts");
+export const getStaticPaths = (function() {
     return blogPosts.map((post:CollectionEntry<"blogPosts">) => {
         return {
             params: {id: post.id},

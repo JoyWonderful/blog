@@ -1,8 +1,6 @@
 ---
-import { getCollection } from "astro:content";
-import { getAllCategories, getAllTags } from "~/scripts/helpers/site-posts-stats";
+import { getAllCategories, getAllTags, blogPosts } from "~/scripts/helpers/site-posts-stats";
 
-const blogPosts:Array<any> = await getCollection("blogPosts");
 var categoriesCount = getAllCategories().size;
 var tagsCount = getAllTags().size;
 /*var tags getAllTags();
