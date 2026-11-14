@@ -9,6 +9,7 @@ license: GFDL-1.3-or-later
 license_reason: | 
   文章有内容引用自 [Arch Linux Wiki](https://wiki.archlinuxcn.org/)，文章使用 GFDL 进行授权，要求使用相同许可。  
   感谢社区贡献者的付出。
+draft: true
 ---
 
 最近安装了 Arch Linux。所以把**线性**的安装流程记录在这里。

@@ -1,6 +1,9 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
-const blogPosts:[CollectionEntry<"blogPosts">] = (await getCollection("blogPosts")).sort((a:any, b:any) => {
+const blogPosts:[CollectionEntry<"blogPosts">] = 
+(await getCollection("blogPosts", ({ data }:{data:CollectionEntry<"blogPosts">}) => {
+    return import.meta.env.PROD ? data.draft!=true : true; // 生产环境就不显示草稿
+})).sort((a:any, b:any) => {
     return b.data.date.valueOf() - a.data.date.valueOf(); // 按发布时间排序
 });
 export { blogPosts };

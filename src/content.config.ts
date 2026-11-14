@@ -12,7 +12,8 @@ const blogPosts = defineCollection({
         categories: z.string(),
         license: z.string().optional(),
         license_reason: z.string().optional(),
-        math: z.boolean().default(false)
+        math: z.boolean().default(false),
+        draft: z.boolean().default(false)
     })
 });
 
