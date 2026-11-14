@@ -9,4 +9,11 @@ updates:
     schedule:
       interval: "weekly"
       day: "saturday"
+    groups: # 分组，多依赖一个 Pull Request
+      minor-and-patch: # 自定义 Identifier
+        patterns:
+          - "*"
+        update-types: # Major Version 仍然一个依赖一个 PR
+          - "minor"
+          - "patch"
     open-pull-requests-limit: 3
