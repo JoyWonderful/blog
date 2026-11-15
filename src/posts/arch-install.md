@@ -217,3 +217,15 @@ Server = https://mirrors.hit.edu.cn/archlinux/$repo/os/$arch
 ```
 
 ### 安装软件包
+
+我建议在这里先让基本系统**能用**，重启到新系统后再开始让它变得**好用**。  
+必要软件包：
+
+- *`base` 包*：`base` 就是**唯一的定死的必须软件包**，它是一个*元包*（Meta Package）。剩下必要软件包的你可以随意搭配。
+- *内核*：通常说用 `linux`（原版 kernel 稳定版）就行。找官方支持的内核[请搜索](https://archlinux.org/packages/?q=KSMBD-MODULE)（提供）`KSMBD-MODULE` 的包。
+- *CPU 微码更新*：`intel-ucode`, `amd-ucode`。用于硬件错误和安全修复。  
+  > 使用 AMD 或 Intel CPU 的用户都应该安装微码更新以确保系统稳定性。在虚拟机或容器中，微码更新应在主机上实施，而不是在客户机系统中。 
+- *固件*：虚拟机通常也不用安装。
+  - *必需*：如果你不清楚到底要安装什么固件，安装 `linux-firmware` 元包。如果你想节省空间，而且很清楚自己的配置，就看看它的依赖，自己决定安装什么。
+  - *额外*：`sof-firmware` 用于音频。不安装它电脑就无法发声。
+- *文件系统的用户空间工具*：如果你想用其他文件系统，例如 BTRFS 就安装 `btrfs-progs`；想操作 U 盘的文件系统（比方说格式化，改卷标啥的），就安装 `exfatprogs`。
