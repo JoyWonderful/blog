@@ -112,7 +112,7 @@ via the convenience script [35mInstallation_guide[0m.
 1. *运行* `lsblk` 查看磁盘（可以根据大小判断）。随后，*运行* `cfdisk /dev/<device name>` 在图形化的 TUI 里分区。还请参见 [Wiki 上的分区示例](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97#%E5%88%86%E5%8C%BA%E6%96%B9%E6%A1%88%E7%A4%BA%E4%BE%8B)。
 2. *运行*分区对应类型的 `mkfs`（例如 `mkfs.ext4`, `mkfs.fat`, `mkswap`）来格式化分区。
 3. *运行* `mount /dev/<partition> <mount point>` 来挂载分区。*运行* `swapon /dev/<swap partition>` 来启用交换空间分区。
-4. 确定一切无误后，*运行* `genfstab -U /mnt > /mnt/etc/fstab` 来生成 fstab 配置文件。建议检查一下是否无误。
+4. ~~确定一切无误后，*运行* `genfstab -U /mnt > /mnt/etc/fstab` 来生成 fstab 配置文件。建议检查一下是否无误。~~**这一步等安装完基本系统后再做。**
 
 ::::details 运行示例
 
@@ -164,15 +164,16 @@ nvme0n1     259:0    0 476.9G  0 disk
 **按照上面的分区方案进行的格式化与挂载**：
 
 ```ansi
-[1;94m#[0m mkfs.fat -F 32 /dev/nvme0n1p1 [3;32m# 这是 EFI 系统分区[0m
-[1;94m#[0m mkfs.ext4 /dev/nvme0n1p2 [3;32m# 根分区[0m
+[1;94m#[0m mkfs.fat -F 32 /dev/nvme0n1p1 [3;32m# 这是 EFI 系统分区，可使用 -n 指定卷标，使用 fatlabel 更改卷标[0m
+[1;94m#[0m mkfs.ext4 /dev/nvme0n1p2 [3;32m# 根分区，可使用 -L 指定卷标，使用 e2label 更改卷标[0m
 [1;94m#[0m mkfs.ext4 /dev/nvme0n1p3 [3;32m# 用户目录分区[0m
-[1;94m#[0m mkswap /dev/nvme0n1p4 [3;32m# 交换空间[0m
+[1;94m#[0m mkswap /dev/nvme0n1p4 [3;32m# 交换空间，可使用 -L 指定卷标，使用 swaplabel 更改卷标[0m
 [3;32m# 注意挂载顺序[0m
 [1;94m#[0m mount /dev/nvme0n1p2 /mnt
 [1;94m#[0m mount --mkdir /dev/nvme0n1p1 /mnt/boot
 [1;94m#[0m mount --mkdir /dev/nvme0n1p3 /mnt/home
 [1;94m#[0m swapon /dev/nvme0n1p4
+[3;32m# 以下安装好基本系统后再做[0m
 [1;94m#[0m genfstab -U /mnt > /mnt/etc/fstab
 [1;94m#[0m cat /mnt/etc/fstab [3;32m# 确认无误[0m
 # Static information about the filesystems.
@@ -228,4 +229,107 @@ Server = https://mirrors.hit.edu.cn/archlinux/$repo/os/$arch
 - *固件*：虚拟机通常也不用安装。
   - *必需*：如果你不清楚到底要安装什么固件，安装 `linux-firmware` 元包。如果你想节省空间，而且很清楚自己的配置，就看看它的依赖，自己决定安装什么。
   - *额外*：`sof-firmware` 用于音频。不安装它电脑就无法发声。
-- *文件系统的用户空间工具*：如果你想用其他文件系统，例如 BTRFS 就安装 `btrfs-progs`；想操作 U 盘的文件系统（比方说格式化，改卷标啥的），就安装 `exfatprogs`。
+- *文件系统的用户空间工具*：如果你想用其他文件系统，例如 BTRFS 就安装 `btrfs-progs`；想操作 U 盘的文件系统（比方说格式化，改卷标啥的），就安装 `exfatprogs`。参见 [Arch Wiki](https://wiki.archlinuxcn.org/wiki/File_systems)。
+- *联网所需的程序*：**网络管理器**和/或 **DHCP 客户端**推荐 `networkmanager`（因为它有一个 TUI，同时 GNOME Settings 也默认使用它）。通常来说安装它就够了。参见 [Arch Wiki](https://wiki.archlinuxcn.org/wiki/Network_configuration#网络管理器)。
+- *控制台文本编辑器*：例如 `vim`, `nano`。根据你的偏好安装就好。
+- *访问命令文档*：`man-db`, `man-pages`, `texinfo`。
+- *引导加载程序*：没有特殊需求就安装 `grub`, `efibootmgr`。
+
+有一种维护已安装软件包列表的方法，参见 [Arch Wiki](https://wiki.archlinuxcn.org/wiki/Pacman/Tips_and_tricks#已安装软件包的列表)。这里我们就使用这种方法，更方便一些。
+
+```ansi
+[1;94m#[0m vim pkglist.txt [3;32m# 编辑该文件，以下是一个示例[0m
+base
+linux
+linux-firmware
+sof-firmware
+grub
+efibootmgr
+networkmanager
+vim
+man-db
+man-pages
+tex-info
+[3;32m# 如果你想添加以 `#` 开头的注释，可以运行
+# sed -e 's/#.*//' -e 's/[[:space:]]*$//' -e '/^[[:space:]]*$/d' pkglist.txt | sort
+# 来获得去掉注释的版本。[0m
+[3;32m# :wq[0m
+[1;94m#[0m pacstrap -K /mnt --needed - < pkglist.txt
+```
+
+## 配置基本系统
+
+**不要忘记***运行* `genfstab -U /mnt > /mnt/etc/fstab` 来生成 fstab 配置文件。  
+*运行* `arch-chroot -S /mnt` 来 chroot 到新的系统。
+
+### 时区、本地化与控制台设置
+
+1. *运行* `ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime` 来设置时区为上海。
+2. *运行* `hwclock --systohc` 来将系统时钟设置到硬件时钟并生成 `/etc/adjtime`。
+3. *启用* `systemd-timesyncd.service` 即时间同步服务。
+4. *编辑* `/etc/locale.gen`，取消 `en_US.UTF-8 UTF-8`, `zh_CN.UTF-8 UTF-8` 的注释。*运行* `locale-gen`。
+5. *编辑* `/etc/locale.conf`，设置变量 `LANG=zh_CN.UTF-8`。（tty 乱码时，运行 `LANG=en_US.UTF-8` 临时更改 locale 即可，或者可以修改 profile 来实现检测到 tty 自动更改 `LANG`）
+
+### 网络设置
+
+*编辑* `/etc/hostname`，键入你喜欢的主机名。标准要求如下，但实际上个人使用，不符合规范**也没太大关系**。  
+
+> Each element of the hostname must be from 1 to 63 characters long and the entire hostname, including the dots, can be at most 253 characters long. Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, and the hyphen (-). A hostname may not start nor end with a hyphen.  
+> 每一部分的主机名（由点分割）包含 1-63 个字符，整个主机名（包括点）最多长 253 个字符。仅使用小写的 a-z、0-9 以及 -，但不得以 - 开头或结尾。
+
+*启用* `NetworkManager.service`。
+
+### 用户设置
+
+*运行* `passwd` 设置 root 密码。  
+随后**添加一个具有管理权限的非 root 用户**：
+
+1. *安装* `sudo`。
+2. *运行* `useradd <user> -m -G wheel`。其中，`<user>` 替换为你想要的用户名。
+    - 找到可用的常用用户组，参见 [Arch Wiki](https://wiki.archlinuxcn.org/wiki/Users_and_groups#用户组)。
+    - 如果你只想创建一个**没有管理权限**的用户，那就不要键入 `-G wheel`。  
+      若已加入，则*运行* `usermod <user> -rG wheel` 来把它从 `wheel` 组里移除。
+    - 如果你忘记加 `-m`，则没有创建用户目录。*运行* `mkdir /home/<user>` 来创建它的用户目录。
+    - 如果你忘记加 `-G wheel`，*运行* `usermod <user> -aG wheel` 来把它添加到 `wheel` 组中。
+3. *运行* `passwd <user>` 设置该用户的密码。
+4. *运行* `EDITOR=vim visudo` 来*编辑* `/etc/sudoers`，找到 `%wheel ALL=(ALL:ALL) ALL` 并取消注释。
+5. 如果你想增强安全性，正确添加了具有管理权限的非 root 用户后，可以*运行* `passwd -l root` 禁用 root 用户，以增强安全性。
+
+### 安装并配置 GRUB
+
+```ansi
+[1;94m#[0m grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+Installing for x86_64-efi platform.
+Installation finished. No error reported.
+[1;94m#[0m cd /boot; tree -CAd [3;32m# 需安装 tree[0m
+[1;34m.[0m
+├── [1;34mEFI[0m
+│   └── [1;34mGRUB[0m
+└── [1;34mgrub[0m
+    ├── [1;34mfonts[0m
+    ├── [1;34mlocale[0m
+    ├── [1;34mthemes[0m
+    │   └── [1;34mstarfield[0m
+    └── [1;34mx86_64-efi[0m
+
+9 directories
+[3;32m# 出现这样的目录结构就说明基本没有问题了[0m
+[1;94m#[0m grub-mkconfig -o /boot/grub/grub.cfg [3;32m# 生成 GRUB 配置很重要，不执行就无法正确引导新的 Arch Linux 系统了[0m
+```
+
+### 其他
+
+- **pacman 命令彩色输出**：*编辑* `/etc/pacman.conf`，找到 `COLOR` 并取消注释。
+- **sudo 输入密码显示星号**：*运行* `EDITOR=vim visudo` 来*编辑* `/etc/sudoers`，添加 `Defaults pwfeedback` 行。
+- **控制台字体**：*编辑* `/etc/vconsole.conf`，设置字体 `FONT=ter-128b`，可以避免每次进 tty 改字体大小。（需要*安装* `terminus-font`，按照你喜欢的来）
+
+----------
+
+确认你已经干好该干的事，尤其是要**执行好 GRUB 安装**（`grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB` 和 `grub-mkconfig -o /boot/grub/grub.cfg`）。  
+确认好后：
+
+- *运行* `exit` 退出 chroot。（这不不干也行，你甚至可以直接 `reboot`）
+- *运行* `umount -R /mnt` 手动卸载分区。（这步不干也行，systemd 会自动在关机前卸载）
+- *运行* `reboot` 重启系统，不要忘记移除安装介质。（即记得把 U 盘拔了，防止又回到 Live ISO 里了）
+
+<!--还可能写：虚拟机 vsock 相关，关于“急救”的提示-->
