@@ -328,8 +328,27 @@ Installation finished. No error reported.
 确认你已经干好该干的事，尤其是要**执行好 GRUB 安装**（`grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB` 和 `grub-mkconfig -o /boot/grub/grub.cfg`）。  
 确认好后：
 
-- *运行* `exit` 退出 chroot。（这不不干也行，你甚至可以直接 `reboot`）
+- *运行* `exit` 退出 chroot。（这步不干也行，你甚至可以直接 `reboot`）
 - *运行* `umount -R /mnt` 手动卸载分区。（这步不干也行，systemd 会自动在关机前卸载）
 - *运行* `reboot` 重启系统，不要忘记移除安装介质。（即记得把 U 盘拔了，防止又回到 Live ISO 里了）
 
-<!--还可能写：虚拟机 vsock 相关，关于“急救”的提示-->
+## 进一步配置系统
+
+:::note{.info} 虚拟机中的 SSH vsock
+
+在我们可以通过 SSH 连接虚拟机运行命令，这样更方便。
+
+**在虚拟机中***安装* `openssh`，*启用* `sshd.service`。下次开机未登录时，你会看到类似于 `Try contacting this VM's SSH server via 'ssh vsock%<number>' from host.`。
+**在宿主机中**运行 `ssh <user>@vsock%<number>`，其中 `<user>` 替换为你在[用户配置](#用户设置)添加的具有管理权限的非 root 用户的用户名。输入该用户的密码后，理论上就可以连接上了。
+
+:::
+
+**现在我们该在真实的系统里进行操作了。**  
+如果你的步骤没有错误，你应该会看到一个类似于下面的 GRUB 菜单。
+
+![grub-list](/images/arch-install/grub-list.webp)
+
+*运行* `LANG=en_US.UTF-8` 避免中文乱码。
+*运行* `nmtui` 来通过一个图形化界面连接 Wi-Fi。
+
+<!--还可能写：关于“急救”的提示-->
