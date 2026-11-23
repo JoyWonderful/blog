@@ -339,7 +339,9 @@ Installation finished. No error reported.
 在我们可以通过 SSH 连接虚拟机运行命令，这样更方便。
 
 **在虚拟机中***安装* `openssh`，*启用* `sshd.service`。下次开机未登录时，你会看到类似于 `Try contacting this VM's SSH server via 'ssh vsock%<number>' from host.`。
-**在宿主机中**运行 `ssh <user>@vsock%<number>`，其中 `<user>` 替换为你在[用户配置](#用户设置)添加的具有管理权限的非 root 用户的用户名。输入该用户的密码后，理论上就可以连接上了。
+**在宿主机中***运行* `ssh <user>@vsock%<number>`，其中 `<user>` 替换为你在[用户配置](#用户设置)添加的具有管理权限的非 root 用户的用户名。输入该用户的密码后，理论上就可以连接上了。
+
+如果是在虚拟机中安装 Arch，在进入 Arch Live ISO 中后用 `passwd` 设置 root 密码，然后用 `ssh vsock%<number>` 也行。
 
 :::
 
@@ -348,7 +350,60 @@ Installation finished. No error reported.
 
 ![grub-list](/images/arch-install/grub-list.webp)
 
-*运行* `LANG=en_US.UTF-8` 避免中文乱码。
+*运行* `LANG=en_US.UTF-8` 避免中文乱码。  
 *运行* `nmtui` 来通过一个图形化界面连接 Wi-Fi。
+
+:::details 一些验证上述操作是否无误
+
+```ansi
+[1;94m$[0m systemctl status NetworkManager.service
+[0;1;32m●[0m NetworkManager.service - Network Manager[m
+     Loaded: loaded ([4m/usr/lib/systemd/system/NetworkManager.service[0m; [0;1;32menabled[0m; preset: [0;1;33mdisabled[0m)
+     Active: [0;1;32mactive (running)[0m since Mon 2026-11-23 22:25:07 CST; 8min ago[m
+ Invocation: 4524d9f995b74b30be459d7a228d40e8[m
+       Docs: [4mman:NetworkManager(8)[0m
+   Main PID: 450 (NetworkManager)[m
+[3;32m# ... 只要看到 loaded, enabled 就可以了，下同[0m
+
+[1;94m$[0m systemctl status systemd-timesyncd
+[0;1;32m●[0m systemd-timesyncd.service - Network Time Synchronization[m
+     Loaded: loaded ([4m/usr/lib/systemd/system/systemd-timesyncd.service[0m; [1;32menabled[0m; preset: [0;1;32menabled[0m)[m
+     Active: [0;1;32mactive (running)[0m since Mon 2026-11-23 22:25:06 CST; 8min ago[m
+ Invocation: fa827ae065a4483eb319d74216d0f79c[m
+       Docs: [4mman:systemd-timesyncd.service(8)[0m
+   Main PID: 380 (systemd-timesyn)[m
+     Status: "[0;1;36mContacted time server 193.182.111.143:123 (2.arch.pool.ntp.org).[0m"[m
+[3;32m# ...[0m
+
+[1;94m$[0m timedatectl
+[0;94m               Local time:[0m 一 2026-11-23 22:33:52 CST [3;32m# 本地时间要同步[0m
+[0;94m           Universal time:[0m 一 2026-11-23 14:33:52 UTC
+[0;94m                 RTC time:[0m 一 2026-11-23 14:33:52
+[0;94m                Time zone:[0m Asia/Shanghai (CST, +0800) [3;32m# 时区得在 +0800[0m
+[0;94mSystem clock synchronized:[0m yes
+[0;94m              NTP service:[0m active [3;32m# 时间同步已启用[0m
+[0;94m          RTC in local TZ:[0m no
+
+[1;94m$[0m hostnamectl
+[0;94m  Static hostname:[0m vm.arch.jywon.com [3;32m# 主机名正确[0m
+[0;94m        Icon name:[0m computer-vm
+[0;94m          Chassis:[0m vm 💽
+[0;94mChassis Asset Tag:[0m No Asset Tag
+[0;94m       Machine ID:[0m fe6c2c0892cf4973994adbde1a5f3640
+[0;94m          Boot ID:[0m 2b2fec9b15394124bf89e76b7141f4ef
+[0;94m     AF_VSOCK CID:[0m 848841942
+[0;94m   Virtualization:[0m vmware
+[0;94m Operating System:[38;2;23;147;209m Arch Linux[0m
+[0;94m           Kernel:[0m Linux 7.3.5-arch1-1
+[0;94m     Architecture:[0m x86-64
+[0;94m  Hardware Vendor:[0m VMware, Inc.
+[0;94m   Hardware Model:[0m VMware20,1
+[0;94m Hardware Version:[0m None
+[0;94m Firmware Version:[0m VMW201.00V.25600138.B64.2607151225
+[0;94m    Firmware Date:[0m Wed 2026-07-15
+[0;94m     Firmware Age:[0m 4month 1w 2d
+```
+
+:::
 
 <!--还可能写：关于“急救”的提示-->
